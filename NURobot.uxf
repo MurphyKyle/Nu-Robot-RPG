@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1782</x>
+      <y>9</y>
+      <w>162</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>GUI
+--
+
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>999</x>
+      <y>1026</y>
+      <w>261</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>Part
+--
+_# weight : int_
+_# rarity : Rarity_
+--
+Setters and Getters{
+weight
+rarity
+}
++ toString() : String &lt;&lt;Override&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1044</x>
+      <y>1314</y>
+      <w>153</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Rarity
+&lt;Enumeration&gt;
+--
+
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>612</y>
+      <w>351</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>Arm
+--
+_- attackType : Type_
+_- name : String_
+_- function : String_
+-
++ Arm() &lt;&lt;ctor&gt;&gt;
++ Arm(attackType : Type, weight : int,
+          rarity : rarity, name : String, 
+          function : String) &lt;&lt;ctor&gt;&gt;
+Setters and Getters{
+attackType
+name
+function
+}
++ toString() : String &lt;&lt;Override&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>477</x>
+      <y>1152</y>
+      <w>171</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Type
+&lt;Enumeration&gt;
+--
+
+-</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1593</x>
+      <y>612</y>
+      <w>279</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>Leg
+--
+_- name : String_
+-
++ Leg() &lt;&lt;ctor&gt;&gt;
++ Leg(weight : int, rarity : rarity,
+     name : String) &lt;&lt;ctor&gt;&gt;
+Setter and Getter for name
++ toString() : String &lt;&lt;Override&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1188</x>
+      <y>612</y>
+      <w>351</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>Head
+--
+_- name : String_
+_- function : String_
+-
++ Head() &lt;&lt;ctor&gt;&gt;
++ Head(weight : int, function : String,
+          rarity : rarity, name : String) &lt;&lt;ctor&gt;&gt;
+Setters and Getters{
+name
+function
+}
++ toString() : String &lt;&lt;Override&gt;&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>612</y>
+      <w>351</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>Torso
+--
+_- defenceType : Type_
+_- name : String_
+-
++ Torso() &lt;&lt;ctor&gt;&gt;
++ Torso(defenceType : Type, weight : int,
+          rarity : rarity, name : String) &lt;&lt;ctor&gt;&gt;
+Setters and Getters{
+defenceType
+name
+}
++ toString() : String &lt;&lt;Override&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1251</x>
+      <y>846</y>
+      <w>405</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;280.0;430.0;280.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1251</x>
+      <y>846</y>
+      <w>108</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;240.0;100.0;240.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>846</y>
+      <w>126</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;240.0;10.0;240.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>603</x>
+      <y>909</y>
+      <w>414</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>440.0;210.0;10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>909</y>
+      <w>27</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1035</x>
+      <y>1224</y>
+      <w>99</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;90.0;100.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>639</x>
+      <y>846</y>
+      <w>99</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;90.0;380.0;10.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>36</y>
+      <w>432</w>
+      <h>504</h>
+    </coordinates>
+    <panel_attributes>Robot
+--
+_- name : String_
+_- torso : Torso_
+_- arms : ArrayList&lt;Arm&gt;_
+_- head : Head_
+_- legs : ArrayList&lt;Leg&gt;_
+_- maxHp : int_
+_- currentHp : int_
+_- drop : Part_
+-
++ Robot() &lt;ctor&gt;
++ equipArm(arm : Arm) : void
++ equipLeg(leg : Leg) : void
++ equipTorso(torso : Torso) : void
++ equipHead(head : Head) : void
++ attack(enemy : Robot) : int
++ takeDamage(dam : int) : void
++ getSpeed() : int
++ getActionMenu() : ArrayList&lt;String&gt;
+Setters and Getters{
+maxHp
+minHp
+drop
+name
+}
++ toString : String &lt;&lt;Override&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>468</y>
+      <w>333</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>855</x>
+      <y>504</y>
+      <w>108</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>513</y>
+      <w>90</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0;80.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>468</y>
+      <w>261</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0;270.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2151</x>
+      <y>216</y>
+      <w>270</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Map
+--
+_- rooms : room[][]_
+--
++ Map() &lt;&lt;ctor&gt;&gt;
++ Map(size : int) &lt;&lt;ctor&gt;&gt;
++ toString : String &lt;&lt;Override&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2097</x>
+      <y>459</y>
+      <w>369</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Room
+--
+_- isOccupied : boolean_
+_- isDepot : boolean_
+--
++ setIsOccupied(isOccupied : boolean) : void
++ isOccupied() : boolean
++ setIsDepot(isDepot : boolean) : void
++ isDepot() : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1116</x>
+      <y>531</y>
+      <w>27</w>
+      <h>513</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;550.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2268</x>
+      <y>369</y>
+      <w>27</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1476</x>
+      <y>9</y>
+      <w>234</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Driver
+--
+
+-
+_+ main(args: string[]) : void_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1512</x>
+      <y>189</y>
+      <w>477</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>Engine
+--
+_- favRobots : HashMap&lt;String, Robot&gt;_
+_- score : int_
+_- map : Map_
+-
+_+ run() : void_
+_+ constructMap() : Map_
+_+ constructUserRobot() : Robot_
+_+ constructBot() : Robot_
+_+ loadFile() : void_
+_+ saveFile() : void_
+_+ combat(user : Robot, bot : Robot) : void_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1980</x>
+      <y>243</y>
+      <w>189</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>270</y>
+      <w>162</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>450</x>
+      <y>0</y>
+      <w>432</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>ClassName
+--
+**data members
+_- varName : type_
+
+-
+**functional members
+_ + methodName(paraName : type, ...) : returnType_
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
