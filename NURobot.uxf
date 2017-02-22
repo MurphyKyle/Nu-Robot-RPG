@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1386</x>
+      <x>1368</x>
       <y>288</y>
       <w>162</w>
       <h>144</h>
@@ -19,7 +19,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>711</x>
+      <x>693</x>
       <y>1287</y>
       <w>261</w>
       <h>207</h>
@@ -39,7 +39,7 @@ rarity
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>486</x>
+      <x>468</x>
       <y>1413</y>
       <w>153</w>
       <h>153</h>
@@ -58,16 +58,16 @@ EXPERIMENTAL</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>18</x>
+      <x>0</x>
       <y>873</y>
       <w>351</w>
       <h>306</h>
     </coordinates>
     <panel_attributes>Arm
 --
-_- attackType : Type_
-_- name : String_
-_- function : String_
+_attackType : Type_
+_name : String_
+_function : String_
 -
 + Arm() &lt;&lt;ctor&gt;&gt;
 + Arm(attackType : Type, weight : int,
@@ -84,8 +84,8 @@ function
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>189</x>
-      <y>1413</y>
+      <x>117</x>
+      <y>1386</y>
       <w>171</w>
       <h>171</h>
     </coordinates>
@@ -104,14 +104,14 @@ EXPLOSIVE</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1305</x>
+      <x>1287</x>
       <y>873</y>
       <w>279</w>
       <h>243</h>
     </coordinates>
     <panel_attributes>Leg
 --
-_- name : String_
+_name : String_
 -
 + Leg() &lt;&lt;ctor&gt;&gt;
 + Leg(weight : int, rarity : rarity,
@@ -123,15 +123,15 @@ Setter and Getter for name
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
+      <x>882</x>
       <y>873</y>
       <w>351</w>
       <h>243</h>
     </coordinates>
     <panel_attributes>Head
 --
-_- name : String_
-_- function : String_
+_name : String_
+_function : String_
 -
 + Head() &lt;&lt;ctor&gt;&gt;
 + Head(weight : int, function : String,
@@ -147,15 +147,15 @@ function
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>405</x>
+      <x>387</x>
       <y>873</y>
       <w>351</w>
       <h>243</h>
     </coordinates>
     <panel_attributes>Torso
 --
-_- defenceType : Type_
-_- name : String_
+_defenceType : Type_
+_name : String_
 -
 + Torso() &lt;&lt;ctor&gt;&gt;
 + Torso(defenceType : Type, weight : int,
@@ -170,7 +170,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
+      <x>945</x>
       <y>1107</y>
       <w>405</w>
       <h>270</h>
@@ -181,7 +181,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
+      <x>945</x>
       <y>1107</y>
       <w>108</w>
       <h>234</h>
@@ -192,7 +192,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>603</x>
+      <x>585</x>
       <y>1107</y>
       <w>126</w>
       <h>234</h>
@@ -203,7 +203,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
+      <x>297</x>
       <y>1170</y>
       <w>414</w>
       <h>207</h>
@@ -214,18 +214,18 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>207</x>
+      <x>135</x>
       <y>1170</y>
-      <w>27</w>
-      <h>261</h>
+      <w>81</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>603</x>
+      <x>585</x>
       <y>1377</y>
       <w>126</w>
       <h>54</h>
@@ -236,32 +236,32 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
+      <x>279</x>
       <y>1107</y>
-      <w>99</w>
+      <w>153</w>
       <h>360</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>90.0;10.0;90.0;380.0;10.0;380.0</additional_attributes>
+    <additional_attributes>150.0;10.0;150.0;380.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
+      <x>639</x>
       <y>297</y>
       <w>432</w>
       <h>504</h>
     </coordinates>
     <panel_attributes>Robot
 --
-_- name : String_
-_- torso : Torso_
-_- arms : ArrayList&lt;Arm&gt;_
-_- head : Head_
-_- legs : ArrayList&lt;Leg&gt;_
-_- maxHp : int_
-_- currentHp : int_
-_- drop : Part_
+_name : String_
+_torso : Torso_
+_arms : ArrayList&lt;Arm&gt;_
+_head : Head_
+_legs : ArrayList&lt;Leg&gt;_
+_maxHp : int_
+_currentHp : int_
+_drop : Part_
 -
 + Robot() &lt;ctor&gt;
 + equipArm(arm : Arm) : void
@@ -284,7 +284,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
+      <x>324</x>
       <y>729</y>
       <w>333</w>
       <h>162</h>
@@ -295,7 +295,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
+      <x>549</x>
       <y>765</y>
       <w>108</w>
       <h>126</h>
@@ -306,7 +306,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
+      <x>1062</x>
       <y>774</y>
       <w>90</w>
       <h>117</h>
@@ -317,7 +317,7 @@ name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
+      <x>1062</x>
       <y>729</y>
       <w>261</w>
       <h>162</h>
@@ -328,14 +328,14 @@ name
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1773</x>
+      <x>1755</x>
       <y>477</y>
       <w>270</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>Map
 --
-_- rooms : room[][]_
+_rooms : room[][]_
 --
 + Map() &lt;&lt;ctor&gt;&gt;
 + Map(size : int) &lt;&lt;ctor&gt;&gt;
@@ -345,15 +345,15 @@ _- rooms : room[][]_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1719</x>
+      <x>1701</x>
       <y>720</y>
       <w>369</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>Room
 --
-_- isOccupied : boolean_
-_- isDepot : boolean_
+_isOccupied : boolean_
+_isDepot : boolean_
 --
 + setIsOccupied(isOccupied : boolean) : void
 + isOccupied() : boolean
@@ -364,7 +364,7 @@ _- isDepot : boolean_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
+      <x>810</x>
       <y>792</y>
       <w>27</w>
       <h>513</h>
@@ -375,7 +375,7 @@ _- isDepot : boolean_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1890</x>
+      <x>1872</x>
       <y>630</y>
       <w>27</w>
       <h>108</h>
@@ -386,7 +386,7 @@ _- isDepot : boolean_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1125</x>
+      <x>1107</x>
       <y>288</y>
       <w>234</w>
       <h>144</h>
@@ -401,7 +401,7 @@ _+ main(args: string[]) : void_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1224</x>
+      <x>1206</x>
       <y>450</y>
       <w>477</w>
       <h>243</h>
@@ -424,7 +424,7 @@ _+ combat(user : Robot, bot : Robot) : void_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1692</x>
+      <x>1674</x>
       <y>504</y>
       <w>99</w>
       <h>27</h>
@@ -435,7 +435,7 @@ _+ combat(user : Robot, bot : Robot) : void_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
+      <x>1062</x>
       <y>531</y>
       <w>162</w>
       <h>27</h>
@@ -446,7 +446,7 @@ _+ combat(user : Robot, bot : Robot) : void_</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>729</x>
+      <x>711</x>
       <y>0</y>
       <w>432</w>
       <h>180</h>

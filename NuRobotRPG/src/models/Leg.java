@@ -2,28 +2,34 @@ package models;
 
 import enums.*;
 
-public class Part {
+public class Leg extends Part{
 
-	protected Rarity rarity;
-	protected int weight;
+	private String name;
 	
-	public Rarity getRarity() {
-		return rarity;
+	public Leg(){
+		
 	}
-	public void setRarity(Rarity rarity) {
-		this.rarity = rarity;
+	
+	public Leg(String name, Rarity rare, int weight){
+		setName(name);
+		setRarity(rare);
+		setWeight(weight);
 	}
-	public int getWeight() {
-		return weight;
+	
+	public String getName() {
+		return name;
 	}
-	public void setWeight(int weight) {
-		this.weight = weight;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
-		System.out.println("Rarity : ");
+		sb.append("Leg\n");
+		sb.append(getName());
+		sb.append("\n");
+		sb.append("Rarity : ");
 		sb.append(getRarity().toString().charAt(0));
 		sb.append(getRarity().toString().substring(1, getRarity().toString().length()).toLowerCase());
 		sb.append("\n");
