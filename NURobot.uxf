@@ -26,8 +26,9 @@
     </coordinates>
     <panel_attributes>Part
 --
-_# weight : int_
-_# rarity : Rarity_
+# weight : int
+# rarity : Rarity
+# name : String
 --
 Setters and Getters{
 weight
@@ -65,10 +66,9 @@ EXPERIMENTAL</panel_attributes>
     </coordinates>
     <panel_attributes>Arm
 --
-_attackType : Type_
-_name : String_
-_function : String_
-_multiplier : float_
+- attackType : Type
+- function : String
+- multiplier : float
 -
 + Arm() &lt;&lt;ctor&gt;&gt;
 + Arm(attackType : Type, weight : int,
@@ -113,7 +113,7 @@ EXPLOSIVE</panel_attributes>
     </coordinates>
     <panel_attributes>Leg
 --
-_name : String_
+
 -
 + Leg() &lt;&lt;ctor&gt;&gt;
 + Leg(weight : int, rarity : rarity,
@@ -132,9 +132,8 @@ Setter and Getter for name
     </coordinates>
     <panel_attributes>Head
 --
-_name : String_
-_function : String_
-_multiplier : float_
+- function : String 
+- multiplier : float
 -
 + Head() &lt;&lt;ctor&gt;&gt;
 + Head(weight : int, function : String,
@@ -158,8 +157,7 @@ multiplier
     </coordinates>
     <panel_attributes>Torso
 --
-_defenceType : Type_
-_name : String_
+- defenceType : Type
 -
 + Torso() &lt;&lt;ctor&gt;&gt;
 + Torso(defenceType : Type, weight : int,
@@ -258,14 +256,14 @@ name
     </coordinates>
     <panel_attributes>Robot
 --
-_name : String_
-_torso : Torso_
-_arms : ArrayList&lt;Arm&gt;_
-_head : Head_
-_legs : ArrayList&lt;Leg&gt;_
-_maxHp : int_
-_currentHp : int_
-_drop : Part_
+- name : String
+- torso : Torso
+- arms : ArrayList&lt;Arm&gt;
+- head : Head
+- legs : ArrayList&lt;Leg&gt;
+- maxHp : int
+- currentHp : int
+- drop : Part
 -
 + Robot() &lt;ctor&gt;
 + equipArm(arm : Arm) : void
@@ -339,7 +337,7 @@ name
     </coordinates>
     <panel_attributes>Map
 --
-_rooms : room[][]_
+- rooms : room[][]
 --
 + Map() &lt;&lt;ctor&gt;&gt;
 + Map(size : int) &lt;&lt;ctor&gt;&gt;
@@ -356,8 +354,8 @@ _rooms : room[][]_
     </coordinates>
     <panel_attributes>Room
 --
-_isOccupied : boolean_
-_isDepot : boolean_
+- isOccupied : boolean
+- isDepot : boolean
 --
 + setIsOccupied(isOccupied : boolean) : void
 + isOccupied() : boolean

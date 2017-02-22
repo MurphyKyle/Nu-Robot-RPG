@@ -5,7 +5,6 @@ import enums.*;
 public class Arm extends Part{
 
 	private Type attackType;
-	private String name;
 	private String function;
 	private float multiplier;
 	

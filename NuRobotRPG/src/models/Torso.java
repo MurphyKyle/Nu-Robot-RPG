@@ -5,7 +5,6 @@ import enums.*;
 public class Torso extends Part{
 
 	private Type defenceType;
-	private String name;
 	
 	public Torso(){
 		

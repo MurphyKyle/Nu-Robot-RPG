@@ -4,7 +4,6 @@ import enums.*;
 
 public class Head extends Part{
 	
-	private String name;
 	private String function;
 	private float multiplier;
 	

@@ -3,8 +3,6 @@ package models;
 import enums.*;
 
 public class Leg extends Part{
-
-	private String name;
 	
 	public Leg(){
 		

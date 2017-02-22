@@ -2,10 +2,11 @@ package models;
 
 import enums.*;
 
-public class Part {
+public abstract class Part {
 
 	protected Rarity rarity;
 	protected int weight;
+	protected String name;
 	
 	public Rarity getRarity() {
 		return rarity;
