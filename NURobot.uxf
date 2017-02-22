@@ -61,13 +61,14 @@ EXPERIMENTAL</panel_attributes>
       <x>0</x>
       <y>873</y>
       <w>351</w>
-      <h>306</h>
+      <h>342</h>
     </coordinates>
     <panel_attributes>Arm
 --
 _attackType : Type_
 _name : String_
 _function : String_
+_multiplier : float_
 -
 + Arm() &lt;&lt;ctor&gt;&gt;
 + Arm(attackType : Type, weight : int,
@@ -77,6 +78,7 @@ Setters and Getters{
 attackType
 name
 function
+multiplier
 }
 + toString() : String &lt;&lt;Override&gt;&gt;</panel_attributes>
     <additional_attributes/>
@@ -126,12 +128,13 @@ Setter and Getter for name
       <x>882</x>
       <y>873</y>
       <w>351</w>
-      <h>243</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>Head
 --
 _name : String_
 _function : String_
+_multiplier : float_
 -
 + Head() &lt;&lt;ctor&gt;&gt;
 + Head(weight : int, function : String,
@@ -139,6 +142,7 @@ _function : String_
 Setters and Getters{
 name
 function
+multiplier
 }
 + toString() : String &lt;&lt;Override&gt;&gt;
 </panel_attributes>
@@ -182,12 +186,12 @@ name
     <id>Relation</id>
     <coordinates>
       <x>945</x>
-      <y>1107</y>
+      <y>1152</y>
       <w>108</w>
-      <h>234</h>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;240.0;100.0;240.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;190.0;100.0;190.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -204,23 +208,23 @@ name
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>1170</y>
+      <y>1206</y>
       <w>414</w>
-      <h>207</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>440.0;210.0;10.0;210.0;10.0;10.0</additional_attributes>
+    <additional_attributes>440.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>135</x>
-      <y>1170</y>
+      <y>1206</y>
       <w>81</w>
-      <h>234</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;240.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

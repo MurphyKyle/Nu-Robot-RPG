@@ -7,6 +7,7 @@ public class Arm extends Part{
 	private Type attackType;
 	private String name;
 	private String function;
+	private float multiplier;
 	
 	public Arm(){
 		
@@ -18,6 +19,13 @@ public class Arm extends Part{
 		setFunction(function);
 		setRarity(rare);
 		setWeight(weight);
+		float multiplier = 1.0f;
+		for(int i = 0; i < Rarity.values().length; i++){
+			if(getRarity() == Rarity.values()[i]){
+				multiplier += (float)(i*.1);
+			}
+		}
+		setMultiplier(multiplier);
 	}
 	
 	public Type getAttackType() {
@@ -39,6 +47,14 @@ public class Arm extends Part{
 		this.function = function;
 	}
 	
+	public float getMultiplier() {
+		return multiplier;
+	}
+
+	public void setMultiplier(float multiplier) {
+		this.multiplier = multiplier;
+	}
+
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();

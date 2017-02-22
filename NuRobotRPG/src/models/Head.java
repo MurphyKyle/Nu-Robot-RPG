@@ -6,6 +6,7 @@ public class Head extends Part{
 	
 	private String name;
 	private String function;
+	private float multiplier;
 	
 	public Head(){
 		
@@ -16,6 +17,13 @@ public class Head extends Part{
 		setFunction(function);
 		setRarity(rare);
 		setWeight(weight);
+		float multiplier = 1.0f;
+		for(int i = 0; i < Rarity.values().length; i++){
+			if(getRarity() == Rarity.values()[i]){
+				multiplier += (float)(i*.1);
+			}
+		}
+		setMultiplier(multiplier);
 	}
 	
 	public String getName() {
@@ -29,6 +37,13 @@ public class Head extends Part{
 	}
 	public void setFunction(String function) {
 		this.function = function;
+	}
+	public float getMultiplier() {
+		return multiplier;
+	}
+
+	public void setMultiplier(float multiplier) {
+		this.multiplier = multiplier;
 	}
 	@Override
 	public String toString(){
