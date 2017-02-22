@@ -14,13 +14,6 @@ public class Leg extends Part{
 		setWeight(weight);
 	}
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();

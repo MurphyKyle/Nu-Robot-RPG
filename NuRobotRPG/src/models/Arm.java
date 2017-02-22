@@ -33,12 +33,6 @@ public class Arm extends Part{
 	public void setAttackType(Type attackType) {
 		this.attackType = attackType;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getFunction() {
 		return function;
 	}

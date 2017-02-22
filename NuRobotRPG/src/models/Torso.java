@@ -23,12 +23,6 @@ public class Torso extends Part{
 	public void setDefenceType(Type defenceType) {
 		this.defenceType = defenceType;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 	@Override
 	public String toString(){
