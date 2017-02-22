@@ -3,8 +3,6 @@ package models;
 import enums.*;
 
 public class Leg extends Part{
-
-	private String name;
 	
 	public Leg(){
 		
@@ -14,13 +12,6 @@ public class Leg extends Part{
 		setName(name);
 		setRarity(rare);
 		setWeight(weight);
-	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	@Override

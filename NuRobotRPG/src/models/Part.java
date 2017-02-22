@@ -2,10 +2,11 @@ package models;
 
 import enums.*;
 
-public class Part {
+public abstract class Part {
 
 	protected Rarity rarity;
 	protected int weight;
+	private String name;
 	
 	public Rarity getRarity() {
 		return rarity;
@@ -18,6 +19,12 @@ public class Part {
 	}
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	@Override
