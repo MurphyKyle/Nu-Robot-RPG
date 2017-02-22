@@ -44,6 +44,7 @@ public class Torso extends Part{
 		sb.append("Defence Type : ");
 		sb.append(getDefenceType().toString().charAt(0));
 		sb.append(getDefenceType().toString().substring(1, getDefenceType().toString().length()).toLowerCase());
+		sb.append("-Resistant");
 		sb.append("\n");
 		sb.append("Weight : ");
 		sb.append(getWeight());
