@@ -18,13 +18,39 @@ public class Arm extends Part{
 			if(rare <= 75){
 				setRarity(Rarity.COMMON);
 			}else{
-				setRarity(Rarity.EXPERIMENTAL);
+				setRarity(Rarity.UNCOMMON);
 			}
 		}else if(difficulty == 2){
-			
+			if(rare <= 25){
+				setRarity(Rarity.COMMON);
+			}else if(rare <= 75){
+				setRarity(Rarity.UNCOMMON);
+			}else if(rare <= 99){
+				setRarity(Rarity.RARE);
+			}else{
+				setRarity(Rarity.EXPERIMENTAL);
+			}
 		}else{
-			
+			if(rare <= 50){
+				setRarity(Rarity.UNCOMMON);
+			}else if(rare <= 90){
+				setRarity(Rarity.RARE);
+			}else{
+				setRarity(Rarity.EXPERIMENTAL);
+			}
 		}
+		float multiplier = 1.0f;
+		for(int i = 0; i < Rarity.values().length; i++){
+			if(getRarity() == Rarity.values()[i]){
+				multiplier += (float)(i*.1);
+			}
+		}
+		setMultiplier(multiplier);
+		Type[] attacks = Type.values();
+		rare = rand.nextInt(attacks.length);
+		setAttackType(attacks[rare]);
+		setFunction("Attack with " + getAttackType().toString());
+		
 	}
 	
 	public Arm(Type attackType, String name, String function, Rarity rare, int weight){
@@ -74,8 +100,7 @@ public class Arm extends Part{
 		sb.append(getRarity().toString().substring(1, getRarity().toString().length()).toLowerCase());
 		sb.append("\n");
 		sb.append("Attack Type : ");
-		sb.append(getAttackType().toString().charAt(0));
-		sb.append(getAttackType().toString().substring(1, getAttackType().toString().length()).toLowerCase());
+		sb.append(getAttackType().toString());
 		sb.append("\n");
 		sb.append("Weight : ");
 		sb.append(getWeight());

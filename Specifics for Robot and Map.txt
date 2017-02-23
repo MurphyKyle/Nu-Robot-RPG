@@ -11,14 +11,14 @@ Weight Range{
 	Arm: 4 - 8 tons
 	Leg: 10 - 20 tons
 	Torso: 10 - 15 tons
-	Head: 2-5 tons
+	Head: 2 - 5 tons
 }
 
 Health by torso : weight * 10, rarity increase same rarity boost(1.0, 1.1, 1.2, 1.3)
 
 Speed Conversion by weight : 80 max speed, 40 min Speed, 60 / overall weight * 40, treads decrease by 25%
 
-Attack Conversion : 8-12 points , 2X super-effective based on type arm vs torso, 1/2X not-effective based on type arm vs torso
+Attack Conversion : average arms weight and add rand of 0-4 , 2X super-effective based on type arm vs torso, 1/2X not-effective based on type arm vs torso
 
 Weak/Resist chart
 Ballistic-Resistant: weak to beam and fire/resist ballistic and electricity
