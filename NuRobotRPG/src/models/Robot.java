@@ -98,6 +98,7 @@ public class Robot {
 		//	puts all current robot's parts into a list, shuffles them and randomly picks one to return
 		
 		ArrayList<Part> parts = new ArrayList<>();
+		
 		parts.add(this.head);
 		parts.add(this.torso);
 		parts.addAll(this.arms);
