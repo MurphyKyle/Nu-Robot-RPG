@@ -1,6 +1,9 @@
 package models;
 
-import enums.*;
+import java.util.Random;
+
+import enums.Rarity;
+import enums.Type;
 
 public class Arm extends Part{
 
@@ -8,8 +11,20 @@ public class Arm extends Part{
 	private String function;
 	private float multiplier;
 	
-	public Arm(){
-		
+	public Arm(int difficulty){
+		Random rand = new Random();
+		int rare = rand.nextInt(100)+1;
+		if(difficulty == 1){
+			if(rare <= 75){
+				setRarity(Rarity.COMMON);
+			}else{
+				setRarity(Rarity.EXPERIMENTAL);
+			}
+		}else if(difficulty == 2){
+			
+		}else{
+			
+		}
 	}
 	
 	public Arm(Type attackType, String name, String function, Rarity rare, int weight){

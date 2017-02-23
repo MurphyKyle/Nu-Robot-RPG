@@ -25,3 +25,4 @@ Ballistic-Resistant: weak to beam and fire/resist ballistic and electricity
 Beam-Resistant: weak to ballistic and electricity/resist beam and fire
 Explosive is regular for all
 
+
