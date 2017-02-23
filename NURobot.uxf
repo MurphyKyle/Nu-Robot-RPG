@@ -270,7 +270,7 @@ _- robotCount : int_
 - drop : Part
 - isAlive : boolean
 -
-+ Robot() &lt;ctor&gt;
++ Robot(difficulty : int) &lt;ctor&gt;
 + equipArm(arm : Arm) : void
 + equipLeg(leg : Leg) : void
 + equipTorso(torso : Torso) : void
