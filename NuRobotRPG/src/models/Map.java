@@ -114,6 +114,7 @@ public class Map {
 			for (Room r : rArray) {
 				bob.append("[");
 				bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+				//^ If its occupied "!" else if its a depot "D" else its just a space
 				bob.append("]");
 			}
 			bob.append("\n");
