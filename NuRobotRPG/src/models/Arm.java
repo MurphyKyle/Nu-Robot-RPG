@@ -50,7 +50,8 @@ public class Arm extends Part{
 		rare = rand.nextInt(attacks.length);
 		setAttackType(attacks[rare]);
 		setFunction("Attack with " + getAttackType().toString());
-		
+		rare = rand.nextInt(4)+4;
+		setWeight(rare);
 	}
 	
 	public Arm(Type attackType, String name, String function, Rarity rare, int weight){
