@@ -1,0 +1,15 @@
+Robot; current bot
+Robots List; fav robot
+Parts list; all parts
+Format Robot{
+Name
+Part Specs in order: Head, Torso, Arms, Legs
+}
+Format PartSpecs{
+Name
+Weight
+Rarity
+If Type
+If function
+if multiplier
+}
