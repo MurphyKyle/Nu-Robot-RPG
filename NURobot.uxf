@@ -69,6 +69,7 @@ EXPERIMENTAL</panel_attributes>
 - attackType : Type
 - function : String
 - multiplier : float
+
 -
 + Arm() &lt;&lt;ctor&gt;&gt;
 + Arm(attackType : Type, weight : int,
