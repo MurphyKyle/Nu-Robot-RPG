@@ -1,0 +1,22 @@
+difficulty
+currentRobotName
+headName :: headWeight :: headRarity :: headFunctionName
+arm1Name :: arm1Weight :: arm1Rarity :: arm1AttackName
+arm2Name :: arm2Weight :: arm2Rarity :: arm2AttackName
+torsoName :: torsoWeight :: torsoRarity :: torsoDefense
+legsName :: legsWeight :: legsRarity
+
+<<repeat for each saved robot in the FavRobots HashMap>>
+#robotName
+headName :: headWeight :: headRarity :: headFunctionName
+arm1Name :: arm1Weight :: arm1Rarity :: arm1AttackName
+arm2Name :: arm2Weight :: arm2Rarity :: arm2AttackName
+torsoName :: torsoWeight :: torsoRarity :: torsoDefense
+legsName :: legsWeight :: legsRarity
+
+<<repeat for each individual piece in Parts HashMap>>
+
+Head :: headName :: headWeight :: headRarity
+Arm :: armName :: armWeight :: armRarity ::armAttackName
+Torso :: torsoName :: torsoWeight :: torsoRarity :: torsoDefense
+Legs :: legsName :: legsWeight : legsRarity
