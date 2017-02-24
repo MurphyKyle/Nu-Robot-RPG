@@ -299,7 +299,7 @@ m1=Depot</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1340</x>
-      <y>900</y>
+      <y>870</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -400,5 +400,17 @@ m2=Done</panel_attributes>
     <panel_attributes>lt=&lt;-
 m2=Quit</panel_attributes>
     <additional_attributes>340.0;360.0;340.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1340</x>
+      <y>920</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
   </element>
 </diagram>
