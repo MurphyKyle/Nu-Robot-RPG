@@ -8,7 +8,6 @@ public class Head extends Part{
 	
 	private String function;
 	private Type attackType;
-	private float multiplier;
 	
 	public Head(){
 		
@@ -80,13 +79,6 @@ public class Head extends Part{
 	}
 	public void setAttackType(Type attackType) {
 		this.attackType = attackType;
-	}
-	public float getMultiplier() {
-		return multiplier;
-	}
-
-	public void setMultiplier(float multiplier) {
-		this.multiplier = multiplier;
 	}
 	@Override
 	public String toString(){

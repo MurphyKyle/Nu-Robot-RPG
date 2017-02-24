@@ -14,12 +14,12 @@ Weight Range{
 	Head: 2 - 5 tons
 }
 
-Health by torso : weight * 10, rarity increase same rarity boost(1.0, 1.1, 1.2, 1.3)
+Health by torso : weight * 10, rarity increase same rarity boost(1.0, 1.1, 1.2, 1.3) multiplied
 
-Speed Conversion by weight : 80 max speed, 40 min Speed, 60 / overall weight * 40, treads decrease by 25%
-
+Speed Conversion by weight : 80 max speed, 40 min Speed, 60 / overall weight * 40, treads decrease by 25%, rarity boost multiplier
+	
 Attack Conversion : average arms weight and add rand of 0-4 , 2X super-effective based on type arm vs torso, 1/2X not-effective based on type arm vs torso
-
+	rarity boost multiplier
 Weak/Resist chart
 Ballistic-Resistant: weak to beam and fire/resist ballistic and electricity
 Beam-Resistant: weak to ballistic and electricity/resist beam and fire

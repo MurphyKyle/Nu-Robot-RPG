@@ -9,7 +9,6 @@ public class Arm extends Part{
 
 	private Type attackType;
 	private String function;
-	private float multiplier;
 	
 	public Arm(int difficulty){
 		Random rand = new Random();
@@ -80,14 +79,6 @@ public class Arm extends Part{
 	}
 	public void setFunction(String function) {
 		this.function = function;
-	}
-	
-	public float getMultiplier() {
-		return multiplier;
-	}
-
-	public void setMultiplier(float multiplier) {
-		this.multiplier = multiplier;
 	}
 
 	@Override

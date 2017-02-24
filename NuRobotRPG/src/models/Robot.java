@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import enums.Type;
+import enums.Rarity;
+
 
 public class Robot {
 	private static int robotCount = 0;
@@ -19,7 +20,6 @@ public class Robot {
 	private int maxDmg = 12;
 	private Part drop;
 	private boolean isAlive = true;
-	
 	
 	public Robot(int difficulty) {
 		arms.add(new Arm(difficulty));
@@ -158,10 +158,10 @@ public class Robot {
 	}
 	
 	
-	public int attack(Robot enemy) {		
-		// finish this, each robot now has it's own min and max
+	public int attack() {		
+		// test this
 		
-		int attack = new Random().nextInt(5) + 8;	// 8-12 attack range
+		int attack = new Random().nextInt(getMaxDmg()-getMinDmg()) + getMinDmg();	// 8-12 attack range
 		
 		return attack;
 	}
@@ -192,6 +192,12 @@ public class Robot {
 		
 		// if the legs are treads, speed is decreased by 25% (speed*0.75) -- added later
 		
+		if(this.legs.isTreads()){
+			speed -= speed*.25f;
+		}
+		
+		speed *= this.legs.getMultiplier();
+		
 		if (speed > maxSpeed) {
 			speed = maxSpeed;
 		} else if (speed < minSpeed) {
@@ -204,7 +210,6 @@ public class Robot {
 	
 	public String getPartSpecs(Part part) {
 		StringBuilder sb = new StringBuilder();
-		// finish this
 		
 		return sb.toString();
 	}
@@ -212,7 +217,12 @@ public class Robot {
 	
 	public ArrayList<String> getActionMenu() {
 		ArrayList<String> actions = new ArrayList<>();
-		// finish this
+		for(Arm a : arms){
+			actions.add(a.getFunction());
+		}
+		if(this.head.getRarity() == Rarity.EXPERIMENTAL){
+			actions.add(this.head.getFunction());
+		}
 		return actions;
 	}
 	

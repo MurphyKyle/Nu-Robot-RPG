@@ -7,6 +7,7 @@ public abstract class Part {
 	protected Rarity rarity;
 	protected int weight;
 	protected String name;
+	protected float multiplier;
 	
 	public Rarity getRarity() {
 		return rarity;
@@ -25,6 +26,12 @@ public abstract class Part {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public float getMultiplier() {
+		return multiplier;
+	}
+	public void setMultiplier(float multiplier) {
+		this.multiplier = multiplier;
 	}
 	
 	@Override
