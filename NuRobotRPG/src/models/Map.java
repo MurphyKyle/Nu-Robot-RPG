@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Map {
 	private Room[][] rooms;
+	private int xCoord;
+	private int yCoord;
 
 	public Map(int difficulty) {
 		// choose random size for map
@@ -106,6 +108,42 @@ public class Map {
 	public void setRooms(Room[][] rooms) {
 		this.rooms = rooms;
 	}
+	
+	public boolean moveUp() {
+		if(yCoord != 0) {
+			yCoord--;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean moveDown() {
+		if(yCoord != rooms.length) {
+			yCoord++;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean moveLeft() {
+		if(xCoord != 0) {
+			xCoord--;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean moreRight() {
+		if(xCoord != rooms.length) {
+			xCoord++;
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	@Override
 	public String toString() {
@@ -114,7 +152,8 @@ public class Map {
 			for (Room r : rArray) {
 				bob.append("[");
 				bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
-				//^ If its occupied "!" else if its a depot "D" else its just a space
+				// ^ If its occupied "!" else if its a depot "D" else its just a
+				// space
 				bob.append("]");
 			}
 			bob.append("\n");
