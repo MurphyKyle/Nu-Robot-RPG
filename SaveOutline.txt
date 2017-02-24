@@ -6,10 +6,10 @@ Name
 Part Specs in order: Head, Torso, Arms, Legs
 }
 Format PartSpecs{
+Part Type
 Name
 Weight
 Rarity
 If Type
-If function
-if multiplier
+If Function
 }

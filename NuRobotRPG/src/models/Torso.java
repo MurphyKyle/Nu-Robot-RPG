@@ -55,9 +55,10 @@ public class Torso extends Part{
 		}
 		rare = rand.nextInt(5)+10;
 		setWeight(rare);
+		setPartType("Torso");
 	}
 	
-	public Torso(Type defenceType, String name, Rarity rare, int weight){
+	public Torso(String name, int weight, Rarity rare, Type defenceType){
 		setDefenceType(defenceType);
 		setName(name);
 		setRarity(rare);
@@ -69,6 +70,7 @@ public class Torso extends Part{
 			}
 		}
 		setMultiplier(multiplier);
+		setPartType("Torso");
 	}
 	
 	public Type getDefenceType() {
@@ -95,7 +97,7 @@ public class Torso extends Part{
 		sb.append("\n");
 		sb.append("Weight : ");
 		sb.append(getWeight());
-		sb.append(" tons");
+		sb.append(" tons\n");
 		return sb.toString();
 	}
 }

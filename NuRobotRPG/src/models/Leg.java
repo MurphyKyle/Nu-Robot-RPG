@@ -55,9 +55,10 @@ public class Leg extends Part{
 		}else{
 			setIsTreads(false);
 		}
+		setPartType("Legs");
 	}
 	
-	public Leg(String name, Rarity rare, int weight){
+	public Leg(String name, int weight, Rarity rare){
 		setName(name);
 		setRarity(rare);
 		setWeight(weight);
@@ -68,6 +69,7 @@ public class Leg extends Part{
 			}
 		}
 		setMultiplier(multiplier);
+		setPartType("Legs");
 	}
 	
 	public boolean isTreads(){
@@ -94,7 +96,7 @@ public class Leg extends Part{
 		sb.append("\n");
 		sb.append("Weight : ");
 		sb.append(getWeight());
-		sb.append(" tons");
+		sb.append(" tons\n");
 		return sb.toString();
 	}
 }

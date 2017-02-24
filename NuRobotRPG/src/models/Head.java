@@ -51,21 +51,21 @@ public class Head extends Part{
 			setAttackType(attacks[rare]);
 			setFunction("Attack with " + getAttackType().toString());
 		}
+		setPartType("Head");
 	}
 	
-	public Head(String name, String function, Rarity rare, int weight, Type attackType){
+	public Head(String name, int weight, Rarity rare, Type attackType, String function){
 		setName(name);
 		setFunction(function);
 		setRarity(rare);
 		setWeight(weight);
-		setAttackType(attackType);
-		float multiplier = 1.0f;
-		for(int i = 0; i < Rarity.values().length; i++){
-			if(getRarity() == Rarity.values()[i]){
-				multiplier += (float)(i*.1);
-			}
+		if(getRarity() == Rarity.EXPERIMENTAL){
+			setMultiplier(1.4f);
+			setAttackType(attackType);
+			setFunction(function);
 		}
 		setMultiplier(multiplier);
+		setPartType("Head");
 	}
 	
 	public String getFunction() {
@@ -92,11 +92,13 @@ public class Head extends Part{
 		sb.append("\n");
 		if(getRarity() == Rarity.EXPERIMENTAL){
 			sb.append(getAttackType().toString());
+			sb.append("\n");
+			sb.append(getFunction());
+			sb.append("\n");
 		}
 		sb.append("Weight : ");
 		sb.append(getWeight());
-		sb.append(" tons");
-		sb.append(getFunction());
+		sb.append(" tons\n");
 		return sb.toString();
 	}
 }

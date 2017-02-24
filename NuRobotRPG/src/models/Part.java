@@ -8,6 +8,7 @@ public abstract class Part {
 	protected int weight;
 	protected String name;
 	protected float multiplier;
+	protected String partType;
 	
 	public Rarity getRarity() {
 		return rarity;
@@ -32,6 +33,23 @@ public abstract class Part {
 	}
 	public void setMultiplier(float multiplier) {
 		this.multiplier = multiplier;
+	}
+	public String getPartType() {
+		return partType;
+	}
+	public void setPartType(String partType) {
+		this.partType = partType;
+	}
+	
+	public String getGeneralSpec(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getName());
+		sb.append("\n");
+		sb.append(this.getWeight());
+		sb.append("\n");
+		sb.append(this.getRarity().toString());
+		sb.append("\n");
+		return sb.toString();
 	}
 	
 	@Override

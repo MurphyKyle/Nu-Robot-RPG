@@ -6,7 +6,6 @@ import java.util.Random;
 
 import enums.Rarity;
 
-
 public class Robot {
 	private static int robotCount = 0;
 	private String name = "[Robot - " + robotCount++ + "]";
@@ -14,231 +13,259 @@ public class Robot {
 	private ArrayList<Arm> arms = new ArrayList<>();
 	private Head head;
 	private Leg legs;
-	private int maxHp =  100;
+	private int maxHp = 100;
 	private int currentHp = 100;
 	private int minDmg = 8;
 	private int maxDmg = 12;
 	private Part drop;
 	private boolean isAlive = true;
-	
+
 	public Robot(int difficulty) {
+		equipHead(new Head(difficulty));
+		equipTorso(new Torso(difficulty));
 		arms.add(new Arm(difficulty));
 		arms.add(new Arm(difficulty));
-		this.head = new Head(difficulty);
-		this.torso = new Torso(difficulty);
-		this.legs = new Leg(difficulty);
-		
-		drop = getDropPart();
+		equipLegs(new Leg(difficulty));
+		setDrop(getDropPart());
 	}
-	
-	
-	public Robot(String name, Torso torso, ArrayList<Arm> arms, Head head, Leg legs, int maxHp, int currentHp) {
-		super();
-		this.name = name;
-		this.torso = torso;
-		this.arms = arms;
-		this.head = head;
-		this.legs = legs;
-		this.maxHp = maxHp;
-		this.currentHp = currentHp;
-		
-		drop = getDropPart();
-	}	
-	
-	
+
+	public Robot(String name, Torso torso, ArrayList<Arm> arms, Head head, Leg legs) {
+		setName(name);
+		equipHead(head);
+		equipTorso(torso);
+		equipArms(arms);
+		equipLegs(legs);
+		setDrop(getDropPart());
+	}
+
 	public String getName() {
 		return name;
 	}
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
 	public int getMaxHp() {
 		return maxHp;
 	}
-
 
 	public void setMaxHp(int maxHp) {
 		this.maxHp = maxHp;
 	}
 
-
 	public int getCurrentHp() {
 		return currentHp;
 	}
-
 
 	public void setCurrentHp(int currentHp) {
 		this.currentHp = currentHp;
 	}
 
-
 	public Part getDrop() {
 		return drop;
 	}
-
 
 	public void setDrop(Part drop) {
 		this.drop = drop;
 	}
 
+	public Torso getTorso() {
+		return torso;
+	}
 
 	public void equipTorso(Torso torso) {
 		this.torso = torso;
+		setMaxHp(((int) (torso.getWeight() * 10 * torso.getMultiplier())));
+		setCurrentHp(maxHp);
 	}
 
+	public Arm getArm(int indexArm) {
+		return arms.get(indexArm);
+	}
 
 	public void equipArms(ArrayList<Arm> arms) {
 		this.arms = arms;
 	}
 
+	public Head getHead() {
+		return head;
+	}
 
 	public void equipHead(Head head) {
 		this.head = head;
 	}
 
+	public Leg getLegs() {
+		return legs;
+	}
 
 	public void equipLegs(Leg legs) {
 		this.legs = legs;
 	}
-	
+
 	public int getMinDmg() {
 		return this.minDmg;
 	}
-	
+
 	public void setMinDmg() {
 		int minDmg = 0;
-		
+
 		for (Arm a : this.arms) {
 			minDmg += a.getWeight();
 		}
-		
+
 		minDmg /= arms.size();
-		
+
 		this.minDmg = minDmg;
 	}
-	
+
 	public int getMaxDmg() {
 		return this.maxDmg;
 	}
-	
+
 	public void setMaxDmg() {
 		int maxDmg = 0;
-		
+
 		for (Arm a : this.arms) {
 			maxDmg += a.getWeight();
 		}
 		// double check this
-		
+
 		this.maxDmg = maxDmg;
 	}
-	
+
 	public boolean isAlive() {
-//		if the currentHp is < or == 0, return false because I AM DED
+		// if the currentHp is < or == 0, return false because I AM DED
 		return this.currentHp <= 0 ? false : true;
 	}
 
+	private Part getDropPart() {
+		// puts all current robot's parts into a list, shuffles them and
+		// randomly picks one to return
 
-	private Part getDropPart() {	
-		//	puts all current robot's parts into a list, shuffles them and randomly picks one to return
-		
 		ArrayList<Part> parts = new ArrayList<>();
-		
+
 		parts.add(this.head);
 		parts.add(this.torso);
 		parts.add(this.legs);
 		parts.addAll(this.arms);
-		
+
 		Collections.shuffle(parts);
-		
-		return parts.get(new Random().nextInt(parts.size()) + 1);
+
+		return parts.get(new Random().nextInt(parts.size()));
 	}
-	
-	
-	public int attack() {		
-		// test this
-		
-		int attack = new Random().nextInt(getMaxDmg()-getMinDmg()) + getMinDmg();	// 8-12 attack range
-		
+
+	public int attack() {
+
+		int attack = new Random().nextInt(getMaxDmg() - getMinDmg()) + getMinDmg(); 
+
 		return attack;
 	}
-	
-	
+
 	public boolean takeDamage(int damage) {
 		this.setCurrentHp(this.getCurrentHp() - damage);
-		
+
 		return isAlive();
 	}
-	
-	
+
 	public int getSpeed() {
-		
+
 		// double check this
 		int maxSpeed = 80;
 		int minSpeed = 40;
-		
+
 		int speed = 0;
-		
+
 		int totalWeight = this.head.getWeight() + this.torso.getWeight() + this.legs.getWeight();
-		
+
 		for (Arm a : this.arms) {
 			totalWeight += a.getWeight();
 		}
-		
+
 		speed = (60 / totalWeight) * 40;
-		
-		// if the legs are treads, speed is decreased by 25% (speed*0.75) -- added later
-		
-		if(this.legs.isTreads()){
-			speed -= speed*.25f;
+
+		// if the legs are treads, speed is decreased by 25% (speed*0.75) --
+
+		if (this.legs.isTreads()) {
+			speed -= speed/4;
 		}
-		
-		speed *= this.legs.getMultiplier();
-		
+
+		speed = (int) ((float)speed * this.legs.getMultiplier());
+
 		if (speed > maxSpeed) {
 			speed = maxSpeed;
 		} else if (speed < minSpeed) {
 			speed = minSpeed;
 		}
-		
+
 		return speed;
 	}
-	
-	
+
 	public String getPartSpecs(Part part) {
 		StringBuilder sb = new StringBuilder();
-		
+		if (part.getPartType().equals("Arm")) {
+			Arm ar = (Arm) part;
+			sb.append("Arm\n");
+			sb.append(part.getGeneralSpec());
+			sb.append(ar.getAttackType().toString());
+			sb.append("\n");
+			sb.append(ar.getFunction());
+			sb.append("\n");
+		} else if (part.getPartType().equals("Torso")) {
+			Torso tor = (Torso) part;
+			sb.append("Torso\n");
+			sb.append(part.getGeneralSpec());
+			sb.append(tor.getDefenceType().toString());
+			sb.append("\n");
+		} else if (part.getPartType().equals("Head")) {
+			Head he = (Head) part;
+			sb.append("Head\n");
+			sb.append(part.getGeneralSpec());
+			if (he.getRarity() == Rarity.EXPERIMENTAL) {
+				sb.append(he.getAttackType().toString());
+			} else {
+				sb.append("None");
+			}
+			sb.append("\n");
+			sb.append(he.getFunction());
+			sb.append("\n");
+		} else {
+			Leg le = (Leg) part;
+			if (!le.isTreads()) {
+				sb.append("Legs\n");
+			} else {
+				sb.append("Treads\n");
+			}
+			sb.append(part.getGeneralSpec());
+		}
 		return sb.toString();
 	}
-	
-	
+
 	public ArrayList<String> getActionMenu() {
 		ArrayList<String> actions = new ArrayList<>();
-		for(Arm a : arms){
+		for (Arm a : arms) {
 			actions.add(a.getFunction());
 		}
-		if(this.head.getRarity() == Rarity.EXPERIMENTAL){
+		if (this.head.getRarity() == Rarity.EXPERIMENTAL) {
 			actions.add(this.head.getFunction());
 		}
 		return actions;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append("Name: ");
 		sb.append(getName());
 		sb.append("\nHP: ");
 		sb.append(currentHp);
 		sb.append("/");
 		sb.append(maxHp);
-		
+		sb.append("\n");
+
 		return sb.toString();
 	}
-	
+
 }

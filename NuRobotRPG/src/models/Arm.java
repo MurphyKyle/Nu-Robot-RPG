@@ -51,9 +51,10 @@ public class Arm extends Part{
 		setFunction("Attack with " + getAttackType().toString());
 		rare = rand.nextInt(4)+4;
 		setWeight(rare);
+		setPartType("Arm");
 	}
 	
-	public Arm(Type attackType, String name, String function, Rarity rare, int weight){
+	public Arm(String name, int weight, Rarity rare, Type attackType, String function){
 		setAttackType(attackType);
 		setName(name);
 		setFunction(function);
@@ -66,6 +67,7 @@ public class Arm extends Part{
 			}
 		}
 		setMultiplier(multiplier);
+		setPartType("Arm");
 	}
 	
 	public Type getAttackType() {
@@ -96,7 +98,7 @@ public class Arm extends Part{
 		sb.append("\n");
 		sb.append("Weight : ");
 		sb.append(getWeight());
-		sb.append(" tons");
+		sb.append(" tons\n");
 		return sb.toString();
 	}
 }
