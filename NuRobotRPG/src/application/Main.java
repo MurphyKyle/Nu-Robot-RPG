@@ -1,29 +1,39 @@
 package application;
 	
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {	
 	
+	public Stage stage;
+	
+	public static void main(String[] args) {
+//		Engine.run();
+		launch(args);
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stage = primaryStage;
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/StartupScreen.fxml"));
+			Scene scene = new Scene(pane);
+//			scene.getStylesheets().add(getClass().getResource("view/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Robot RPG");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void main(String[] args) {
-		Engine.run();
-		launch(args);
-	}
+	
 }

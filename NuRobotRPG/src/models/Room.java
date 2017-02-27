@@ -11,7 +11,7 @@ public class Room {
 			// Construct Enemy
 			Robot enemy = new Robot(difficulty);
 			// fight
-			Engine.fight(player, enemy);
+//			Engine.Fight(player, enemy);
 		} else if (this.isDepot()) {
 			// Depot Menu
 		}
