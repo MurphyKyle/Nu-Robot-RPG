@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Random;
 
 import enums.Rarity;
+import enums.Type;
 
 public class Robot {
 	private static int robotCount = 0;
@@ -137,7 +138,9 @@ public class Robot {
 
 	public boolean isAlive() {
 		// if the currentHp is < or == 0, return false because I AM DED
-		return this.currentHp <= 0 ? false : true;
+		this.isAlive = true;
+		this.isAlive = getCurrentHp() <= 0 ? false : true;
+		return isAlive;
 	}
 
 	private Part getDropPart() {
@@ -164,7 +167,7 @@ public class Robot {
 	}
 
 	public boolean takeDamage(int damage) {
-		this.setCurrentHp(this.getCurrentHp() - damage);
+		this.setCurrentHp(getCurrentHp() - damage);
 
 		return isAlive();
 	}
@@ -242,15 +245,26 @@ public class Robot {
 		return sb.toString();
 	}
 
-	public ArrayList<String> getActionMenu() {
-		ArrayList<String> actions = new ArrayList<>();
+	public ArrayList<Type> getActionType() {
+		ArrayList<Type> actions = new ArrayList<>();
 		for (Arm a : arms) {
-			actions.add(a.getFunction());
+			actions.add(a.getAttackType());
 		}
 		if (this.head.getRarity() == Rarity.EXPERIMENTAL) {
-			actions.add(this.head.getFunction());
+			actions.add(this.head.getAttackType());
 		}
 		return actions;
+	}
+	
+	public ArrayList<String> getActionMenu(){
+		ArrayList<String> menu = new ArrayList<>();
+		for (Arm a : arms) {
+			menu.add(a.getFunction());
+		}
+		if (this.head.getRarity() == Rarity.EXPERIMENTAL) {
+			menu.add(this.head.getFunction());
+		}
+		return menu;
 	}
 
 	@Override
