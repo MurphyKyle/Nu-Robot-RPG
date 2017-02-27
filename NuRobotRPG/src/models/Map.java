@@ -136,7 +136,7 @@ public class Map {
 		}
 	}
 	
-	public boolean moreRight() {
+	public boolean moveRight() {
 		if(xCoord != rooms.length) {
 			xCoord++;
 			return true;

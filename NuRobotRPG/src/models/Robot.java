@@ -60,6 +60,11 @@ public class Robot {
 	}
 
 	public void setCurrentHp(int currentHp) {
+		if(currentHp > getMaxHp()){
+			currentHp = getMaxHp();
+		}else if(currentHp < 0){
+			currentHp = 0;
+		}
 		this.currentHp = currentHp;
 	}
 
