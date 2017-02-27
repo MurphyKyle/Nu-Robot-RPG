@@ -59,6 +59,9 @@ public class Map {
 			} while (!empty);
 			chosenRoom.setOccupied(true);
 		}
+		// Sets player coordinates to the middle
+		xCoord = size / 2;
+		yCoord = size / 2;
 	}
 
 	public Map(int difficulty, int size) {
@@ -99,6 +102,9 @@ public class Map {
 			} while (!empty);
 			chosenRoom.setOccupied(true);
 		}
+		// Sets player coordinates to the middle
+		xCoord = size / 2;
+		yCoord = size / 2;
 	}
 
 	public Room[][] getRooms() {
@@ -108,36 +114,46 @@ public class Map {
 	public void setRooms(Room[][] rooms) {
 		this.rooms = rooms;
 	}
-	
+
 	public boolean moveUp() {
-		if(yCoord != 0) {
+		if (yCoord > 0) {
 			yCoord--;
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	public boolean moveDown() {
-		if(yCoord != rooms.length) {
+		if (yCoord < rooms.length-1) {
 			yCoord++;
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	public boolean moveLeft() {
-		if(xCoord != 0) {
+		if (xCoord > 0) {
 			xCoord--;
 			return true;
 		} else {
 			return false;
 		}
 	}
+<<<<<<< .mine
+
+	public boolean moveRight() {
+		if (xCoord < rooms.length-1) {
+||||||| .r46
+	
+	public boolean moreRight() {
+		if(xCoord != rooms.length) {
+=======
 	
 	public boolean moveRight() {
 		if(xCoord != rooms.length) {
+>>>>>>> .r47
 			xCoord++;
 			return true;
 		} else {
@@ -148,12 +164,18 @@ public class Map {
 	@Override
 	public String toString() {
 		StringBuilder bob = new StringBuilder();
-		for (Room[] rArray : rooms) {
-			for (Room r : rArray) {
+		Room r;
+		for (int y = 0; y < rooms.length; y++) {
+			for (int x = 0; x < rooms.length; x++) {
+				r = rooms[x][y];
 				bob.append("[");
-				bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
-				// ^ If its occupied "!" else if its a depot "D" else its just a
-				// space
+				if (x == xCoord && y == yCoord) {
+					bob.append("X");
+				} else {
+					bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+					// ^ If its occupied "!" else if its a depot "D" else its
+					// just a space
+				}
 				bob.append("]");
 			}
 			bob.append("\n");
