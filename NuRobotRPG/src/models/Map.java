@@ -141,19 +141,9 @@ public class Map {
 			return false;
 		}
 	}
-<<<<<<< .mine
 
 	public boolean moveRight() {
 		if (xCoord < rooms.length-1) {
-||||||| .r46
-	
-	public boolean moreRight() {
-		if(xCoord != rooms.length) {
-=======
-	
-	public boolean moveRight() {
-		if(xCoord != rooms.length) {
->>>>>>> .r47
 			xCoord++;
 			return true;
 		} else {
