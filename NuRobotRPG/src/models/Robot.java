@@ -163,11 +163,10 @@ public class Robot {
 
 		return parts.get(new Random().nextInt(parts.size()));
 	}
-
-	public int attack() {
-
-		int attack = new Random().nextInt(getMaxDmg() - getMinDmg()) + getMinDmg(); 
-
+	
+	public int attack() {		
+		// finish this, each robot now has it's own min and max
+		int attack = new Random().nextInt(getMaxDmg()-getMinDmg()) + getMinDmg();	// 8-12 attack range
 		return attack;
 	}
 
