@@ -8,8 +8,7 @@ import enums.Rarity;
 import enums.Type;
 
 public class Robot {
-	private static int robotCount = 0;
-	private String name = "[Robot - " + robotCount++ + "]";
+	private String name;
 	private Torso torso;
 	private ArrayList<Arm> arms = new ArrayList<>();
 	private Head head;
@@ -20,6 +19,10 @@ public class Robot {
 	private int maxDmg = 12;
 	private Part drop;
 	private boolean isAlive = true;
+	private String[] names = {
+		"Optimus Prime", "Galvatron", "Skynet", "RoboCop", "Iron Hide", "Wall-E", "Ultron", "Slash", "Motoko Kusanagi", 
+		"E.D.I.", "Alpha", "Strike Freedom Gundam", "Jet Fire", "Star Scream"
+	};
 
 	public Robot(int difficulty) {
 		equipHead(new Head(difficulty));
@@ -28,6 +31,9 @@ public class Robot {
 		arms.add(new Arm(difficulty));
 		equipLegs(new Leg(difficulty));
 		setDrop(getDropPart());
+		Random rand = new Random();
+		int ren = rand.nextInt(names.length);
+		setName(names[ren]);
 	}
 
 	public Robot(String name, Torso torso, ArrayList<Arm> arms, Head head, Leg legs) {

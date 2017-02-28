@@ -8,10 +8,12 @@ public class Head extends Part{
 	
 	private String function;
 	private Type attackType;
-	
-	public Head(){
-		
-	}
+	private String[] prefixes = {
+			"V-Gazer ", "Bite-Master ", "Dealth-Gaze MK2 ", "Moustache ", "Byte-Reader "
+	};
+	private String[] suffixes = {
+			"Guardmouth", "Helm", "Sharkface", "Dulleyes", "Hawkeye"
+	};
 	
 	public Head(int difficulty){
 		Random rand = new Random();
@@ -44,13 +46,21 @@ public class Head extends Part{
 		setFunction("No function");
 		rare = rand.nextInt(3)+2;
 		setWeight(rare);
+		StringBuilder sb = new StringBuilder();
 		if(getRarity() == Rarity.EXPERIMENTAL){
 			setMultiplier(1.4f);
 			Type[] attacks = Type.values();
 			rare = rand.nextInt(attacks.length);
 			setAttackType(attacks[rare]);
 			setFunction("Attack with " + getAttackType().toString());
+			sb.append("Dealth-Gaze MK5 ");
+		}else{
+			int rem = rand.nextInt(prefixes.length);
+			sb.append(prefixes[rem]);
 		}
+		int rem = rand.nextInt(suffixes.length);
+		sb.append(suffixes[rem]);
+		setName(sb.toString());
 		setPartType("Head");
 	}
 	

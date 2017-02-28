@@ -7,10 +7,12 @@ import enums.*;
 public class Leg extends Part{
 	
 	private boolean isTreads;
-	
-	public Leg(){
-		
-	}
+	private String[] prefixes = {
+			"Cheetah ", "Booster ", "Kick-Master MK2 ", "Master ", "Bionic "
+	};
+	private String[] suffixes = {
+			"Treads", "Hopper", "Striker", "Racer", "Driver"
+	};
 	
 	public Leg(int difficulty){
 		Random rand = new Random();
@@ -49,12 +51,23 @@ public class Leg extends Part{
 			}
 		}
 		setMultiplier(multiplier);
+		StringBuilder sb = new StringBuilder();
+		if(getRarity() == Rarity.EXPERIMENTAL){
+			sb.append("Kick-Master MK4 ");
+		}else{
+			int rem = rand.nextInt(prefixes.length);
+			sb.append(prefixes[rem]);
+		}
 		rare = rand.nextInt(100)+1;
 		if(rare <= 50){
 			setIsTreads(true);
+			sb.append(suffixes[0]);
 		}else{
 			setIsTreads(false);
+			int rem = rand.nextInt(suffixes.length-1)+1;
+			sb.append(suffixes[rem]);
 		}
+		setName(sb.toString());
 		setPartType("Legs");
 	}
 	

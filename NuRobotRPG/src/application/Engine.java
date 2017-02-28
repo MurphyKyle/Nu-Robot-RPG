@@ -1,10 +1,7 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Random;
-
-import models.Part;
-import models.Robot;
+import models.*;
 
 public class Engine {
 
