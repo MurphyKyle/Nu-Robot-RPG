@@ -38,6 +38,16 @@ public class Arm extends Part{
 				setRarity(Rarity.EXPERIMENTAL);
 			}
 		}
+		String[] prefixes = {"Hydraulic ","Plated ","Composite ","Pheonix MK 1 ","Durasteel ","Guerilla ","Variable-Cored "};
+		String[] suffixes = {"Tri-finger","Brawlfist","Palm Cannon","Mechacarpus","Digihand","Grip Chassis","Claw"};
+		StringBuilder bob = new StringBuilder();
+		if(this.rarity == Rarity.EXPERIMENTAL) {
+			bob.append("Pheonix MK 2 ");
+		} else {
+			bob.append(prefixes[rand.nextInt(prefixes.length)]);
+		}
+		bob.append(suffixes[rand.nextInt(suffixes.length)]);
+		this.name = bob.toString();
 		float multiplier = 1.0f;
 		for(int i = 0; i < Rarity.values().length; i++){
 			if(getRarity() == Rarity.values()[i]){

@@ -8,7 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import models.Robot;
 
@@ -16,10 +17,27 @@ public class ViewControl {
 	
 	private static Stage theStage;
 	private Scene theScene;
+	private Robot r1;
 	private Parent fxmlPane;
+	private int difficulty;
+	public static Scene previousScene;
+	public Button contButton;
+	public ToggleGroup diffChoice;
+	public static Label outputLabel;
+	
+	private static String gameplayScreen = "/view/GameplayScreen.fxml";
+	private static String startupScreen = "/view/StartupScreen.fxml";
+	private static String depotScreen = "/view/DepotScreen.fxml";
+	private static String combatScreen = "/view/CombatScreen.fxml";
+	private static String existingGamePrompt = "/view/LoadExistingGamePrompt.fxml";
+	private static String newGamePrompt = "/view/CreateNewGamePrompt.fxml";
 	
 	public static void setStage(Stage primaryStage) {
 		theStage = primaryStage;
+	}
+	
+	public static void setOutputLabel(String text) {
+		outputLabel.setText(text);
 	}
 	
 	
@@ -29,20 +47,8 @@ public class ViewControl {
 		outputLabel = (Label) theScene.lookup("#outputLabel");
 	}
 	
-	
-	@FXML
-	public static Scene previousScene;
-	
-	
-	@FXML 
-	public Button contButton;
-	public RadioButton easy, medium, hard;
-	
-	@FXML
-	public Label outputLabel;
-	
-	
-	@FXML
+
+
 	public void exit() {
 		Runtime.getRuntime().exit(0);
 	}
@@ -55,12 +61,13 @@ public class ViewControl {
 	}
 	
 	
-	
+//	new game screen
 	@FXML
 	public void createNewGame() throws IOException {
+		
 		previousScene = (Scene) contButton.getScene();
 		
-		setFXML("/view/CreateNewGamePrompt.fxml");
+		setFXML(newGamePrompt);
 		
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
@@ -68,31 +75,41 @@ public class ViewControl {
 		
 	}
 	
+	
 	@FXML
 	public void createRobot() {
-		int diff = 0;
+		difficulty = 0;
 		
-		if (theStage.getScene().lookup("#easy").isDisabled()) {
-			diff = 1;
-		} else if (theStage.getScene().lookup("#medium").isDisabled()) {
-			diff = 2;
+		Toggle t = diffChoice.getSelectedToggle();
+		
+		if (t.equals(theStage.getScene().lookup("#easy"))) {
+			difficulty = 1;
+		} else if (t.equals(theStage.getScene().lookup("#medium"))) {
+			difficulty = 2;
 		} else {
-			diff = 3;
+			difficulty = 3;
 		}
 		
-		Robot r1 = new Robot(diff);
-		outputLabel.setText(diff + "\n" + r1.toString());
+		r1 = new Robot(difficulty);
+		r1.setName("Player");
+		setOutputLabel(r1.toString());
 		
-//		theScene.lookup("#contButton").setDisable(false);;
+		theStage.getScene().lookup("#contButton").setDisable(false);
 	}
 	
 	
 	@FXML
-	public void startGame() {
+	public void startGame() throws IOException {
+		setFXML(gameplayScreen);
+		theStage.setScene(theScene);
+		theStage.setTitle("Gameplay - Movement");
+		theStage.show();
 		
+		Engine.run(r1, difficulty);
 	}
 	
 	
+//	load game screen
 	@FXML
 	public void loadExistingGame() {
 		

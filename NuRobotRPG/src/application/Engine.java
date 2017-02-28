@@ -9,14 +9,19 @@ public class Engine {
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
 	public static int score = 0;
 
-	public static void run() {
+	public static void run(Robot r1, int difficulty) {
 		Robot robbie = new Robot(3);
+		
+		String speed = Integer.toString(robbie.getSpeed());
+		ViewControl.setOutputLabel(r1.toString() + "Speed: " + speed);
+		
 		System.out.println(robbie);
 		System.out.println(robbie.getSpeed());
+		
 		Robot rotten = new Robot(3);
 		System.out.println(rotten);
 		System.out.println(rotten.getSpeed());
-		fight(robbie, rotten);
+		fight(r1, rotten);
 	}
 
 	public static void fight(Robot player, Robot enemy) {

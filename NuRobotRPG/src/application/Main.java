@@ -5,13 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.Robot;
 
 
 public class Main extends Application {	
 	
 	public static void main(String[] args) {
-//		Engine.run();
-		launch(args);
+		Engine.run(new Robot(1), 1);
+//		launch(args);
 	}
 
 	
@@ -22,6 +23,7 @@ public class Main extends Application {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/StartupScreen.fxml"));
 			Scene scene = new Scene(pane);
 //			scene.getStylesheets().add(getClass().getResource("view/application.css").toExternalForm());
+			scene.lookup("#loadExistingBtn").setDisable(true);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Robot RPG");
 			primaryStage.show();
