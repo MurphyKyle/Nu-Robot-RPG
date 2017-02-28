@@ -8,7 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import models.Robot;
 
@@ -36,7 +37,7 @@ public class ViewControl {
 	
 	@FXML 
 	public Button contButton;
-	public RadioButton easy, medium, hard;
+	public ToggleGroup diffChoice;
 	
 	@FXML
 	public Label outputLabel;
@@ -71,10 +72,11 @@ public class ViewControl {
 	@FXML
 	public void createRobot() {
 		int diff = 0;
+		Toggle t = diffChoice.getSelectedToggle();
 		
-		if (theStage.getScene().lookup("#easy").isDisabled()) {
+		if (t.equals(theStage.getScene().lookup("#easy"))) {
 			diff = 1;
-		} else if (theStage.getScene().lookup("#medium").isDisabled()) {
+		} else if (t.equals(theStage.getScene().lookup("#medium"))) {
 			diff = 2;
 		} else {
 			diff = 3;
