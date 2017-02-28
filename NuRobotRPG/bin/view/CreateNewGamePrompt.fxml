@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="469.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
+   <children>
+      <Label fx:id="outputLabel" layoutX="14.0" layoutY="50.0" prefHeight="200.0" prefWidth="232.0" style="-fx-border-style: solid;">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Button fx:id="backButton" cancelButton="true" layoutX="284.0" layoutY="264.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="126.0" text="Back" />
+      <Button fx:id="contButton" defaultButton="true" disable="true" layoutX="284.0" layoutY="212.0" mnemonicParsing="false" onAction="#startGame" prefHeight="25.0" prefWidth="126.0" text="Start Game" />
+      <Label layoutX="284.0" layoutY="32.0" style="-fx-font-weight: bold;" text="Select Difficulty">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <VBox fx:id="difficultyGroup" layoutX="284.0" layoutY="58.0" prefHeight="54.0" prefWidth="105.0">
+         <children>
+            <RadioButton fx:id="easy" mnemonicParsing="false" selected="true" text="Easy">
+               <toggleGroup>
+                  <ToggleGroup fx:id="diffChoice" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="medium" mnemonicParsing="false" text="Medium" toggleGroup="$diffChoice" />
+            <RadioButton fx:id="hard" mnemonicParsing="false" text="Hard" toggleGroup="$diffChoice" />
+         </children>
+      </VBox>
+      <Button fx:id="createRobotBtn" layoutX="284.0" layoutY="125.0" mnemonicParsing="false" onAction="#createRobot" prefHeight="25.0" prefWidth="95.0" text="Create Robot" />
+   </children>
+</AnchorPane>
