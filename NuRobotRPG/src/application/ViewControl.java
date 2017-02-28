@@ -20,6 +20,10 @@ public class ViewControl {
 	private Robot r1;
 	private Parent fxmlPane;
 	private int difficulty;
+	public static Scene previousScene;
+	public Button contButton;
+	public ToggleGroup diffChoice;
+	public Label outputLabel;
 	
 	public static void setStage(Stage primaryStage) {
 		theStage = primaryStage;
@@ -32,20 +36,8 @@ public class ViewControl {
 		outputLabel = (Label) theScene.lookup("#outputLabel");
 	}
 	
-	
-	@FXML
-	public static Scene previousScene;
-	
-	
-	@FXML 
-	public Button contButton;
-	public ToggleGroup diffChoice;
-	
-	@FXML
-	public Label outputLabel;
-	
-	
-	@FXML
+
+
 	public void exit() {
 		Runtime.getRuntime().exit(0);
 	}
@@ -61,9 +53,13 @@ public class ViewControl {
 //	new game screen
 	@FXML
 	public void createNewGame() throws IOException {
+		
 		previousScene = (Scene) contButton.getScene();
 		
 		setFXML("/view/CreateNewGamePrompt.fxml");
+		
+//		disable unused load button
+		theStage.getScene().lookup("#loadExistingGameBtn").setDisable(true);
 		
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
