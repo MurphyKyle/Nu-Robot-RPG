@@ -23,10 +23,14 @@ public class ViewControl {
 	public static Scene previousScene;
 	public Button contButton;
 	public ToggleGroup diffChoice;
-	public Label outputLabel;
+	public static Label outputLabel;
 	
 	public static void setStage(Stage primaryStage) {
 		theStage = primaryStage;
+	}
+	
+	public static void setOutputLabel(String text) {
+		outputLabel.setText(text);
 	}
 	
 	
@@ -58,14 +62,12 @@ public class ViewControl {
 		
 		setFXML("/view/CreateNewGamePrompt.fxml");
 		
-//		disable unused load button
-		theStage.getScene().lookup("#loadExistingGameBtn").setDisable(true);
-		
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();
 		
 	}
+	
 	
 	@FXML
 	public void createRobot() {
@@ -82,7 +84,8 @@ public class ViewControl {
 		}
 		
 		r1 = new Robot(difficulty);
-		outputLabel.setText(difficulty + "\n" + r1.toString());
+		r1.setName("Player");
+		setOutputLabel(r1.toString());
 		
 		theStage.getScene().lookup("#contButton").setDisable(false);
 	}

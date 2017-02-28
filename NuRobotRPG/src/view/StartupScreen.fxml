@@ -7,13 +7,13 @@
 
 <AnchorPane fx:id="startupScreen" prefHeight="223.0" prefWidth="395.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
    <children>
-      <Button fx:id="exit" layoutX="157.0" layoutY="180.0" mnemonicParsing="false" onAction="#exit" prefHeight="29.0" prefWidth="81.0" text="Exit" />
+      <Button fx:id="exit" cancelButton="true" layoutX="157.0" layoutY="180.0" mnemonicParsing="false" onAction="#exit" prefHeight="29.0" prefWidth="81.0" text="Exit" />
       <Label fx:id="userPrompt" layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="367.0" style="-fx-border-style: solid; -fx-padding: 10px;" text="Load or Create new game" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="contButton" layoutX="132.0" layoutY="75.0" mnemonicParsing="false" onAction="#createNewGame" prefHeight="29.0" prefWidth="132.0" text="Create New Game" />
-      <Button fx:id="contButton" layoutX="132.0" layoutY="119.0" mnemonicParsing="false" onAction="#loadExistingGame" prefHeight="29.0" prefWidth="132.0" text="Load Existing Game" />
+      <Button fx:id="contButton" defaultButton="true" layoutX="132.0" layoutY="75.0" mnemonicParsing="false" onAction="#createNewGame" prefHeight="29.0" prefWidth="132.0" text="Create New Game" />
+      <Button fx:id="loadExistingBtn" layoutX="132.0" layoutY="119.0" mnemonicParsing="false" onAction="#loadExistingGame" prefHeight="29.0" prefWidth="132.0" text="Load Existing Game" />
    </children>
 </AnchorPane>

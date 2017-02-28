@@ -22,6 +22,7 @@ public class Main extends Application {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/StartupScreen.fxml"));
 			Scene scene = new Scene(pane);
 //			scene.getStylesheets().add(getClass().getResource("view/application.css").toExternalForm());
+			scene.lookup("#loadExistingBtn").setDisable(true);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Robot RPG");
 			primaryStage.show();
