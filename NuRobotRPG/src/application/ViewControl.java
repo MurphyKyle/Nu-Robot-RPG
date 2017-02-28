@@ -25,6 +25,13 @@ public class ViewControl {
 	public ToggleGroup diffChoice;
 	public static Label outputLabel;
 	
+	private static String gameplayScreen = "/view/GameplayScreen.fxml";
+	private static String startupScreen = "/view/StartupScreen.fxml";
+	private static String depotScreen = "/view/DepotScreen.fxml";
+	private static String combatScreen = "/view/CombatScreen.fxml";
+	private static String existingGamePrompt = "/view/LoadExistingGamePrompt.fxml";
+	private static String newGamePrompt = "/view/CreateNewGamePrompt.fxml";
+	
 	public static void setStage(Stage primaryStage) {
 		theStage = primaryStage;
 	}
@@ -60,7 +67,7 @@ public class ViewControl {
 		
 		previousScene = (Scene) contButton.getScene();
 		
-		setFXML("/view/CreateNewGamePrompt.fxml");
+		setFXML(newGamePrompt);
 		
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
@@ -92,7 +99,12 @@ public class ViewControl {
 	
 	
 	@FXML
-	public void startGame() {
+	public void startGame() throws IOException {
+		setFXML(gameplayScreen);
+		theStage.setScene(theScene);
+		theStage.setTitle("Gameplay - Movement");
+		theStage.show();
+		
 		Engine.run(r1, difficulty);
 	}
 	
