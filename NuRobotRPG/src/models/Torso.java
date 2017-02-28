@@ -40,6 +40,16 @@ public class Torso extends Part{
 				setRarity(Rarity.EXPERIMENTAL);
 			}
 		}
+		String[] prefixes = {"Platinum ","Hyperpneumatic ","Fission-Powered ","Sentinel MK 1 ","Cage Frame ","Segmented ","Titanium Alloy "};
+		String[] suffixes = {"Chassis","Torso Unit","Chest Piece","Thorax","Sprocket Frame","Fuselage Core","Carapace"};
+		StringBuilder bob = new StringBuilder();
+		if(this.rarity == Rarity.EXPERIMENTAL) {
+			bob.append("Sentinel MK 2 ");
+		} else {
+			bob.append(prefixes[rand.nextInt(prefixes.length)]);
+		}
+		bob.append(suffixes[rand.nextInt(suffixes.length)]);
+		this.name = bob.toString();
 		float multiplier = 1.0f;
 		for(int i = 0; i < Rarity.values().length; i++){
 			if(getRarity() == Rarity.values()[i]){
