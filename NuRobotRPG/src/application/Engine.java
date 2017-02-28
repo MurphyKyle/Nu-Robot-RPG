@@ -12,7 +12,7 @@ public class Engine {
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
 	public static int score = 0;
 
-	public static void run() {
+	public static void run(Robot r1, int difficulty) {
 		Robot robbie = new Robot(3);
 		System.out.println(robbie);
 		System.out.println(robbie.getSpeed());

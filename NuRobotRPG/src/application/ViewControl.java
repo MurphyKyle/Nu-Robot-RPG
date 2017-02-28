@@ -17,7 +17,9 @@ public class ViewControl {
 	
 	private static Stage theStage;
 	private Scene theScene;
+	private Robot r1;
 	private Parent fxmlPane;
+	private int difficulty;
 	
 	public static void setStage(Stage primaryStage) {
 		theStage = primaryStage;
@@ -56,7 +58,7 @@ public class ViewControl {
 	}
 	
 	
-	
+//	new game screen
 	@FXML
 	public void createNewGame() throws IOException {
 		previousScene = (Scene) contButton.getScene();
@@ -71,30 +73,32 @@ public class ViewControl {
 	
 	@FXML
 	public void createRobot() {
-		int diff = 0;
+		difficulty = 0;
+		
 		Toggle t = diffChoice.getSelectedToggle();
 		
 		if (t.equals(theStage.getScene().lookup("#easy"))) {
-			diff = 1;
+			difficulty = 1;
 		} else if (t.equals(theStage.getScene().lookup("#medium"))) {
-			diff = 2;
+			difficulty = 2;
 		} else {
-			diff = 3;
+			difficulty = 3;
 		}
 		
-		Robot r1 = new Robot(diff);
-		outputLabel.setText(diff + "\n" + r1.toString());
+		r1 = new Robot(difficulty);
+		outputLabel.setText(difficulty + "\n" + r1.toString());
 		
-//		theScene.lookup("#contButton").setDisable(false);;
+		theStage.getScene().lookup("#contButton").setDisable(false);
 	}
 	
 	
 	@FXML
 	public void startGame() {
-		
+		Engine.run(r1, difficulty);
 	}
 	
 	
+//	load game screen
 	@FXML
 	public void loadExistingGame() {
 		
