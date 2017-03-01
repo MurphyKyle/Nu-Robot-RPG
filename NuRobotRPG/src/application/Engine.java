@@ -61,8 +61,7 @@ public class Engine {
 	}
 
 	public static void saveFile(Robot current) {
-		File f = new File(
-				"C:\\Users\\Sagebrecht\\Google Drive\\Neumont\\CSC150\\Project\\Final\\Nu-Robot-RPG\\Save\\NURobotSave.txt");
+		File f = new File("NURobotSave.txt");
 		try {
 			f.createNewFile();
 			if (f.isFile() && f.canWrite()) {
