@@ -67,7 +67,7 @@ public class Leg extends Part {
 		setPartType("Legs");
 	}
 
-	public Leg(String name, int weight, Rarity rare) {
+	public Leg(String name, int weight, Rarity rare, boolean isTreads) {
 		setName(name);
 		setRarity(rare);
 		setWeight(weight);
@@ -86,9 +86,10 @@ public class Leg extends Part {
 				Rarity.COMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.COMMON
 						: Rarity.UNCOMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.UNCOMMON
 								: Rarity.RARE.toString().equals(input.split(" :: ")[2]) ? Rarity.RARE
-										: Rarity.EXPERIMENTAL);
+										: Rarity.EXPERIMENTAL,
 		// I'm so sorry but I had to use a triple nested ternary. There's no
 		// other way
+		input.split(" :: ")[3].equalsIgnoreCase("Treads"));
 	}
 
 	public boolean isTreads() {
