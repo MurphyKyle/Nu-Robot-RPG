@@ -100,6 +100,8 @@ public class ViewControl {
 	
 	@FXML
 	public void startGame() throws IOException {
+		previousScene = (Scene) contButton.getScene();
+
 		setFXML(gameplayScreen);
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay - Movement");
