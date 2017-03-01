@@ -78,6 +78,24 @@ public class Head extends Part{
 		setPartType("Head");
 	}
 	
+	public Head(String input) {
+		this(input.split(" :: ")[0], Integer.parseInt(input.split(" :: ")[1]),
+				Rarity.COMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.COMMON
+						: Rarity.UNCOMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.UNCOMMON
+								: Rarity.RARE.toString().equals(input.split(" :: ")[2]) ? Rarity.RARE
+										: Rarity.EXPERIMENTAL,
+				// I'm so sorry but I had to use a triple nested ternary.
+				// There's no
+				// other way
+				Type.BALLISTIC.toString().equals(input.split(" :: ")[3]) ? Type.BALLISTIC
+						: Type.BEAM.toString().equals(input.split(" :: ")[3]) ? Type.BEAM
+								: Type.ELECTRICITY.toString().equals(input.split(" :: ")[3]) ? Type.ELECTRICITY
+										: Type.EXPLOSIVE.toString().equals(input.split(" :: ")[3]) ? Type.EXPLOSIVE
+												: Type.FIRE,
+				// Sorry again
+				input.split(" :: ")[4]);
+	}
+	
 	public String getFunction() {
 		return function;
 	}

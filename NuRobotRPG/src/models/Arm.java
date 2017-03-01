@@ -88,13 +88,15 @@ public class Arm extends Part {
 						: Rarity.UNCOMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.UNCOMMON
 								: Rarity.RARE.toString().equals(input.split(" :: ")[2]) ? Rarity.RARE
 										: Rarity.EXPERIMENTAL,
-				// I'm so sorry but I had to use a triple nested ternary. There's no
+				// I'm so sorry but I had to use a triple nested ternary.
+				// There's no
 				// other way
 				Type.BALLISTIC.toString().equals(input.split(" :: ")[3]) ? Type.BALLISTIC
 						: Type.BEAM.toString().equals(input.split(" :: ")[3]) ? Type.BEAM
 								: Type.ELECTRICITY.toString().equals(input.split(" :: ")[3]) ? Type.ELECTRICITY
 										: Type.EXPLOSIVE.toString().equals(input.split(" :: ")[3]) ? Type.EXPLOSIVE
 												: Type.FIRE,
+				// Sorry again
 				input.split(" :: ")[4]);
 	}
 
