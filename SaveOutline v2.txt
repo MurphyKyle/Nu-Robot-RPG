@@ -1,22 +1,24 @@
-difficulty
 currentRobotName
-headName :: headWeight :: headRarity :: headFunctionName
-arm1Name :: arm1Weight :: arm1Rarity :: arm1AttackName
-arm2Name :: arm2Weight :: arm2Rarity :: arm2AttackName
-torsoName :: torsoWeight :: torsoRarity :: torsoDefense
+headName :: headWeight :: headRarity :: headAttackType :: headFunctionName
+arm1Name :: arm1Weight :: arm1Rarity :: armAttackType :: arm1Function
+arm2Name :: arm2Weight :: arm2Rarity :: armAttackType :: arm2Function
+torsoName :: torsoWeight :: torsoRarity :: torsoDefenseType
 legsName :: legsWeight :: legsRarity
 
+Size Of HashMap
 <<repeat for each saved robot in the FavRobots HashMap>>
 #robotName
-headName :: headWeight :: headRarity :: headFunctionName
-arm1Name :: arm1Weight :: arm1Rarity :: arm1AttackName
-arm2Name :: arm2Weight :: arm2Rarity :: arm2AttackName
-torsoName :: torsoWeight :: torsoRarity :: torsoDefense
+headName :: headWeight :: headRarity :: headAttackType :: headFunctionName
+arm1Name :: arm1Weight :: arm1Rarity :: armAttackType :: arm1Function
+arm2Name :: arm2Weight :: arm2Rarity :: armAttackType :: arm2Function
+torsoName :: torsoWeight :: torsoRarity :: torsoDefenseType
 legsName :: legsWeight :: legsRarity
 
 <<repeat for each individual piece in Parts HashMap>>
-
-Head :: headName :: headWeight :: headRarity
-Arm :: armName :: armWeight :: armRarity ::armAttackName
-Torso :: torsoName :: torsoWeight :: torsoRarity :: torsoDefense
+Size of PartMap
+Head :: headName :: headWeight :: headRarity :: headAttackType :: headFunctionName
+Arm :: armName :: armWeight :: armRarity :: armAttackType ::armFunction
+Torso :: torsoName :: torsoWeight :: torsoRarity :: torsoDefenseType
 Legs :: legsName :: legsWeight : legsRarity
+
+Score

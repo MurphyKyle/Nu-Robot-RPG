@@ -9,9 +9,11 @@ public class Test {
 	}
 	
 	public static void run() {
-		Map map = new Map(10);
-		System.out.println(map);
-		map = new Map(20);
-		System.out.println(map);
+		Robot r1 = new Robot(3);
+		System.out.println(r1.toString());
+		Engine.favorites.add(new Robot(1));
+		Engine.favorites.add(r1);
+		Engine.inventory.add(new Arm(2));
+		Engine.saveFile(r1);
 	}
 }

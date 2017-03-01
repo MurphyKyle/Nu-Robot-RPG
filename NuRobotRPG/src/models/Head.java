@@ -4,57 +4,54 @@ import java.util.Random;
 
 import enums.*;
 
-public class Head extends Part{
-	
+public class Head extends Part {
+
 	private String function;
 	private Type attackType;
-	private String[] prefixes = {
-			"V-Gazer ", "Bite-Master ", "Dealth-Gaze MK2 ", "Moustache ", "Byte-Reader "
-	};
-	private String[] suffixes = {
-			"Guardmouth", "Helm", "Sharkface", "Dulleyes", "Hawkeye"
-	};
-	
-	public Head(int difficulty){
+	private String[] prefixes = { "V-Gazer ", "Bite-Master ", "Dealth-Gaze MK2 ", "Moustache ", "Byte-Reader " };
+	private String[] suffixes = { "Guardmouth", "Helm", "Sharkface", "Dulleyes", "Hawkeye" };
+
+	public Head(int difficulty) {
 		Random rand = new Random();
-		int rare = rand.nextInt(100)+1;
-		if(difficulty == 1){
-			if(rare <= 75){
+		int rare = rand.nextInt(100) + 1;
+		if (difficulty == 1) {
+			if (rare <= 75) {
 				setRarity(Rarity.COMMON);
-			}else{
+			} else {
 				setRarity(Rarity.UNCOMMON);
 			}
-		}else if(difficulty == 2){
-			if(rare <= 25){
+		} else if (difficulty == 2) {
+			if (rare <= 25) {
 				setRarity(Rarity.COMMON);
-			}else if(rare <= 75){
+			} else if (rare <= 75) {
 				setRarity(Rarity.UNCOMMON);
-			}else if(rare <= 99){
+			} else if (rare <= 99) {
 				setRarity(Rarity.RARE);
-			}else{
+			} else {
 				setRarity(Rarity.EXPERIMENTAL);
 			}
-		}else{
-			if(rare <= 50){
+		} else {
+			if (rare <= 50) {
 				setRarity(Rarity.UNCOMMON);
-			}else if(rare <= 90){
+			} else if (rare <= 90) {
 				setRarity(Rarity.RARE);
-			}else{
+			} else {
 				setRarity(Rarity.EXPERIMENTAL);
 			}
 		}
 		setFunction("No function");
-		rare = rand.nextInt(3)+2;
+		rare = rand.nextInt(3) + 2;
 		setWeight(rare);
 		StringBuilder sb = new StringBuilder();
-		if(getRarity() == Rarity.EXPERIMENTAL){
+		if (getRarity() == Rarity.EXPERIMENTAL) {
 			setMultiplier(1.4f);
 			Type[] attacks = Type.values();
 			rare = rand.nextInt(attacks.length);
 			setAttackType(attacks[rare]);
 			setFunction("Attack with " + getAttackType().toString());
 			sb.append("Dealth-Gaze MK5 ");
-		}else{
+		} else {
+			setAttackType(null);
 			int rem = rand.nextInt(prefixes.length);
 			sb.append(prefixes[rem]);
 		}
@@ -63,35 +60,37 @@ public class Head extends Part{
 		setName(sb.toString());
 		setPartType("Head");
 	}
-	
-	public Head(String name, int weight, Rarity rare, Type attackType, String function){
+
+	public Head(String name, int weight, Rarity rare, Type attackType, String function) {
 		setName(name);
 		setFunction(function);
 		setRarity(rare);
 		setWeight(weight);
-		if(getRarity() == Rarity.EXPERIMENTAL){
-			setMultiplier(1.4f);
-			setAttackType(attackType);
-			setFunction(function);
-		}
+		setMultiplier(1.4f);
+		setAttackType(attackType);
+		setFunction(function);
 		setMultiplier(multiplier);
 		setPartType("Head");
 	}
-	
+
 	public String getFunction() {
 		return function;
 	}
+
 	public void setFunction(String function) {
 		this.function = function;
 	}
+
 	public Type getAttackType() {
 		return attackType;
 	}
+
 	public void setAttackType(Type attackType) {
 		this.attackType = attackType;
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Head\n");
 		sb.append(getName());
@@ -100,7 +99,7 @@ public class Head extends Part{
 		sb.append(getRarity().toString().charAt(0));
 		sb.append(getRarity().toString().substring(1, getRarity().toString().length()).toLowerCase());
 		sb.append("\n");
-		if(getRarity() == Rarity.EXPERIMENTAL){
+		if (getRarity() == Rarity.EXPERIMENTAL) {
 			sb.append(getAttackType().toString());
 			sb.append("\n");
 			sb.append(getFunction());

@@ -95,6 +95,10 @@ public class Robot {
 	public Arm getArm(int indexArm) {
 		return arms.get(indexArm);
 	}
+	
+	public ArrayList<Arm> getArms(){
+		return this.arms;
+	}
 
 	public void equipArms(ArrayList<Arm> arms) {
 		this.arms = arms;
