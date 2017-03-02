@@ -89,8 +89,7 @@ public class Arm extends Part {
 								: Rarity.RARE.toString().equals(input.split(" :: ")[3]) ? Rarity.RARE
 										: Rarity.EXPERIMENTAL,
 				// I'm so sorry but I had to use a triple nested ternary.
-				// There's no
-				// other way
+				// There's no other way
 				Type.BALLISTIC.toString().equals(input.split(" :: ")[4]) ? Type.BALLISTIC
 						: Type.BEAM.toString().equals(input.split(" :: ")[4]) ? Type.BEAM
 								: Type.ELECTRICITY.toString().equals(input.split(" :: ")[4]) ? Type.ELECTRICITY

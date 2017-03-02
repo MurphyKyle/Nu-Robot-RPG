@@ -87,9 +87,9 @@ public class Leg extends Part {
 						: Rarity.UNCOMMON.toString().equals(input.split(" :: ")[3]) ? Rarity.UNCOMMON
 								: Rarity.RARE.toString().equals(input.split(" :: ")[3]) ? Rarity.RARE
 										: Rarity.EXPERIMENTAL,
-		// I'm so sorry but I had to use a triple nested ternary. There's no
-		// other way
-		input.split(" :: ")[4].equalsIgnoreCase("Treads"));
+				// I'm so sorry but I had to use a triple nested ternary.
+				// There's no other way
+				input.split(" :: ")[4].equalsIgnoreCase("Treads"));
 	}
 
 	public boolean isTreads() {

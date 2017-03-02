@@ -19,10 +19,8 @@ public class Robot {
 	private int maxDmg = 12;
 	private Part drop;
 	private boolean isAlive = true;
-	private String[] names = {
-		"Optimus Prime", "Galvatron", "Skynet", "RoboCop", "Iron Hide", "Wall-E", "Ultron", "Slash", "Motoko Kusanagi", 
-		"E.D.I.", "Alpha", "Strike Freedom Gundam", "Jet Fire", "Star Scream"
-	};
+	private String[] names = { "Optimus Prime", "Galvatron", "Skynet", "RoboCop", "Iron Hide", "Wall-E", "Ultron",
+			"Slash", "Motoko Kusanagi", "E.D.I.", "Alpha", "Strike Freedom Gundam", "Jet Fire", "Star Scream" };
 
 	public Robot(int difficulty) {
 		equipHead(new Head(difficulty));
@@ -46,14 +44,16 @@ public class Robot {
 	}
 
 	public Robot(String input) {
-		this(input.split("\n")[0], new Torso(input.split("\n")[input.split("\n").length-2]), new ArrayList<Arm>(), new Head(input.split("\n")[1]), new Leg(input.split("\n")[input.split("\n").length-1]));
+		this(input.split("\n")[0], new Torso(input.split("\n")[input.split("\n").length - 3]), new ArrayList<Arm>(),
+				new Head(input.split("\n")[input.split("\n").length - 2]),
+				new Leg(input.split("\n")[input.split("\n").length - 1]));
 		ArrayList<Arm> arms = new ArrayList<Arm>();
-		for(int i = 2; i < input.split("\n").length-2; i++) {
+		for (int i = 1; i < input.split("\n").length - 4; i++) {
 			arms.add(new Arm(input.split("\n")[i]));
 		}
 		this.equipArms(arms);
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -75,9 +75,9 @@ public class Robot {
 	}
 
 	public void setCurrentHp(int currentHp) {
-		if(currentHp > getMaxHp()){
+		if (currentHp > getMaxHp()) {
 			currentHp = getMaxHp();
-		}else if(currentHp < 0){
+		} else if (currentHp < 0) {
 			currentHp = 0;
 		}
 		this.currentHp = currentHp;
@@ -104,8 +104,8 @@ public class Robot {
 	public Arm getArm(int indexArm) {
 		return arms.get(indexArm);
 	}
-	
-	public ArrayList<Arm> getArms(){
+
+	public ArrayList<Arm> getArms() {
 		return this.arms;
 	}
 
@@ -182,10 +182,12 @@ public class Robot {
 
 		return parts.get(new Random().nextInt(parts.size()));
 	}
-	
-	public int attack() {		
+
+	public int attack() {
 		// finish this, each robot now has it's own min and max
-		int attack = new Random().nextInt(getMaxDmg()-getMinDmg()) + getMinDmg();	// 8-12 attack range
+		int attack = new Random().nextInt(getMaxDmg() - getMinDmg()) + getMinDmg(); // 8-12
+																					// attack
+																					// range
 		return attack;
 	}
 
@@ -214,10 +216,10 @@ public class Robot {
 		// if the legs are treads, speed is decreased by 25% (speed*0.75) --
 
 		if (this.legs.isTreads()) {
-			speed -= speed/4;
+			speed -= speed / 4;
 		}
 
-		speed = (int) ((float)speed * this.legs.getMultiplier());
+		speed = (int) ((float) speed * this.legs.getMultiplier());
 
 		if (speed > maxSpeed) {
 			speed = maxSpeed;
@@ -278,8 +280,8 @@ public class Robot {
 		}
 		return actions;
 	}
-	
-	public ArrayList<String> getActionMenu(){
+
+	public ArrayList<String> getActionMenu() {
 		ArrayList<String> menu = new ArrayList<>();
 		for (Arm a : arms) {
 			menu.add(a.getFunction());
