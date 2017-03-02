@@ -1,19 +1,22 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import enums.Rarity;
+import enums.*;
 import models.*;
 
 public class Engine {
 
 	public static ArrayList<Robot> favorites = new ArrayList<Robot>();
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
+	public static Robot currentRobot;
+	public static Map currentMap;
 	public static int score = 0;
 
 	public static void run(Robot r1, int difficulty) {
@@ -157,5 +160,82 @@ public class Engine {
 		}
 		return sb.toString();
 	}
-	
+
+	public static void loadGame() {
+		File f = new File("NURobotSave.txt");
+		if (f.exists() && f.isFile()) {
+			try {
+				BufferedReader reader = new BufferedReader(new FileReader(f));
+				String line = null;
+				String loadedParts = "";
+				boolean builtRobot = false;
+				do {
+					if ((line = reader.readLine()) != null && !line.isEmpty()) {
+						if (!line.contains(" :: ")) {
+							loadedParts += line + "\n";
+						} else {
+							if (line.contains("Head")) {
+								loadedParts += line + "\n";
+							} else if (line.contains("Arm")) {
+								loadedParts += line + "\n";
+							} else if (line.contains("Torso")) {
+								loadedParts += line + "\n";
+							} else if (line.contains("Leg")) {
+								loadedParts += line;
+								builtRobot = true;
+							}
+						}
+					}
+				} while (!builtRobot);
+				currentRobot = new Robot(loadedParts);
+				line = reader.readLine();
+				int numOfFavs = Integer.parseInt(line);
+				if (numOfFavs != 0) {
+					for (int i = 0; i < numOfFavs; i++) {
+						loadedParts = "";
+						builtRobot = false;
+						do {
+							if ((line = reader.readLine()) != null && !line.isEmpty()) {
+								if (!line.contains(" :: ")) {
+									loadedParts += line + "\n";
+								} else {
+									if (line.contains("Head")) {
+										loadedParts += line + "\n";
+									} else if (line.contains("Arm")) {
+										loadedParts += line + "\n";
+									} else if (line.contains("Torso")) {
+										loadedParts += line + "\n";
+									} else if (line.contains("Leg")) {
+										loadedParts += line;
+										builtRobot = true;
+									}
+								}
+							}
+						} while (!builtRobot);
+						favorites.add(new Robot(loadedParts));
+					}
+				}
+				line = reader.readLine();
+				numOfFavs = Integer.parseInt(line);
+				if (numOfFavs != 0) {
+					for (int i = 0; i < numOfFavs; i++) {
+						if ((line = reader.readLine()) != null && !line.isEmpty()) {
+							if (line.contains("Head")) {
+								inventory.add(new Head(line));
+							} else if (line.contains("Arm")) {
+								inventory.add(new Arm(line));
+							} else if (line.contains("Torso")) {
+								inventory.add(new Torso(line));
+							} else if (line.contains("Leg")) {
+								inventory.add(new Leg(line));
+							}
+						}
+					}
+				}
+				reader.close();
+			} catch (IOException e) {
+
+			}
+		}
+	}
 }

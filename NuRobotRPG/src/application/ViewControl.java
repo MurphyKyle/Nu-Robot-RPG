@@ -47,7 +47,11 @@ public class ViewControl {
 		outputLabel = (Label) theScene.lookup("#outputLabel");
 	}
 	
-
+	private void setPreviousScene(String fxmlPath) throws IOException{
+		fxmlPane = FXMLLoader.load(getClass().getResource(fxmlPath));
+		previousScene = new Scene(fxmlPane);
+		outputLabel = (Label) theScene.lookup("#outputLabel");
+	}
 
 	public void exit() {
 		Runtime.getRuntime().exit(0);
@@ -64,15 +68,12 @@ public class ViewControl {
 //	new game screen
 	@FXML
 	public void createNewGame() throws IOException {
-		
 		previousScene = (Scene) contButton.getScene();
-		
 		setFXML(newGamePrompt);
-		
+		setPreviousScene(startupScreen);
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();
-		
 	}
 	
 	
@@ -101,12 +102,10 @@ public class ViewControl {
 	@FXML
 	public void startGame() throws IOException {
 		previousScene = (Scene) contButton.getScene();
-
 		setFXML(gameplayScreen);
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay - Movement");
 		theStage.show();
-		
 		Engine.run(r1, difficulty);
 	}
 	

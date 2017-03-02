@@ -72,29 +72,25 @@ public class Head extends Part {
 		setMultiplier(multiplier);
 		setPartType("Head");
 	}
-<<<<<<< HEAD
-
-=======
 	
 	public Head(String input) {
-		this(input.split(" :: ")[0], Integer.parseInt(input.split(" :: ")[1]),
-				Rarity.COMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.COMMON
-						: Rarity.UNCOMMON.toString().equals(input.split(" :: ")[2]) ? Rarity.UNCOMMON
-								: Rarity.RARE.toString().equals(input.split(" :: ")[2]) ? Rarity.RARE
+		this(input.split(" :: ")[1], Integer.parseInt(input.split(" :: ")[2]),
+				Rarity.COMMON.toString().equals(input.split(" :: ")[3]) ? Rarity.COMMON
+						: Rarity.UNCOMMON.toString().equals(input.split(" :: ")[3]) ? Rarity.UNCOMMON
+								: Rarity.RARE.toString().equals(input.split(" :: ")[3]) ? Rarity.RARE
 										: Rarity.EXPERIMENTAL,
 				// I'm so sorry but I had to use a triple nested ternary.
 				// There's no
 				// other way
-				Type.BALLISTIC.toString().equals(input.split(" :: ")[3]) ? Type.BALLISTIC
-						: Type.BEAM.toString().equals(input.split(" :: ")[3]) ? Type.BEAM
-								: Type.ELECTRICITY.toString().equals(input.split(" :: ")[3]) ? Type.ELECTRICITY
-										: Type.EXPLOSIVE.toString().equals(input.split(" :: ")[3]) ? Type.EXPLOSIVE
+				Type.BALLISTIC.toString().equals(input.split(" :: ")[4]) ? Type.BALLISTIC
+						: Type.BEAM.toString().equals(input.split(" :: ")[4]) ? Type.BEAM
+								: Type.ELECTRICITY.toString().equals(input.split(" :: ")[4]) ? Type.ELECTRICITY
+										: Type.EXPLOSIVE.toString().equals(input.split(" :: ")[4]) ? Type.EXPLOSIVE
 												: Type.FIRE,
 				// Sorry again
 				input.split(" :: ")[4]);
 	}
 	
->>>>>>> f95d1d3fa6defe2179f749fe504e6528af7b25ae
 	public String getFunction() {
 		return function;
 	}

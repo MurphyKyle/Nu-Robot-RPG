@@ -1,0 +1,21 @@
+Star Scream
+Head :: Byte-Reader Helm :: 4 :: UNCOMMON :: null :: No function
+Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Ballistic :: Attack with Ballistic
+Arm :: Plated Claw :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
+Torso :: Titanium Alloy Torso Unit :: 13 :: RARE :: Ballistic
+Leg :: Bionic Hopper :: 14 :: RARE :: Legs
+2
+Strike Freedom Gundam
+Head :: Byte-Reader Helm :: 4 :: UNCOMMON :: null :: No function
+Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Ballistic :: Attack with Ballistic
+Arm :: Plated Claw :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
+Torso :: Titanium Alloy Torso Unit :: 13 :: RARE :: Ballistic
+Leg :: Bionic Hopper :: 14 :: RARE :: Legs
+Star Scream
+Head :: Byte-Reader Helm :: 4 :: UNCOMMON :: null :: No function
+Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Ballistic :: Attack with Ballistic
+Arm :: Plated Claw :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
+Torso :: Titanium Alloy Torso Unit :: 13 :: RARE :: Ballistic
+Leg :: Bionic Hopper :: 14 :: RARE :: Legs
+1
+Arm :: Plated Brawlfist :: 7 :: COMMON :: Explosive :: Attack with Explosive
