@@ -7,22 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="startupScreen" prefHeight="320.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
+<AnchorPane prefHeight="320.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
    <children>
-      <ProgressBar layoutX="14.0" layoutY="277.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" />
-      <ProgressBar layoutX="286.0" layoutY="277.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" />
-      <Separator layoutX="250.0" layoutY="13.0" orientation="VERTICAL" prefHeight="294.0" prefWidth="6.0" />
-      <Button layoutX="132.0" layoutY="234.0" mnemonicParsing="false" text="Defend">
+      <ProgressBar fx:id="playerCounterBar" layoutX="14.0" layoutY="277.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="enemyCounterBar" layoutX="286.0" layoutY="277.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" />
+      <Separator layoutX="244.0" layoutY="113.0" orientation="VERTICAL" prefHeight="195.0" prefWidth="12.0" />
+      <Button fx:id="defendBtn" layoutX="132.0" layoutY="234.0" mnemonicParsing="false" onAction="#defend" text="Defend">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="34.0" layoutY="234.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="60.0" text="Attack">
+      <Button fx:id="attackBtn" layoutX="34.0" layoutY="234.0" mnemonicParsing="false" onAction="#attack" prefHeight="29.0" prefWidth="60.0" text="Attack">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
       <Label layoutX="108.0" layoutY="240.0" text="or" />
+      <Label fx:id="playerOutputLbl" alignment="TOP_LEFT" layoutX="14.0" layoutY="136.0" prefHeight="73.0" prefWidth="200.0" />
+      <Label fx:id="enemyOutputLbl" alignment="TOP_LEFT" layoutX="286.0" layoutY="136.0" prefHeight="73.0" prefWidth="200.0" />
+      <Label fx:id="outputLabel" layoutX="144.0" layoutY="12.0" prefHeight="85.0" prefWidth="200.0" text="Label" />
    </children>
 </AnchorPane>
