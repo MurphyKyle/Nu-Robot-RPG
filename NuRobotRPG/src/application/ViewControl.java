@@ -69,16 +69,6 @@ public class ViewControl {
 		theStage.show();
 	}
 	
-<<<<<<< HEAD
-//	new game screen
-	@FXML
-	public void createNewGame() throws IOException {
-		previousScene = (Scene) contButton.getScene();
-		
-		setFXML(newGamePrompt);
-		
-=======
-	
 	private void setPreviousScene(Scene prevScene) {
 		sceneList.add(prevScene);
 		if (sceneList.size() < 2) {
@@ -100,7 +90,6 @@ public class ViewControl {
 		
 		setFXML(newGamePrompt);
 //		setPreviousScene(startupScreen);
->>>>>>> origin/master
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();
@@ -133,24 +122,15 @@ public class ViewControl {
 //	start game screen
 	@FXML
 	public void startGame() throws IOException {
-<<<<<<< HEAD
-		previousScene = (Scene) contButton.getScene();
-
-=======
 		setPreviousScene((Scene) contButton.getScene());
 //		previousScene = (Scene) contButton.getScene();
 		
->>>>>>> origin/master
 		setFXML(gameplayScreen);
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay - Movement");
 		theStage.show();
-<<<<<<< HEAD
 		
 		Engine.run(r1, difficulty);
-=======
-//		Engine.run(r1, difficulty);
->>>>>>> origin/master
 	}
 	
 	
