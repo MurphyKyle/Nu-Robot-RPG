@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,8 @@ public class ViewControl {
 	public Button contButton;
 	public ToggleGroup diffChoice;
 	public static Label outputLabel;
+	private ArrayList<Scene> sceneList = new ArrayList<>(); 
+	private static int sceneIndex = 0;
 	
 	private static String gameplayScreen = "/view/GameplayScreen.fxml";
 	private static String startupScreen = "/view/StartupScreen.fxml";
@@ -58,19 +61,40 @@ public class ViewControl {
 	}
 	
 	
-	@FXML
 	public void goBack() {
 		theStage.setScene(previousScene);
+		
+		if (sceneList.size() < 3) {
+			sceneIndex = 0;	
+		} else {
+			sceneIndex--;
+		}
+		
 		theStage.show();
+	}
+	
+	
+	private void setPreviousScene(Scene prevScene) {
+		sceneList.add(prevScene);
+		if (sceneList.size() < 2) {
+			sceneIndex = 0;
+		} else {
+			sceneIndex++;
+		}
+		
+		previousScene = sceneList.get(sceneIndex);
+		
 	}
 	
 	
 //	new game screen
 	@FXML
 	public void createNewGame() throws IOException {
-		previousScene = (Scene) contButton.getScene();
+		setPreviousScene((Scene) contButton.getScene());
+//		previousScene = (Scene) contButton.getScene();
+		
 		setFXML(newGamePrompt);
-		setPreviousScene(startupScreen);
+//		setPreviousScene(startupScreen);
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();
@@ -99,14 +123,17 @@ public class ViewControl {
 	}
 	
 	
+//	start game screen
 	@FXML
 	public void startGame() throws IOException {
-		previousScene = (Scene) contButton.getScene();
+		setPreviousScene((Scene) contButton.getScene());
+//		previousScene = (Scene) contButton.getScene();
+		
 		setFXML(gameplayScreen);
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay - Movement");
 		theStage.show();
-		Engine.run(r1, difficulty);
+//		Engine.run(r1, difficulty);
 	}
 	
 	

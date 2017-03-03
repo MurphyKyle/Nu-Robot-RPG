@@ -23,16 +23,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="51.0" text="Up" GridPane.columnIndex="1" />
-            <Button disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="51.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="51.0" text="Left" GridPane.rowIndex="1" />
-            <Button disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="51.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="upBtn" mnemonicParsing="false" prefHeight="36.0" onAction="#moveUp" prefWidth="51.0" text="Up" GridPane.columnIndex="1" />
+            <Button fx:id="downBtn" disable="true" mnemonicParsing="false" onAction="#moveDown" prefHeight="36.0" prefWidth="51.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="leftBtn" disable="true" mnemonicParsing="false" onAction="#moveLeft" prefHeight="36.0" prefWidth="51.0" text="Left" GridPane.rowIndex="1" />
+            <Button fx:id="rightBtn" disable="true" mnemonicParsing="false" onAction="#moveRight" prefHeight="36.0" prefWidth="51.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </GridPane>
-      <Label fx:id="outputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="24.0" prefHeight="98.0" prefWidth="170.0" style="-fx-background-color: #eee;">
+      <Label fx:id="outputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="24.0" prefHeight="98.0" prefWidth="170.0" style="-fx-background-color: #EEE;">
          <font>
             <Font size="14.0" />
          </font>
@@ -55,6 +55,6 @@
             <Insets left="6.0" />
          </padding>
       </Label>
-      <Button layoutX="387.0" layoutY="98.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="64.0" text="Back" />
+      <Button fx:id="backBtn" layoutX="387.0" layoutY="98.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="64.0" text="Back" />
    </children>
 </AnchorPane>
