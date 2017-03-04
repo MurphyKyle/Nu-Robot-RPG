@@ -23,7 +23,7 @@ public class Engine {
 		Robot robbie = new Robot(3);
 
 		String speed = Integer.toString(robbie.getSpeed());
-		ViewControl.setOutputLabel(r1.toString() + "Speed: " + speed);
+		ViewControl.setTextOutput(r1.toString() + "Speed: " + speed);
 
 		System.out.println(robbie);
 		System.out.println(robbie.getSpeed());
