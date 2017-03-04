@@ -22,6 +22,7 @@ public class Map {
 		// randomize depots of rooms
 		int depots = (int) Math.pow(size, 2) / 15 + 1;
 		int enemies;
+		
 		switch (difficulty) {
 		case 1:
 			enemies = (int) Math.pow(size, 2) / 3;

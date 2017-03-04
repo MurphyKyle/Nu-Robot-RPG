@@ -173,25 +173,35 @@ public class ViewControl {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
 		List<Node> list = gp.getChildren();
 		Button btn = (Button) list.get(0);
-		btn.setDisable(Engine.currentMap.moveUp());
+		btn.setDisable(!Engine.currentMap.moveUp());
 		mapLabel.setText(Engine.currentMap.toString());
+		
 	}
 	
 	@FXML
 	public void moveDown() {
-		theScene.lookup("#navGrid").lookup("#downBtn").setDisable(Engine.currentMap.moveDown());
+		GridPane gp = (GridPane) theScene.lookup("#navGrid");
+		List<Node> list = gp.getChildren();
+		Button btn = (Button) list.get(0);
+		btn.setDisable(!Engine.currentMap.moveDown());
 		mapLabel.setText(Engine.currentMap.toString());
 	}
 	
 	@FXML
 	public void moveLeft() {
-		theScene.lookup("#navGrid").lookup("#downBtn").setDisable(Engine.currentMap.moveLeft());
+		GridPane gp = (GridPane) theScene.lookup("#navGrid");
+		List<Node> list = gp.getChildren();
+		Button btn = (Button) list.get(0);
+		btn.setDisable(!Engine.currentMap.moveLeft());
 		mapLabel.setText(Engine.currentMap.toString());
 	}
 	
 	@FXML
 	public void moveRight() {
-		theScene.lookup("#navGrid").lookup("#downBtn").setDisable(Engine.currentMap.moveRight());
+		GridPane gp = (GridPane) theScene.lookup("#navGrid");
+		List<Node> list = gp.getChildren();
+		Button btn = (Button) list.get(0);
+		btn.setDisable(!Engine.currentMap.moveRight());
 		mapLabel.setText(Engine.currentMap.toString());
 	}
 	
