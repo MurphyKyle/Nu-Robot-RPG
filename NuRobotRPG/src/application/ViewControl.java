@@ -1,9 +1,13 @@
 package application;
 
 import java.io.IOException;
+import java.rmi.activation.ActivationGroup;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import models.Map;
 import models.Robot;
+import models.Room;
 
 public class ViewControl {
 	
@@ -24,7 +29,6 @@ public class ViewControl {
 	private static Scene previousScene;
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
-	private Button contButton;
 	private static Label mapLabel;
 	
 	private int difficulty;
@@ -40,23 +44,31 @@ public class ViewControl {
 	private static String depotScreen = "/view/DepotScreen.fxml";	
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
 	
+	
+	
+	
+	
+//	general methods
 	public void setScenes() throws IOException {
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(startupScreen))));
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(newGamePrompt))));
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(gameplayScreen))));
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(combatScreen))));
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(depotScreen))));
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(changePartsScreen))));
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(startupScreen))));	//	0
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(newGamePrompt))));	//	1
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(gameplayScreen))));	//	2
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(combatScreen))));	//	3
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(depotScreen))));		//	4
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(changePartsScreen))));	//	5
 	}
+	
 	
 	public static void setStage(Stage primaryStage) {
 		theStage = primaryStage;
 	}
 	
+	
 	public static void setTextOutput(String text) {
 		outputLabel.setText(text);
 	}
 
+	
 	public void exit() {
 		Runtime.getRuntime().exit(0);
 	}
@@ -96,27 +108,6 @@ public class ViewControl {
 	}
 	
 	
-//	new game screen
-	@FXML
-	public void createNewGame() throws IOException {
-		setPreviousScene();
-		theScene = sceneList.get(currentSceneIndex);
-		setOutputLabel();
-		theStage.setScene(theScene);
-		theStage.setTitle("Create New Game");
-		theStage.show();
-	}
-	
-	
-	@FXML
-	public void createRobot() {
-		getDifficulty();
-		Engine.currentRobot = new Robot(difficulty);
-		Engine.currentRobot.setName("Player");
-		setTextOutput(Engine.currentRobot.toString());
-		theStage.getScene().lookup("#contBtn").setDisable(false);
-	}
-	
 	private void getDifficulty() {
 		difficulty = 0;
 		
@@ -131,7 +122,88 @@ public class ViewControl {
 		}
 	}
 	
-//	on the start game screen - this starts the game with a new map based on chosen difficulty
+	
+	private void checkRoom() {
+		// need to check if a room is occupied
+		boolean occupied = false;
+		Room[][] map = Engine.currentMap.getRooms();
+		// load appropriate screen if it is
+		
+		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
+			// index 3 is combat
+			occupied = true;
+			theStage.setScene(sceneList.get(3));
+		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
+			// index 4 is depot
+			theStage.setScene(sceneList.get(4));
+		} else {
+			// the room should be empty
+			return;
+		}
+		
+		theStage.show();
+		
+		if (occupied) {
+			long delay = playerRobot.getSpeed() * 500;
+			TimerTask atk = new TimerTask() {
+				
+				@Override
+				public void run() {
+					Engine.fight(player, enemy);
+				}
+			};
+			Timer t1 = new Timer();
+			t1.schedule(atk, delay);
+		}
+	}
+	
+	
+	@FXML
+	public void newMap() {
+		Engine.currentMap = new Map(difficulty);
+		mapLabel.setText(Engine.currentMap.toString());
+	}
+	
+	
+	
+	
+	
+//	startup screen - [0]
+	@FXML
+	public void createNewGame() throws IOException {
+		setPreviousScene();
+		theScene = sceneList.get(currentSceneIndex);
+		setOutputLabel();
+		theStage.setScene(theScene);
+		theStage.setTitle("Create New Game");
+		theStage.show();
+	}
+	
+	
+	@FXML
+	public void loadExistingGame() throws IOException {
+		setPreviousScene();
+		theScene = sceneList.get(currentSceneIndex);
+		setOutputLabel();
+		theStage.setScene(theScene);
+		theScene.lookup("#createRobotBtn").setDisable(true);
+		theScene.lookup("#contBtn").setDisable(false);
+		theStage.setTitle("Start Game");
+		theStage.show();
+	}
+	
+	
+//	start game screen - [1]
+	@FXML
+	public void createRobot() {
+		getDifficulty();
+		Engine.currentRobot = new Robot(difficulty);
+		Engine.currentRobot.setName("Player");
+		setTextOutput(Engine.currentRobot.toString());
+		theStage.getScene().lookup("#contBtn").setDisable(false);
+	}
+	
+	
 	@FXML
 	public void startGame() throws IOException {
 		getDifficulty();
@@ -147,27 +219,11 @@ public class ViewControl {
 		theStage.show();
 	}
 	
-	@FXML
-	public void newMap() {
-		Engine.currentMap = new Map(difficulty);
-		mapLabel.setText(Engine.currentMap.toString());
-	}
 	
-//	this loads the start game screen without create robot button
-	@FXML
-	public void loadExistingGame() throws IOException {
-		setPreviousScene();
-		theScene = sceneList.get(currentSceneIndex);
-		setOutputLabel();
-		theStage.setScene(theScene);
-		theScene.lookup("#createRobotBtn").setDisable(true);
-		theScene.lookup("#contBtn").setDisable(false);
-		theStage.setTitle("Start Game");
-		theStage.show();
-	}
-
 	
-//	on gameplay screen - navigation
+	
+	
+//	GameplayScreen - [2]
 	@FXML
 	public void moveUp() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
@@ -176,7 +232,9 @@ public class ViewControl {
 		btn.setDisable(!Engine.currentMap.moveUp());
 		mapLabel.setText(Engine.currentMap.toString());
 		
+		checkRoom();
 	}
+	
 	
 	@FXML
 	public void moveDown() {
@@ -185,7 +243,10 @@ public class ViewControl {
 		Button btn = (Button) list.get(0);
 		btn.setDisable(!Engine.currentMap.moveDown());
 		mapLabel.setText(Engine.currentMap.toString());
+		
+		checkRoom();
 	}
+	
 	
 	@FXML
 	public void moveLeft() {
@@ -194,7 +255,10 @@ public class ViewControl {
 		Button btn = (Button) list.get(0);
 		btn.setDisable(!Engine.currentMap.moveLeft());
 		mapLabel.setText(Engine.currentMap.toString());
+		
+		checkRoom();
 	}
+	
 	
 	@FXML
 	public void moveRight() {
@@ -203,6 +267,8 @@ public class ViewControl {
 		Button btn = (Button) list.get(0);
 		btn.setDisable(!Engine.currentMap.moveRight());
 		mapLabel.setText(Engine.currentMap.toString());
+		
+		checkRoom();
 	}
 	
 	
