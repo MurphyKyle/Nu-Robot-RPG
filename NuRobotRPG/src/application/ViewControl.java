@@ -171,17 +171,14 @@ public class ViewControl {
 //	startup screen - [0]
 	@FXML
 	public void createNewGame() throws IOException {
-<<<<<<< HEAD
 //		setPreviousScene((Scene) contButton.getScene());
 //		previousScene = (Scene) contButton.getScene();
 		
 		setFXML(newGamePrompt);
 //		setPreviousScene(startupScreen);
-=======
 		setPreviousScene();
 		theScene = sceneList.get(currentSceneIndex);
 		setOutputLabel();
->>>>>>> origin/master
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();

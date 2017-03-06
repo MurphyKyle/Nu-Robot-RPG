@@ -35,7 +35,6 @@ public class Engine {
 		System.out.println(rotten.getSpeed());
 //		fight(r1, rotten);
 	}
-<<<<<<< HEAD
 
 	public static void fight(Robot player, Robot enemy) {
 		int playerSpeed = player.getSpeed();
@@ -64,7 +63,8 @@ public class Engine {
 		} else {
 			// do what happens when a player dies
 			System.out.println("Player Lost");
-=======
+		}
+	}
 	
 	
 	public static void fight(Robot atk, Robot def, boolean user) {
@@ -74,7 +74,6 @@ public class Engine {
 		
 		if (user) {
 			score += damage;
->>>>>>> origin/master
 		}
 		
 		ViewControl.setTextOutput(atk.getName() + " attacked and dealt " + damage + " damage to " + def.getName());		
