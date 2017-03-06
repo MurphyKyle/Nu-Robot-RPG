@@ -85,7 +85,7 @@ public class ViewControl {
 //	new game screen
 	@FXML
 	public void createNewGame() throws IOException {
-		setPreviousScene((Scene) contButton.getScene());
+//		setPreviousScene((Scene) contButton.getScene());
 //		previousScene = (Scene) contButton.getScene();
 		
 		setFXML(newGamePrompt);

@@ -8,12 +8,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import enums.*;
 import models.*;
 
 public class Engine {
 
-	public static ArrayList<Robot> favorites = new ArrayList<Robot>();
+	public static HashMap<String, Robot> favorites = new HashMap<>();
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
 	public static Robot currentRobot;
 	public static Map currentMap;
@@ -57,6 +59,7 @@ public class Engine {
 			inventory.add(enemy.getDrop());
 			System.out.println(inventory);
 			System.out.println("Player Won");
+			player.takeDamage(-(player.getCurrentHp()/2));
 		} else {
 			// do what happens when a player dies
 			System.out.println("Player Lost");
@@ -85,7 +88,8 @@ public class Engine {
 				if (favorites.size() > 0) {
 					Integer size = favorites.size();
 					out.write(size.toString());
-					for (Robot r : favorites) {
+					for (String s : favorites.keySet()) {
+						Robot r = favorites.get(s);
 						out.newLine();
 						out.write(r.getName());
 						out.newLine();
@@ -212,7 +216,8 @@ public class Engine {
 								}
 							}
 						} while (!builtRobot);
-						favorites.add(new Robot(loadedParts));
+						Robot fav = new Robot(loadedParts);
+						favorites.put(fav.getName(), fav);
 					}
 				}
 				line = reader.readLine();
