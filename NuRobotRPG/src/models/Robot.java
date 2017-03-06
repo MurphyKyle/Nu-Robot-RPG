@@ -155,14 +155,13 @@ public class Robot {
 		for (Arm a : this.arms) {
 			maxDmg += a.getWeight();
 		}
-		// double check this
 
 		this.maxDmg = maxDmg;
 	}
 
 	public boolean isAlive() {
 		// if the currentHp is < or == 0, return false because I AM DED
-		this.isAlive = true;
+
 		this.isAlive = getCurrentHp() <= 0 ? false : true;
 		return isAlive;
 	}

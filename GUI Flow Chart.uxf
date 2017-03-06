@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>513</x>
       <y>225</y>
       <w>270</w>
       <h>225</h>
@@ -30,7 +30,7 @@ difficultyGroup : VBox
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
+      <x>522</x>
       <y>0</y>
       <w>441</w>
       <h>153</h>
@@ -48,7 +48,7 @@ loadExistingBtn : #loadExistingGame()</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>855</x>
+      <x>801</x>
       <y>225</y>
       <w>207</w>
       <h>162</h>
@@ -67,7 +67,7 @@ difficultyGroup : VBox
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
+      <x>828</x>
       <y>378</y>
       <w>126</w>
       <h>189</h>
@@ -79,7 +79,7 @@ m2=contBtn</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
+      <x>567</x>
       <y>441</y>
       <w>90</w>
       <h>126</h>
@@ -91,7 +91,7 @@ m2=contBtn</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>297</x>
+      <x>243</x>
       <y>837</y>
       <w>279</w>
       <h>225</h>
@@ -106,8 +106,8 @@ outputLabel : Label
 playerOutputLbl: Label
 enemyOutputLbl : Label
 -
-attackBtn : fight()
-defendBtn : fight()
+attackBtn : attack()
+defendBtn : defend()
 
 </panel_attributes>
     <additional_attributes/>
@@ -115,7 +115,7 @@ defendBtn : fight()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>54</x>
+      <x>0</x>
       <y>900</y>
       <w>162</w>
       <h>90</h>
@@ -126,7 +126,7 @@ defendBtn : fight()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
+      <x>72</x>
       <y>981</y>
       <w>297</w>
       <h>126</h>
@@ -138,7 +138,7 @@ m2=Defend</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
+      <x>72</x>
       <y>801</y>
       <w>288</w>
       <h>117</h>
@@ -150,7 +150,7 @@ m2=Attack</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
+      <x>648</x>
       <y>765</y>
       <w>207</w>
       <h>90</h>
@@ -164,7 +164,7 @@ is the room occupied?</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>801</x>
+      <x>747</x>
       <y>693</y>
       <w>108</w>
       <h>90</h>
@@ -176,7 +176,7 @@ m2= Movement</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>450</x>
       <y>126</y>
       <w>90</w>
       <h>171</h>
@@ -188,7 +188,7 @@ m2=Back </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
+      <x>954</x>
       <y>117</y>
       <w>126</w>
       <h>171</h>
@@ -200,7 +200,7 @@ m2=Back </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
+      <x>594</x>
       <y>144</y>
       <w>171</w>
       <h>99</h>
@@ -212,7 +212,7 @@ m1=Create New Game</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>927</x>
+      <x>873</x>
       <y>144</y>
       <w>117</w>
       <h>99</h>
@@ -224,7 +224,7 @@ m1=Load Game</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>693</x>
+      <x>639</x>
       <y>495</y>
       <w>198</w>
       <h>207</h>
@@ -246,7 +246,7 @@ backBtn : goBack()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
+      <x>828</x>
       <y>675</y>
       <w>81</w>
       <h>162</h>
@@ -258,7 +258,7 @@ m2= No</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>801</x>
+      <x>747</x>
       <y>846</y>
       <w>54</w>
       <h>81</h>
@@ -270,7 +270,7 @@ m2= Yes</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>729</x>
+      <x>675</x>
       <y>909</y>
       <w>162</w>
       <h>90</h>
@@ -281,7 +281,7 @@ m2= Yes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
+      <x>513</x>
       <y>945</y>
       <w>180</w>
       <h>36</h>
@@ -293,7 +293,7 @@ m2= Enemy Robot</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
+      <x>828</x>
       <y>945</y>
       <w>153</w>
       <h>36</h>
@@ -305,7 +305,7 @@ m2=Depot</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
+      <x>963</x>
       <y>909</y>
       <w>270</w>
       <h>171</h>
@@ -324,7 +324,7 @@ continueBtn : goBack()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>207</x>
+      <x>153</x>
       <y>936</y>
       <w>108</w>
       <h>27</h>
@@ -335,7 +335,7 @@ continueBtn : goBack()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1278</x>
+      <x>1224</x>
       <y>918</y>
       <w>99</w>
       <h>36</h>
@@ -347,7 +347,7 @@ m1=Save</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1359</x>
+      <x>1305</x>
       <y>909</y>
       <w>144</w>
       <h>90</h>
@@ -358,7 +358,7 @@ m1=Save</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
+      <x>1080</x>
       <y>558</y>
       <w>135</w>
       <h>369</h>
@@ -370,7 +370,7 @@ m2=Quit</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1251</x>
+      <x>1197</x>
       <y>522</y>
       <w>144</w>
       <h>90</h>
@@ -381,7 +381,7 @@ m2=Quit</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
+      <x>828</x>
       <y>603</y>
       <w>243</w>
       <h>324</h>
@@ -393,7 +393,7 @@ m2=Continue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1134</x>
+      <x>1080</x>
       <y>1071</y>
       <w>135</w>
       <h>81</h>
@@ -405,10 +405,10 @@ m1=Change Parts</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
+      <x>963</x>
       <y>1134</y>
       <w>396</w>
-      <h>171</h>
+      <h>162</h>
     </coordinates>
     <panel_attributes>Show Part
 Options
@@ -417,7 +417,7 @@ screen 5
 availParts : List
 currentParts : List
 -
-changeBtn : changeParts(availPart, currentPart)
+changeBtn : swapParts()
 backBtn : goBack()
 </panel_attributes>
     <additional_attributes/>
@@ -425,7 +425,7 @@ backBtn : goBack()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1035</x>
+      <x>981</x>
       <y>1071</y>
       <w>63</w>
       <h>81</h>
@@ -437,7 +437,7 @@ m2=Done</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
+      <x>954</x>
       <y>36</y>
       <w>324</w>
       <h>504</h>
@@ -449,7 +449,7 @@ m2=Quit</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1278</x>
+      <x>1224</x>
       <y>963</y>
       <w>99</w>
       <h>27</h>
@@ -461,7 +461,7 @@ m1=</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
+      <x>828</x>
       <y>639</y>
       <w>153</w>
       <h>639</h>

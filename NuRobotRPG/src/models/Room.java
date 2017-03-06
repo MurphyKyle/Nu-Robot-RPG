@@ -1,7 +1,5 @@
 package models;
 
-import application.Engine;
-
 public class Room {
 	private boolean isOccupied;
 	private boolean isDepot;

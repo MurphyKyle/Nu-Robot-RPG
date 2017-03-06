@@ -22,6 +22,7 @@ public class Map {
 		// randomize depots of rooms
 		int depots = (int) Math.pow(size, 2) / 15 + 1;
 		int enemies;
+		
 		switch (difficulty) {
 		case 1:
 			enemies = (int) Math.pow(size, 2) / 3;
@@ -158,15 +159,15 @@ public class Map {
 		for (int y = 0; y < rooms.length; y++) {
 			for (int x = 0; x < rooms.length; x++) {
 				r = rooms[x][y];
-				bob.append("[");
+				bob.append("[ ");
 				if (x == xCoord && y == yCoord) {
 					bob.append("X");
 				} else {
-					bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+					bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : "");
 					// ^ If its occupied "!" else if its a depot "D" else its
 					// just a space
 				}
-				bob.append("]");
+				bob.append(" ] ");
 			}
 			bob.append("\n");
 		}
