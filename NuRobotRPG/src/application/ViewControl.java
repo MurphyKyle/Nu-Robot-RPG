@@ -144,6 +144,7 @@ public class ViewControl {
 		theStage.show();
 		
 		if (occupied) {
+			Robot enemy = new Robot(difficulty);
 			long delay = playerRobot.getSpeed() * 500;
 			TimerTask atk = new TimerTask() {
 				
@@ -152,6 +153,7 @@ public class ViewControl {
 					Engine.fight(Engine.currentRobot, enemy);
 				}
 			};
+			
 			Timer t1 = new Timer();
 			t1.schedule(atk, delay);
 		}
@@ -171,11 +173,6 @@ public class ViewControl {
 //	startup screen - [0]
 	@FXML
 	public void createNewGame() throws IOException {
-//		setPreviousScene((Scene) contButton.getScene());
-//		previousScene = (Scene) contButton.getScene();
-		
-		setFXML(newGamePrompt);
-//		setPreviousScene(startupScreen);
 		setPreviousScene();
 		theScene = sceneList.get(currentSceneIndex);
 		setOutputLabel();
@@ -245,7 +242,7 @@ public class ViewControl {
 	public void moveDown() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
 		List<Node> list = gp.getChildren();
-		Button btn = (Button) list.get(0);
+		Button btn = (Button) list.get(1);
 		btn.setDisable(!Engine.currentMap.moveDown());
 		mapLabel.setText(Engine.currentMap.toString());
 		
@@ -257,7 +254,7 @@ public class ViewControl {
 	public void moveLeft() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
 		List<Node> list = gp.getChildren();
-		Button btn = (Button) list.get(0);
+		Button btn = (Button) list.get(2);
 		btn.setDisable(!Engine.currentMap.moveLeft());
 		mapLabel.setText(Engine.currentMap.toString());
 		
@@ -269,7 +266,7 @@ public class ViewControl {
 	public void moveRight() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
 		List<Node> list = gp.getChildren();
-		Button btn = (Button) list.get(0);
+		Button btn = (Button) list.get(3);
 		btn.setDisable(!Engine.currentMap.moveRight());
 		mapLabel.setText(Engine.currentMap.toString());
 		
