@@ -1,19 +1,19 @@
 package application;
 
 import java.io.IOException;
-import java.rmi.activation.ActivationGroup;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ScheduledExecutorService;
 
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import models.Map;
 import models.Robot;
 import models.Room;
+
+
 
 public class ViewControl {
 	
@@ -30,9 +32,10 @@ public class ViewControl {
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
 	private static Label mapLabel;
+	private static ProgressBar playerCounterBar;
+	private static ProgressBar enemyCounterBar;
 	
 	private int difficulty;
-	private Robot playerRobot;
 	private static ArrayList<Scene> sceneList = new ArrayList<>();
 	private static int currentSceneIndex = 0;
 	private static int prevSceneIndex = 0;
@@ -144,20 +147,47 @@ public class ViewControl {
 		theStage.show();
 		
 		if (occupied) {
-			Robot enemy = new Robot(difficulty);
-			long delay = playerRobot.getSpeed() * 500;
-			TimerTask atk = new TimerTask() {
-				
-				@Override
-				public void run() {
-					Engine.fight(Engine.currentRobot, enemy);
-				}
-			};
-			
-			Timer t1 = new Timer();
-			t1.schedule(atk, delay);
+			startAFight();
 		}
+		
 	}
+	
+	
+	private void startAFight() {
+		Timer enemyT = new Timer();
+		Timer userT = new Timer();
+		Robot enemy = new Robot(difficulty);
+		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#playerCounterBar");
+		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#enemyCounterBar");
+		
+		long enemyDelay = 2000;
+		long atkDelay = 2000;
+		
+		
+		TimerTask enemyAtk = new TimerTask() {
+			
+			@Override
+			public void run() {
+				System.out.println("Enemy attacked");
+				Engine.fight(enemy, Engine.currentRobot, false);
+			}
+		};
+		
+		
+		TimerTask userAtk = new TimerTask() {
+			
+			@Override
+			public synchronized void run() {
+				System.out.println("User attacked");
+				Engine.fight(Engine.currentRobot, enemy, true);
+			}
+		};
+		
+		enemyT.schedule(enemyAtk, enemyDelay, enemyDelay);
+		userT.schedule(userAtk, atkDelay, atkDelay);
+		
+	}
+
 	
 	
 	@FXML
@@ -297,10 +327,7 @@ public class ViewControl {
 		
 	}
 	
-	@FXML
-	public void defend() {
-		
-	}
+	
 	
 	
 	
@@ -312,7 +339,7 @@ public class ViewControl {
 	
 	@FXML
 	public void saveGame() {
-		Engine.saveFile(playerRobot);
+		Engine.saveFile(Engine.currentRobot);
 	}
 	
 	
