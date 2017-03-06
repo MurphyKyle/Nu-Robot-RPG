@@ -6,6 +6,7 @@ public class Map {
 	private Room[][] rooms;
 	private int xCoord;
 	private int yCoord;
+	
 
 	public Map(int difficulty) {
 		// choose random size for map
@@ -150,6 +151,14 @@ public class Map {
 		} else {
 			return false;
 		}
+	}
+	
+	public int getXCoord(){
+		return this.xCoord;
+	}
+	
+	public int getYCoord(){
+		return this.yCoord;
 	}
 
 	@Override

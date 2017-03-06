@@ -149,7 +149,7 @@ public class ViewControl {
 				
 				@Override
 				public void run() {
-					Engine.fight(player, enemy);
+					Engine.fight(Engine.currentRobot, enemy);
 				}
 			};
 			Timer t1 = new Timer();
