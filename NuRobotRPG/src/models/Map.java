@@ -172,7 +172,7 @@ public class Map {
 				if (x == xCoord && y == yCoord) {
 					bob.append("X");
 				} else {
-					bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : "");
+					bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
 					// ^ If its occupied "!" else if its a depot "D" else its
 					// just a space
 				}
