@@ -3,16 +3,14 @@ package models;
 public class Room {
 	private boolean isOccupied;
 	private boolean isDepot;
+	private boolean seen = false;
 
-	public void enterRoom(Robot player, int difficulty) {
-		if (this.isOccupied()) {
-			// Construct Enemy
-			Robot enemy = new Robot(difficulty);
-			// fight
-//			Engine.Fight(player, enemy);
-		} else if (this.isDepot()) {
-			// Depot Menu
-		}
+	public boolean isSeen() {
+		return seen;
+	}
+
+	public void setSeen(boolean seen) {
+		this.seen = seen;
 	}
 
 	public boolean isOccupied() {

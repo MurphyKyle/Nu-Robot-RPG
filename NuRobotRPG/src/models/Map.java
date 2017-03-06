@@ -6,7 +6,6 @@ public class Map {
 	private Room[][] rooms;
 	private int xCoord;
 	private int yCoord;
-	
 
 	public Map(int difficulty) {
 		// choose random size for map
@@ -23,7 +22,7 @@ public class Map {
 		// randomize depots of rooms
 		int depots = (int) Math.pow(size, 2) / 15 + 1;
 		int enemies;
-		
+
 		switch (difficulty) {
 		case 1:
 			enemies = (int) Math.pow(size, 2) / 3;
@@ -127,7 +126,7 @@ public class Map {
 	}
 
 	public boolean moveDown() {
-		if (yCoord < rooms.length-1) {
+		if (yCoord < rooms.length - 1) {
 			yCoord++;
 			return true;
 		} else {
@@ -145,19 +144,19 @@ public class Map {
 	}
 
 	public boolean moveRight() {
-		if (xCoord < rooms.length-1) {
+		if (xCoord < rooms.length - 1) {
 			xCoord++;
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	public int getXCoord(){
+
+	public int getXCoord() {
 		return this.xCoord;
 	}
-	
-	public int getYCoord(){
+
+	public int getYCoord() {
 		return this.yCoord;
 	}
 
@@ -172,9 +171,33 @@ public class Map {
 				if (x == xCoord && y == yCoord) {
 					bob.append("X");
 				} else {
-					bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
-					// ^ If its occupied "!" else if its a depot "D" else its
-					// just a space
+					if (xCoord + 1 == x && yCoord == y) {
+						rooms[x][y].setSeen(true);
+						bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+						// ^ If its occupied "!" else if its a depot "D" else
+						// its just a space
+					} else if (xCoord - 1 == x && yCoord == y) {
+						rooms[x][y].setSeen(true);
+						bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+						// ^ If its occupied "!" else if its a depot "D" else
+						// its just a space
+					} else if (xCoord == x && yCoord + 1== y) {
+						rooms[x][y].setSeen(true);
+						bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+						// ^ If its occupied "!" else if its a depot "D" else
+						// its just a space
+					} else if (xCoord == x && yCoord - 1== y) {
+						rooms[x][y].setSeen(true);
+						bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+						// ^ If its occupied "!" else if its a depot "D" else
+						// its just a space
+					} else if (this.rooms[x][y].isSeen()){
+						bob.append(r.isOccupied() ? "!" : r.isDepot() ? "D" : " ");
+						// ^ If its occupied "!" else if its a depot "D" else
+						// its just a space
+					}else {
+						bob.append("?");
+					}
 				}
 				bob.append(" ] ");
 			}
