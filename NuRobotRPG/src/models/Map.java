@@ -6,12 +6,13 @@ public class Map {
 	private Room[][] rooms;
 	private int xCoord;
 	private int yCoord;
-	
+	private int mapSize;
 
 	public Map(int difficulty) {
 		// choose random size for map
 		Random randy = new Random();
 		int size = randy.nextInt(11) + 10;
+		mapSize = size;
 		// construct rooms
 		rooms = new Room[size][size];
 		for (int x = 0; x < size; x++) {
@@ -159,6 +160,10 @@ public class Map {
 	
 	public int getYCoord(){
 		return this.yCoord;
+	}
+	
+	public int getMapSize(){
+		return this.mapSize;
 	}
 
 	@Override

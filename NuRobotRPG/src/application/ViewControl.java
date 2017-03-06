@@ -232,8 +232,12 @@ public class ViewControl {
 		List<Node> list = gp.getChildren();
 		Button btn = (Button) list.get(0);
 		btn.setDisable(!Engine.currentMap.moveUp());
+		if(Engine.currentMap.getYCoord() == 0){
+			btn.setDisable(true);
+		}
 		mapLabel.setText(Engine.currentMap.toString());
-		
+		Button btn2 = (Button) list.get(1);
+		btn2.setDisable(false);
 		checkRoom();
 	}
 	
@@ -244,8 +248,12 @@ public class ViewControl {
 		List<Node> list = gp.getChildren();
 		Button btn = (Button) list.get(1);
 		btn.setDisable(!Engine.currentMap.moveDown());
+		if(Engine.currentMap.getYCoord() == Engine.currentMap.getMapSize()-1){
+			btn.setDisable(true);
+		}
 		mapLabel.setText(Engine.currentMap.toString());
-		
+		Button btn2 = (Button) list.get(0);
+		btn2.setDisable(false);
 		checkRoom();
 	}
 	
@@ -256,8 +264,12 @@ public class ViewControl {
 		List<Node> list = gp.getChildren();
 		Button btn = (Button) list.get(2);
 		btn.setDisable(!Engine.currentMap.moveLeft());
+		if(Engine.currentMap.getXCoord() == 0){
+			btn.setDisable(true);
+		}
 		mapLabel.setText(Engine.currentMap.toString());
-		
+		Button btn2 = (Button) list.get(3);
+		btn2.setDisable(false);
 		checkRoom();
 	}
 	
@@ -268,8 +280,12 @@ public class ViewControl {
 		List<Node> list = gp.getChildren();
 		Button btn = (Button) list.get(3);
 		btn.setDisable(!Engine.currentMap.moveRight());
+		if(Engine.currentMap.getXCoord() == Engine.currentMap.getMapSize()-1){
+			btn.setDisable(true);
+		}
 		mapLabel.setText(Engine.currentMap.toString());
-		
+		Button btn2 = (Button) list.get(2);
+		btn2.setDisable(false);
 		checkRoom();
 	}
 	
