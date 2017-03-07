@@ -36,50 +36,6 @@ public class Engine {
 //		fight(r1, rotten);
 	}
 
-	public static void fight(Robot player, Robot enemy) {
-		int playerSpeed = player.getSpeed();
-		int enemySpeed = enemy.getSpeed();
-		do {
-			if (playerSpeed >= enemySpeed) {
-				// player turn
-				int damage = player.attack();
-				enemy.takeDamage(damage);
-				score += damage;
-				System.out.println("Player took " + damage + " damage");
-				enemySpeed += enemy.getSpeed();
-			} else {
-				// enemy turn
-				int damage = enemy.attack();
-				player.takeDamage(damage);
-				System.out.println("Enemy took " + damage + " damage");
-				playerSpeed += player.getSpeed();
-			}
-		} while (player.isAlive() && enemy.isAlive());
-		if (player.isAlive()) {
-			inventory.add(enemy.getDrop());
-			System.out.println(inventory);
-			System.out.println("Player Won");
-			player.takeDamage(-(player.getCurrentHp()/2));
-		} else {
-			// do what happens when a player dies
-			System.out.println("Player Lost");
-		}
-	}
-	
-	
-	public static void fight(Robot atk, Robot def, boolean user) {
-		int damage = atk.attack();
-		
-		def.takeDamage(damage);
-		
-		if (user) {
-			score += damage;
-		}
-		
-		ViewControl.setTextOutput(atk.getName() + " attacked and dealt " + damage + " damage to " + def.getName());		
-	}
-
-	
 //	public static void fight(Robot player, Robot enemy) {
 //		int playerSpeed = player.getSpeed();
 //		int enemySpeed = enemy.getSpeed();
@@ -103,11 +59,26 @@ public class Engine {
 //			inventory.add(enemy.getDrop());
 //			System.out.println(inventory);
 //			System.out.println("Player Won");
+//			player.takeDamage(-(player.getCurrentHp()/2));
 //		} else {
 //			// do what happens when a player dies
 //			System.out.println("Player Lost");
 //		}
 //	}
+	
+	
+	public static void fight(Robot atk, Robot def, boolean user) {
+		int damage = atk.attack();
+		
+		def.takeDamage(damage);
+		
+		if (user) {
+			score += damage;
+		}
+		
+		ViewControl.setTextOutput(atk.getName() + " attacked and dealt " + damage + " damage to " + def.getName());		
+	}
+
 
 	public static void saveFile(Robot current) {
 		File f = new File("NURobotSave.txt");

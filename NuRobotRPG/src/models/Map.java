@@ -6,10 +6,8 @@ public class Map {
 	private Room[][] rooms;
 	private int xCoord;
 	private int yCoord;
-<<<<<<< HEAD
 	private int mapSize;
-=======
->>>>>>> 35796b5be39304ebeaf4835e3e3fda9104b08371
+
 
 	public Map(int difficulty) {
 		// choose random size for map
