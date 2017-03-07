@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ScheduledExecutorService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -194,6 +194,21 @@ public class ViewControl {
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
 		mapLabel.setText(Engine.currentMap.toString());
+		
+//		This code should make a group of nodes that are a room. IDK what the location
+//		on the screen for them should be. Once it's been created you can make a new
+//		scene with root as its root. I think I did it a little off tho.
+		
+//		Here's the link I got it from : 
+//		http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
+		
+//		Group root = new Group();
+//		for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+//			for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+//				Node room = new Node(Engine.currentMap.getRooms()[x][y], horizontal location, vertical location);
+//				root.getChildren().add(room);
+//			}
+//		}
 	}
 	
 	
@@ -251,10 +266,6 @@ public class ViewControl {
 		theStage.show();
 	}
 	
-	
-	
-	
-	
 //	GameplayScreen - [2]
 	@FXML
 	public void moveUp() {
@@ -271,7 +282,6 @@ public class ViewControl {
 		checkRoom();
 	}
 	
-	
 	@FXML
 	public void moveDown() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
@@ -286,7 +296,6 @@ public class ViewControl {
 		btn2.setDisable(false);
 		checkRoom();
 	}
-	
 	
 	@FXML
 	public void moveLeft() {
@@ -303,7 +312,6 @@ public class ViewControl {
 		checkRoom();
 	}
 	
-	
 	@FXML
 	public void moveRight() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
@@ -319,17 +327,11 @@ public class ViewControl {
 		checkRoom();
 	}
 	
-	
-	
 //	combat screen
 	@FXML
 	public void attack() {
 		
 	}
-	
-	
-	
-	
 	
 //	depo screen
 	@FXML
@@ -341,7 +343,6 @@ public class ViewControl {
 	public void saveGame() {
 		Engine.saveFile(Engine.currentRobot);
 	}
-	
 	
 //	change parts screen
 	@FXML
