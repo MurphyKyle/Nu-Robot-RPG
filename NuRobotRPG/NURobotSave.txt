@@ -1,21 +1,9 @@
-Star Scream
-Head :: Byte-Reader Helm :: 4 :: UNCOMMON :: null :: No function
-Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Ballistic :: Attack with Ballistic
-Arm :: Plated Claw :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
-Torso :: Titanium Alloy Torso Unit :: 13 :: RARE :: Ballistic
-Leg :: Bionic Hopper :: 14 :: RARE :: Legs
-2
-Strike Freedom Gundam
-Head :: Byte-Reader Helm :: 4 :: UNCOMMON :: null :: No function
-Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Ballistic :: Attack with Ballistic
-Arm :: Plated Claw :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
-Torso :: Titanium Alloy Torso Unit :: 13 :: RARE :: Ballistic
-Leg :: Bionic Hopper :: 14 :: RARE :: Legs
-Star Scream
-Head :: Byte-Reader Helm :: 4 :: UNCOMMON :: null :: No function
-Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Ballistic :: Attack with Ballistic
-Arm :: Plated Claw :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
-Torso :: Titanium Alloy Torso Unit :: 13 :: RARE :: Ballistic
-Leg :: Bionic Hopper :: 14 :: RARE :: Legs
-1
-Arm :: Plated Brawlfist :: 7 :: COMMON :: Explosive :: Attack with Explosive
+Player
+Head :: Dealth-Gaze MK5 Sharkface :: 2 :: EXPERIMENTAL :: Explosive :: Attack with Explosive
+Arm :: Guerilla Grip Chassis :: 4 :: UNCOMMON :: Electricity :: Attack with Electricity
+Arm :: Guerilla Grip Chassis :: 5 :: UNCOMMON :: Fire :: Attack with Fire
+Torso :: Sentinel MK 2 Chassis :: 13 :: EXPERIMENTAL :: Ballistic
+Leg :: Cheetah Treads :: 17 :: RARE :: Treads
+0
+0
+0

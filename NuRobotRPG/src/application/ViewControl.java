@@ -77,7 +77,7 @@ public class ViewControl {
 	}
 	
 	
-	private void setOutputLabel() {
+	private static void setOutputLabel() {
 		outputLabel = (Label) theScene.lookup("#outputLabel");
 	}
 	
@@ -135,15 +135,17 @@ public class ViewControl {
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
 			// index 3 is combat
 			occupied = true;
+			previousScene = sceneList.get(2);
 			theStage.setScene(sceneList.get(3));
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
-			// index 4 is depot
+			previousScene = sceneList.get(2);
 			theStage.setScene(sceneList.get(4));
 		} else {
 			// the room should be empty
 			return;
 		}
 		
+		setOutputLabel();
 		theStage.show();
 		
 		if (occupied) {
@@ -183,6 +185,7 @@ public class ViewControl {
 			}
 		};
 		
+		
 		enemyT.schedule(enemyAtk, enemyDelay, enemyDelay);
 		userT.schedule(userAtk, atkDelay, atkDelay);
 		
@@ -221,6 +224,12 @@ public class ViewControl {
 		setPreviousScene();
 		theScene = sceneList.get(currentSceneIndex);
 		setOutputLabel();
+		
+		if (theScene.lookup("#createRobotBtn").isDisabled()) {
+			theScene.lookup("#contBtn").setDisable(true);
+			theScene.lookup("#createRobotBtn").setDisable(false);
+		}
+		
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();
@@ -233,9 +242,11 @@ public class ViewControl {
 		theScene = sceneList.get(currentSceneIndex);
 		setOutputLabel();
 		theStage.setScene(theScene);
+		theStage.setTitle("Start Game");
 		theScene.lookup("#createRobotBtn").setDisable(true);
 		theScene.lookup("#contBtn").setDisable(false);
-		theStage.setTitle("Start Game");
+		Engine.loadGame();
+		setTextOutput("Load complete");
 		theStage.show();
 	}
 	
@@ -342,6 +353,7 @@ public class ViewControl {
 	@FXML
 	public void saveGame() {
 		Engine.saveFile(Engine.currentRobot);
+		setTextOutput("Load complete");
 	}
 	
 //	change parts screen

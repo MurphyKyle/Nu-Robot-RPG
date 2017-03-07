@@ -140,7 +140,7 @@ public class Engine {
 				throw new FileNotFoundException("Save not complete.");
 			}
 		} catch (IOException e) {
-			System.out.println("Unsuccessful Save");
+			ViewControl.setTextOutput("Unsuccessful Save");
 		}
 	}
 
