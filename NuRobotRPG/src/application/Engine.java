@@ -180,6 +180,7 @@ public class Engine {
 	}
 
 	public static void loadGame() {
+		favorites.clear();
 		File f = new File("NURobotSave.txt");
 		if (f.exists() && f.isFile()) {
 			try {
