@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ScheduledExecutorService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -79,7 +79,7 @@ public class ViewControl {
 	}
 	
 	
-	private void setOutputLabel() {
+	private static void setOutputLabel() {
 		outputLabel = (Label) theScene.lookup("#outputLabel");
 	}
 	
@@ -137,6 +137,7 @@ public class ViewControl {
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
 			// index 3 is combat
 			occupied = true;
+			previousScene = sceneList.get(2);
 			theStage.setScene(sceneList.get(3));
 			Button act1 = (Button) theStage.getScene().lookup("#action1");
 			act1.setText(Engine.currentRobot.getActionMenu().get(0));
@@ -155,15 +156,20 @@ public class ViewControl {
 //			ObservableList<String> items = FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
 //			cb.setItems(items);
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
+<<<<<<< HEAD
 			// index 4 is depot
 			currentSceneIndex = 2;
 			setPreviousScene();
+=======
+			previousScene = sceneList.get(2);
+>>>>>>> origin/master
 			theStage.setScene(sceneList.get(4));
 		} else {
 			// the room should be empty
 			return;
 		}
 		
+		setOutputLabel();
 		theStage.show();
 		
 		if (occupied) {
@@ -203,6 +209,7 @@ public class ViewControl {
 			}
 		};
 		
+		
 		enemyT.schedule(enemyAtk, enemyDelay, enemyDelay);
 		userT.schedule(userAtk, atkDelay, atkDelay);
 		
@@ -214,6 +221,21 @@ public class ViewControl {
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
 		mapLabel.setText(Engine.currentMap.toString());
+		
+//		This code should make a group of nodes that are a room. IDK what the location
+//		on the screen for them should be. Once it's been created you can make a new
+//		scene with root as its root. I think I did it a little off tho.
+		
+//		Here's the link I got it from : 
+//		http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
+		
+//		Group root = new Group();
+//		for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+//			for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+//				Node room = new Node(Engine.currentMap.getRooms()[x][y], horizontal location, vertical location);
+//				root.getChildren().add(room);
+//			}
+//		}
 	}
 	
 	
@@ -226,6 +248,12 @@ public class ViewControl {
 		setPreviousScene();
 		theScene = sceneList.get(currentSceneIndex);
 		setOutputLabel();
+		
+		if (theScene.lookup("#createRobotBtn").isDisabled()) {
+			theScene.lookup("#contBtn").setDisable(true);
+			theScene.lookup("#createRobotBtn").setDisable(false);
+		}
+		
 		theStage.setScene(theScene);
 		theStage.setTitle("Create New Game");
 		theStage.show();
@@ -238,9 +266,11 @@ public class ViewControl {
 		theScene = sceneList.get(currentSceneIndex);
 		setOutputLabel();
 		theStage.setScene(theScene);
+		theStage.setTitle("Start Game");
 		theScene.lookup("#createRobotBtn").setDisable(true);
 		theScene.lookup("#contBtn").setDisable(false);
-		theStage.setTitle("Start Game");
+		Engine.loadGame();
+		setTextOutput("Load complete");
 		theStage.show();
 	}
 	
@@ -271,10 +301,6 @@ public class ViewControl {
 		theStage.show();
 	}
 	
-	
-	
-	
-	
 //	GameplayScreen - [2]
 	@FXML
 	public void moveUp() {
@@ -291,7 +317,6 @@ public class ViewControl {
 		checkRoom();
 	}
 	
-	
 	@FXML
 	public void moveDown() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
@@ -306,7 +331,6 @@ public class ViewControl {
 		btn2.setDisable(false);
 		checkRoom();
 	}
-	
 	
 	@FXML
 	public void moveLeft() {
@@ -323,7 +347,6 @@ public class ViewControl {
 		checkRoom();
 	}
 	
-	
 	@FXML
 	public void moveRight() {
 		GridPane gp = (GridPane) theScene.lookup("#navGrid");
@@ -339,15 +362,21 @@ public class ViewControl {
 		checkRoom();
 	}
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> origin/master
 //	combat screen
 	@FXML
 	public void attack() {
 		
 	}
 	
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> origin/master
 //	depo screen
 	@FXML
 	public void changeParts() {
@@ -357,8 +386,8 @@ public class ViewControl {
 	@FXML
 	public void saveGame() {
 		Engine.saveFile(Engine.currentRobot);
+		setTextOutput("Load complete");
 	}
-	
 	
 //	change parts screen
 	@FXML

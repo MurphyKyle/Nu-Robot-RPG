@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Player
 Head :: Dealth-Gaze MK2 Sharkface :: 3 :: UNCOMMON :: null :: No function
 Arm :: Composite Tri-finger :: 6 :: COMMON :: Explosive :: Attack with Explosive
@@ -6,4 +7,14 @@ Torso :: Segmented Thorax :: 11 :: COMMON :: Beam
 Leg :: Master Treads :: 17 :: COMMON :: Treads
 0
 0
+=======
+Player
+Head :: Dealth-Gaze MK5 Sharkface :: 2 :: EXPERIMENTAL :: Explosive :: Attack with Explosive
+Arm :: Guerilla Grip Chassis :: 4 :: UNCOMMON :: Electricity :: Attack with Electricity
+Arm :: Guerilla Grip Chassis :: 5 :: UNCOMMON :: Fire :: Attack with Fire
+Torso :: Sentinel MK 2 Chassis :: 13 :: EXPERIMENTAL :: Ballistic
+Leg :: Cheetah Treads :: 17 :: RARE :: Treads
+0
+0
+>>>>>>> origin/master
 0

@@ -23,10 +23,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="upBtn" mnemonicParsing="false" onAction="#moveUp" prefHeight="36.0" prefWidth="51.0" text="Up" GridPane.columnIndex="1" />
-            <Button fx:id="downBtn" mnemonicParsing="false" onAction="#moveDown" prefHeight="36.0" prefWidth="51.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="leftBtn" mnemonicParsing="false" onAction="#moveLeft" prefHeight="36.0" prefWidth="51.0" text="Left" GridPane.rowIndex="1" />
-            <Button fx:id="rightBtn" mnemonicParsing="false" onAction="#moveRight" prefHeight="36.0" prefWidth="51.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="upBtn" mnemonicParsing="false" onAction="#moveUp" onKeyPressed="#moveUp" prefHeight="36.0" prefWidth="51.0" text="Up" GridPane.columnIndex="1" />
+            <Button fx:id="downBtn" mnemonicParsing="false" onAction="#moveDown" onKeyPressed="#moveDown" prefHeight="36.0" prefWidth="51.0" text="Down" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="leftBtn" mnemonicParsing="false" onAction="#moveLeft" onKeyPressed="#moveLeft" prefHeight="36.0" prefWidth="51.0" text="Left" GridPane.rowIndex="1" />
+            <Button fx:id="rightBtn" mnemonicParsing="false" onAction="#moveRight" onKeyPressed="#moveRight" prefHeight="36.0" prefWidth="51.0" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
