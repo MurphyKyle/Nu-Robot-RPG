@@ -156,13 +156,10 @@ public class ViewControl {
 //			ObservableList<String> items = FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
 //			cb.setItems(items);
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
-<<<<<<< HEAD
 			// index 4 is depot
 			currentSceneIndex = 2;
 			setPreviousScene();
-=======
 			previousScene = sceneList.get(2);
->>>>>>> origin/master
 			theStage.setScene(sceneList.get(4));
 		} else {
 			// the room should be empty
@@ -362,21 +359,12 @@ public class ViewControl {
 		checkRoom();
 	}
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> origin/master
 //	combat screen
 	@FXML
 	public void attack() {
 		
 	}
 	
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> origin/master
 //	depo screen
 	@FXML
 	public void changeParts() {
