@@ -35,7 +35,6 @@ public class ViewControl {
 	private static Label mapLabel;
 	private static AnchorPane mapPane;
 
-
 	private static int difficulty;
 	private static ArrayList<Scene> sceneList = new ArrayList<>();
 	private static int currentSceneIndex = 0;
@@ -165,40 +164,52 @@ public class ViewControl {
 
 	private void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
-		
-//		This code should make a group of nodes that are a room. IDK what the location
-//		on the screen for them should be. Once it's been created you can make a new
-//		scene with root as its root. I think I did it a little off tho.
-		
-//		Here's the link I got it from : 
-//		http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
-		
-		for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
-			for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+
+		// This code should make a group of rectangles that are a room.
+		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
 				Rectangle rect = new Rectangle(25, 25);
-				if(x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
-					rect.setFill(Color.GREEN);
-				} else if(Engine.currentMap.getRooms()[x][y].isDepot()) {
-					rect.setFill(Color.BLUE);
-				} else if(Engine.currentMap.getRooms()[x][y].isOccupied()) {
-					rect.setFill(Color.RED);
+				// If it is within range set seen to true
+				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				}
+				// if it has been seen at some point, fill it with the right color
+				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
+					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
+						rect.setFill(Color.BLUE);
+					} else if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
+						rect.setFill(Color.RED);
+					} else {
+						rect.setFill(Color.WHITE);
+					}
 				} else {
-					rect.setFill(Color.WHITE);
+					rect.setFill(Color.SLATEGRAY);
+				}
+				if (x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
+					rect.setFill(Color.GREEN);
 				}
 				rect.setStroke(Color.BLACK);
-				rect.setLayoutX(x*25);
-				rect.setLayoutY(y*25);
+				rect.setLayoutX(x * 25);
+				rect.setLayoutY(y * 25);
 				mapPane.getChildren().addAll(rect);
 			}
 		}
 	}
-	
+
 	private void startAFight() {
 		Timer enemyT = new Timer();
 		Timer userT = new Timer();
 		Robot enemy = new Robot(difficulty);
-//		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#playerCounterBar");
-//		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#enemyCounterBar");
+		// playerCounterBar = (ProgressBar)
+		// theStage.getScene().lookup("#playerCounterBar");
+		// playerCounterBar = (ProgressBar)
+		// theStage.getScene().lookup("#enemyCounterBar");
 
 		long enemyDelay = 2000;
 		long atkDelay = 2000;
@@ -230,7 +241,7 @@ public class ViewControl {
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
 		updateMap();
-		
+
 	}
 
 	// startup screen - [0]
@@ -351,7 +362,7 @@ public class ViewControl {
 		mapLabel.setText(Engine.currentMap.toString());
 		Button btn2 = (Button) list.get(2);
 		btn2.setDisable(false);
-		checkRoom();		
+		checkRoom();
 		updateMap();
 	}
 
