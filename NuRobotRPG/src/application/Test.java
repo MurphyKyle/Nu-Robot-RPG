@@ -12,7 +12,7 @@ public class Test {
 		Engine.favorites.put("ALpha", new Robot(1));
 		Engine.favorites.put(r1.getName() ,r1);
 		Engine.inventory.add(new Arm(2));
-		Engine.saveFile(r1);
+		Engine.saveFile();
 		Engine.loadGame();
 		System.out.println(Engine.currentRobot.toString());
 		for(String k : Engine.favorites.keySet()){

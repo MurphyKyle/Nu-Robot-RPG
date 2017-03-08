@@ -80,24 +80,24 @@ public class Engine {
 	}
 
 
-	public static void saveFile(Robot current) {
+	public static void saveFile() {
 		File f = new File("NURobotSave.txt");
 		try {
 			f.createNewFile();
 			if (f.isFile() && f.canWrite()) {
 				FileWriter write = new FileWriter(f);
 				BufferedWriter out = new BufferedWriter(write);
-				out.write(current.getName());
+				out.write(currentRobot.getName());
 				out.newLine();
-				out.write(saveParts(current.getHead()));
-				for (Arm a : current.getArms()) {
+				out.write(saveParts(currentRobot.getHead()));
+				for (Arm a : currentRobot.getArms()) {
 					out.newLine();
 					out.write(saveParts(a));
 				}
 				out.newLine();
-				out.write(saveParts(current.getTorso()));
+				out.write(saveParts(currentRobot.getTorso()));
 				out.newLine();
-				out.write(saveParts(current.getLegs()));
+				out.write(saveParts(currentRobot.getLegs()));
 				out.newLine();
 				if (favorites.size() > 0) {
 					Integer size = favorites.size();
@@ -107,15 +107,15 @@ public class Engine {
 						out.newLine();
 						out.write(r.getName());
 						out.newLine();
-						out.write(saveParts(current.getHead()));
-						for (Arm a : current.getArms()) {
+						out.write(saveParts(r.getHead()));
+						for (Arm a : r.getArms()) {
 							out.newLine();
 							out.write(saveParts(a));
 						}
 						out.newLine();
-						out.write(saveParts(current.getTorso()));
+						out.write(saveParts(r.getTorso()));
 						out.newLine();
-						out.write(saveParts(current.getLegs()));
+						out.write(saveParts(r.getLegs()));
 					}
 				} else {
 					out.write("0");

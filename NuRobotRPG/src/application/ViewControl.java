@@ -373,7 +373,7 @@ public class ViewControl {
 	
 	@FXML
 	public void saveGame() {
-		Engine.saveFile(Engine.currentRobot);
+		Engine.saveFile();
 		setTextOutput("Load complete");
 	}
 	
