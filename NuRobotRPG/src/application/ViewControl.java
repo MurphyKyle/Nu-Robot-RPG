@@ -6,20 +6,18 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -35,10 +33,10 @@ public class ViewControl {
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
 	private static Label mapLabel;
-	private static ProgressBar playerCounterBar;
-	private static ProgressBar enemyCounterBar;
+	private static AnchorPane mapPane;
 
-	private int difficulty;
+
+	private static int difficulty;
 	private static ArrayList<Scene> sceneList = new ArrayList<>();
 	private static int currentSceneIndex = 0;
 	private static int prevSceneIndex = 0;
@@ -163,15 +161,44 @@ public class ViewControl {
 		if (occupied) {
 			startAFight();
 		}
-
 	}
 
+	private void updateMap() {
+		mapPane = (AnchorPane) theScene.lookup("#mapPane");
+		
+//		This code should make a group of nodes that are a room. IDK what the location
+//		on the screen for them should be. Once it's been created you can make a new
+//		scene with root as its root. I think I did it a little off tho.
+		
+//		Here's the link I got it from : 
+//		http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
+		
+		for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+				Rectangle rect = new Rectangle(25, 25);
+				if(x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
+					rect.setFill(Color.GREEN);
+				} else if(Engine.currentMap.getRooms()[x][y].isDepot()) {
+					rect.setFill(Color.BLUE);
+				} else if(Engine.currentMap.getRooms()[x][y].isOccupied()) {
+					rect.setFill(Color.RED);
+				} else {
+					rect.setFill(Color.WHITE);
+				}
+				rect.setStroke(Color.BLACK);
+				rect.setLayoutX(x*25);
+				rect.setLayoutY(y*25);
+				mapPane.getChildren().addAll(rect);
+			}
+		}
+	}
+	
 	private void startAFight() {
 		Timer enemyT = new Timer();
 		Timer userT = new Timer();
 		Robot enemy = new Robot(difficulty);
-		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#playerCounterBar");
-		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#enemyCounterBar");
+//		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#playerCounterBar");
+//		playerCounterBar = (ProgressBar) theStage.getScene().lookup("#enemyCounterBar");
 
 		long enemyDelay = 2000;
 		long atkDelay = 2000;
@@ -202,34 +229,8 @@ public class ViewControl {
 	@FXML
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
-		mapLabel.setText(Engine.currentMap.toString());
+		updateMap();
 		
-//		This code should make a group of nodes that are a room. IDK what the location
-//		on the screen for them should be. Once it's been created you can make a new
-//		scene with root as its root. I think I did it a little off tho.
-		
-//		Here's the link I got it from : 
-//		http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
-		
-		for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
-			for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
-				Rectangle rect = new Rectangle(25, 25);
-				if(x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
-					rect.setFill(Color.GREEN);
-				}
-				if(Engine.currentMap.getRooms()[x][y].isDepot()) {
-					rect.setFill(Color.BLUE);
-				} else if(Engine.currentMap.getRooms()[x][y].isOccupied()) {
-					rect.setFill(Color.RED);
-				} else {
-					rect.setFill(Color.WHITE);
-				}
-				rect.setStroke(Color.BLACK);
-				rect.setLayoutX(x*25);
-				rect.setLayoutY(y*25);
-				mapLabel.getChildren().addAll(rect);
-			}
-		}
 	}
 
 	// startup screen - [0]
@@ -242,6 +243,7 @@ public class ViewControl {
 		if (theScene.lookup("#createRobotBtn").isDisabled()) {
 			theScene.lookup("#contBtn").setDisable(true);
 			theScene.lookup("#createRobotBtn").setDisable(false);
+			setTextOutput("");
 		}
 
 		theStage.setScene(theScene);
@@ -302,6 +304,7 @@ public class ViewControl {
 		Button btn2 = (Button) list.get(1);
 		btn2.setDisable(false);
 		checkRoom();
+		updateMap();
 	}
 
 	@FXML
@@ -317,6 +320,7 @@ public class ViewControl {
 		Button btn2 = (Button) list.get(0);
 		btn2.setDisable(false);
 		checkRoom();
+		updateMap();
 	}
 
 	@FXML
@@ -332,6 +336,7 @@ public class ViewControl {
 		Button btn2 = (Button) list.get(3);
 		btn2.setDisable(false);
 		checkRoom();
+		updateMap();
 	}
 
 	@FXML
@@ -346,7 +351,8 @@ public class ViewControl {
 		mapLabel.setText(Engine.currentMap.toString());
 		Button btn2 = (Button) list.get(2);
 		btn2.setDisable(false);
-		checkRoom();
+		checkRoom();		
+		updateMap();
 	}
 
 	// combat screen
@@ -364,7 +370,7 @@ public class ViewControl {
 	@FXML
 	public void saveGame() {
 		Engine.saveFile();
-		setTextOutput("Load complete");
+		setTextOutput("Save complete");
 	}
 
 	// change parts screen

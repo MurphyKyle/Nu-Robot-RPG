@@ -1,22 +1,8 @@
-Galvatron
-Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
-Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
-Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
-2
-Iron Hide
-Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
-Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
-Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
-Galvatron
-Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
-Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
-Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
-1
-Arm :: Durasteel Brawlfist :: 5 :: COMMON :: Beam :: Attack with Beam
+Player
+Head :: V-Gazer Hawkeye :: 3 :: RARE :: null :: null
+Arm :: V-Gazer Hawkeye :: 3 :: RARE :: Fire :: No function
+Torso :: Platinum Torso Unit :: 14 :: UNCOMMON :: Beam
+Leg :: Kick-Master MK2 Treads :: 14 :: UNCOMMON :: Legs
+0
+0
 0
