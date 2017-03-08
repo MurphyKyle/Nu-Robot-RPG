@@ -7,11 +7,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ScheduledExecutorService;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Toggle;
@@ -46,7 +49,6 @@ public class ViewControl {
 	private static String combatScreen = "/view/CombatScreen.fxml";
 	private static String depotScreen = "/view/DepotScreen.fxml";	
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
-	
 	
 	
 	
@@ -136,8 +138,26 @@ public class ViewControl {
 			// index 3 is combat
 			occupied = true;
 			theStage.setScene(sceneList.get(3));
+			Button act1 = (Button) theStage.getScene().lookup("#action1");
+			act1.setText(Engine.currentRobot.getActionMenu().get(0));
+			act1.setDisable(true);
+			Button act2 = (Button) theStage.getScene().lookup("#action2");
+			act2.setText(Engine.currentRobot.getActionMenu().get(1));
+			act2.setDisable(true);
+			Button act3 =  (Button) theStage.getScene().lookup("#action3");
+			if(Engine.currentRobot.getActionMenu().size() == 2){
+				act3.setText("No Function");
+				act3.setDisable(true);
+			}else{
+				act3.setText(Engine.currentRobot.getActionMenu().get(2));
+			}
+//			ChoiceBox<String> cb = (ChoiceBox<String>) theStage.getScene().lookup("#actionMenu");
+//			ObservableList<String> items = FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
+//			cb.setItems(items);
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
+			currentSceneIndex = 2;
+			setPreviousScene();
 			theStage.setScene(sceneList.get(4));
 		} else {
 			// the room should be empty
@@ -320,14 +340,11 @@ public class ViewControl {
 	}
 	
 	
-	
 //	combat screen
 	@FXML
 	public void attack() {
 		
 	}
-	
-	
 	
 	
 	
