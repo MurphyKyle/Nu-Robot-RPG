@@ -1,19 +1,22 @@
-Player
-
-Head :: Dealth-Gaze MK2 Sharkface :: 3 :: UNCOMMON :: null :: No function
-
-Arm :: Composite Tri-finger :: 6 :: COMMON :: Explosive :: Attack with Explosive
-
-Arm :: Durasteel Palm Cannon :: 6 :: COMMON :: Fire :: Attack with Fire
-
-Torso :: Segmented Thorax :: 11 :: COMMON :: Beam
-
-Leg :: Master Treads :: 17 :: COMMON :: Treads
-
-
-Player
-Head :: Dealth-Gaze MK5 Sharkface :: 2 :: EXPERIMENTAL :: Explosive :: Attack with Explosive
-Arm :: Guerilla Grip Chassis :: 4 :: UNCOMMON :: Electricity :: Attack with Electricity
-Arm :: Guerilla Grip Chassis :: 5 :: UNCOMMON :: Fire :: Attack with Fire
-Torso :: Sentinel MK 2 Chassis :: 13 :: EXPERIMENTAL :: Ballistic
-Leg :: Cheetah Treads :: 17 :: RARE :: Treads
+Galvatron
+Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
+Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
+Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
+Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
+Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
+2
+Iron Hide
+Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
+Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
+Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
+Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
+Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
+Galvatron
+Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
+Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
+Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
+Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
+Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
+1
+Arm :: Durasteel Brawlfist :: 5 :: COMMON :: Beam :: Attack with Beam
+0

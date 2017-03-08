@@ -44,8 +44,8 @@ public class Robot {
 	}
 
 	public Robot(String input) {
-		this(input.split("\n")[0], new Torso(input.split("\n")[input.split("\n").length - 3]), new ArrayList<Arm>(),
-				new Head(input.split("\n")[input.split("\n").length - 2]),
+		this(input.split("\n")[0], new Torso(input.split("\n")[input.split("\n").length - 2]), new ArrayList<Arm>(),
+				new Head(input.split("\n")[1]),
 				new Leg(input.split("\n")[input.split("\n").length - 1]));
 		ArrayList<Arm> arms = new ArrayList<Arm>();
 		for (int i = 1; i < input.split("\n").length - 4; i++) {

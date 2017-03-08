@@ -1,5 +1,6 @@
 package application;
 
+import models.*;
 public class Test {
 	
 	public static void main(String[] args){
@@ -7,15 +8,15 @@ public class Test {
 	}
 	
 	public static void run() {
-//		Robot r1 = new Robot(3);
-//		System.out.println(r1.toString());
-//		Engine.favorites.add(new Robot(1));
-//		Engine.favorites.add(r1);
-//		Engine.inventory.add(new Arm(2));
-//		Engine.saveFile(r1);
-//		Engine.loadGame();
-//		System.out.println(Engine.currentRobot.toString());
-//		System.out.println(Engine.favorites.get(0).toString());
-//		System.out.println(Engine.inventory.get(0).toString());
+		Robot r1 = new Robot(3);
+		Engine.favorites.put("ALpha", new Robot(1));
+		Engine.favorites.put(r1.getName() ,r1);
+		Engine.inventory.add(new Arm(2));
+		Engine.saveFile(r1);
+		Engine.loadGame();
+		System.out.println(Engine.currentRobot.toString());
+		for(String k : Engine.favorites.keySet()){
+			System.out.println(Engine.favorites.get(k));
+		}
 	}
 }
