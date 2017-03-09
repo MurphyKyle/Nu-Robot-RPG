@@ -196,6 +196,8 @@ public class Engine implements Runnable {
 						}
 					}
 				}
+				line = reader.readLine();
+				score = Integer.parseInt(line);
 				reader.close();
 			} catch (IOException e) {
 

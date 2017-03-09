@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -464,7 +465,14 @@ public class ViewControl {
 	public void createRobot() {
 		getDifficulty();
 		Engine.currentRobot = new Robot(difficulty);
-		Engine.currentRobot.setName("Player");
+		TextField nameField = (TextField) theStage.getScene().lookup("#txtName");
+		String roboName = nameField.getText();
+		
+		if (roboName == null || roboName.isEmpty()) {;
+			roboName = "Player";	
+		}
+		
+		Engine.currentRobot.setName(roboName);
 		setTextOutput(Engine.currentRobot.toString());
 		theStage.getScene().lookup("#contBtn").setDisable(false);
 	}

@@ -1,20 +1,11 @@
 Player
-Head :: V-Gazer Sharkface :: 2 :: COMMON :: null :: null
-Arm :: Composite Brawlfist :: 7 :: COMMON :: Electricity :: Attack with Electricity
-Arm :: Plated Digihand :: 7 :: COMMON :: Beam :: Attack with Beam
-Torso :: Titanium Alloy Fuselage Core :: 10 :: COMMON :: Ballistic
-Leg :: Master Treads :: 17 :: UNCOMMON :: Legs
+Head :: Dealth-Gaze MK2 Dulleyes :: 3 :: COMMON :: null :: No function
+Arm :: Pheonix MK 1 Brawlfist :: 5 :: COMMON :: Ballistic :: Attack with Ballistic
+Arm :: Pheonix MK 1 Brawlfist :: 4 :: COMMON :: Beam :: Attack with Beam
+Torso :: Fission-Powered Sprocket Frame :: 10 :: UNCOMMON :: Ballistic
+Leg :: Booster Striker :: 13 :: COMMON :: Legs
 0
-11
-Torso :: Hyperpneumatic Torso Unit :: 13 :: COMMON :: Beam
-Arm :: Durasteel Grip Chassis :: 6 :: COMMON :: Explosive :: Attack with Explosive
-Leg :: Master Hopper :: 11 :: UNCOMMON :: Legs
-Arm :: Hydraulic Digihand :: 5 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Variable-Cored Digihand :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
-Torso :: Hyperpneumatic Torso Unit :: 13 :: COMMON :: Beam
-Arm :: Durasteel Grip Chassis :: 6 :: COMMON :: Explosive :: Attack with Explosive
-Leg :: Master Hopper :: 11 :: UNCOMMON :: Legs
-Arm :: Hydraulic Digihand :: 5 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Variable-Cored Digihand :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
-Arm :: Plated Brawlfist :: 5 :: UNCOMMON :: Beam :: Attack with Beam
-448
+2
+Arm :: Durasteel Mechacarpus :: 5 :: COMMON :: Electricity :: Attack with Electricity
+Torso :: Sentinel MK 1 Fuselage Core :: 12 :: UNCOMMON :: Ballistic
+309
