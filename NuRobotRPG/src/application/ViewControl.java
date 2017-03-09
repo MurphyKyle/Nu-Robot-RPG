@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+=======
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,7 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import models.Map;
 import models.Robot;
@@ -27,10 +33,16 @@ public class ViewControl {
 	private static Scene previousScene;
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
+<<<<<<< HEAD
 	private static Label mapLabel;
 
 	private int difficulty;
 	private Robot enemyBot;
+=======
+	private static AnchorPane mapPane;
+
+	private static int difficulty;
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 	private static ArrayList<Scene> sceneList = new ArrayList<>();
 	private static int currentSceneIndex = 0;
 	private static int prevSceneIndex = 0;
@@ -41,8 +53,11 @@ public class ViewControl {
 	private static String combatScreen = "/view/CombatScreen.fxml";
 	private static String depotScreen = "/view/DepotScreen.fxml";
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
+<<<<<<< HEAD
 	private CombatEngine combat;
 	private static int action = -1;
+=======
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 
 	// general methods
 	public void setScenes() throws IOException {
@@ -72,7 +87,15 @@ public class ViewControl {
 
 	public void goBack() {
 		if (currentSceneIndex >= 1) {
-			theStage.setScene(previousScene);
+			theScene = previousScene;
+			theStage.setScene(theScene);
+			if (previousScene.equals(sceneList.get(2))) {
+				updateMap();
+//				this should solve a problem where you cannot go back more than twice from a depot
+				prevSceneIndex = 1;
+				currentSceneIndex = 2;
+			}
+			
 			if (currentSceneIndex <= 1) {
 				prevSceneIndex = 0;
 			} else {
@@ -117,11 +140,18 @@ public class ViewControl {
 		Room[][] map = Engine.currentMap.getRooms();
 		// load appropriate screen if it is
 
+<<<<<<< HEAD
+=======
+		
+//		if theres an enemy
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
 			// index 3 is combat
 			occupied = true;
 			previousScene = sceneList.get(2);
-			theStage.setScene(sceneList.get(3));
+			theScene = sceneList.get(3);
+			setOutputLabel();
+			theStage.setScene(theScene);
 			Button act1 = (Button) theStage.getScene().lookup("#action1");
 			act1.setText(Engine.currentRobot.getActionMenu().get(0));
 			act1.setDisable(true);
@@ -135,18 +165,36 @@ public class ViewControl {
 			} else {
 				act3.setText(Engine.currentRobot.getActionMenu().get(2));
 			}
+<<<<<<< HEAD
 			enemyBot = new Robot(difficulty);
+=======
+			// ChoiceBox<String> cb = (ChoiceBox<String>)
+			// theStage.getScene().lookup("#actionMenu");
+			// ObservableList<String> items =
+			// FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
+			// cb.setItems(items);
+//		if there isn't an enemy but there is a depot
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
-			currentSceneIndex = 2;
-			setPreviousScene();
+//			currentSceneIndex = 2;
+//			setPreviousScene();
 			previousScene = sceneList.get(2);
+<<<<<<< HEAD
 			Engine.currentRobot.setCurrentHp(-1*Engine.currentRobot.getMaxHp());
 			theStage.setScene(sceneList.get(4));
+=======
+			theScene = sceneList.get(4);
+			setOutputLabel();
+			setTextOutput("You made it to a checkpoint! Please pick an option:");
+			theStage.setScene(theScene);
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		} else {
 			// the room should be empty
+			updateMap();
 			return;
 		}
+<<<<<<< HEAD
 
 		setOutputLabel();
 		theStage.show();
@@ -286,10 +334,64 @@ public class ViewControl {
 		}
 		action = 2;
 	}
+=======
+		
+//		setTextOutput("");
+		setOutputLabel();
+		theStage.show();
+
+		if (occupied) {
+
+			updateMap();
+		}
+	}
+
+	private void updateMap() {
+		mapPane = (AnchorPane) theScene.lookup("#mapPane");
+
+		// This code should make a group of rectangles that are a room.
+		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+				Rectangle rect = new Rectangle(25, 25);
+				// If it is within range set seen to true
+				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				}
+				// if it has been seen at some point, fill it with the right color
+				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
+					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
+						rect.setFill(Color.BLUE);
+					} else if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
+						rect.setFill(Color.RED);
+					} else {
+						rect.setFill(Color.WHITE);
+					}
+				} else {
+					rect.setFill(Color.SLATEGRAY);
+				}
+				if (x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
+					rect.setFill(Color.GREEN);
+				}
+				rect.setStroke(Color.BLACK);
+				rect.setLayoutX(x * 25);
+				rect.setLayoutY(y * 25);
+				mapPane.getChildren().addAll(rect);
+			}
+		}
+	}
+
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 
 	@FXML
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
+<<<<<<< HEAD
 		mapLabel.setText(Engine.currentMap.toString());
 
 		// This code should make a group of nodes that are a room. IDK what the
@@ -309,6 +411,10 @@ public class ViewControl {
 		// root.getChildren().add(room);
 		// }
 		// }
+=======
+		updateMap();
+
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 	}
 
 	// startup screen - [0]
@@ -321,6 +427,7 @@ public class ViewControl {
 		if (theScene.lookup("#createRobotBtn").isDisabled()) {
 			theScene.lookup("#contBtn").setDisable(true);
 			theScene.lookup("#createRobotBtn").setDisable(false);
+			setTextOutput("");
 		}
 
 		theStage.setScene(theScene);
@@ -360,10 +467,14 @@ public class ViewControl {
 		setOutputLabel();
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay");
+<<<<<<< HEAD
 
 		mapLabel = (Label) theScene.lookup("#mapLabel");
+=======
+		
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		Engine.currentMap = new Map(difficulty);
-		mapLabel.setText(Engine.currentMap.toString());
+		updateMap();
 		theStage.show();
 	}
 
@@ -377,7 +488,6 @@ public class ViewControl {
 		if (Engine.currentMap.getYCoord() == 0) {
 			btn.setDisable(true);
 		}
-		mapLabel.setText(Engine.currentMap.toString());
 		Button btn2 = (Button) list.get(1);
 		btn2.setDisable(false);
 		checkRoom();
@@ -392,7 +502,6 @@ public class ViewControl {
 		if (Engine.currentMap.getYCoord() == Engine.currentMap.getMapSize() - 1) {
 			btn.setDisable(true);
 		}
-		mapLabel.setText(Engine.currentMap.toString());
 		Button btn2 = (Button) list.get(0);
 		btn2.setDisable(false);
 		checkRoom();
@@ -407,7 +516,6 @@ public class ViewControl {
 		if (Engine.currentMap.getXCoord() == 0) {
 			btn.setDisable(true);
 		}
-		mapLabel.setText(Engine.currentMap.toString());
 		Button btn2 = (Button) list.get(3);
 		btn2.setDisable(false);
 		checkRoom();
@@ -422,22 +530,42 @@ public class ViewControl {
 		if (Engine.currentMap.getXCoord() == Engine.currentMap.getMapSize() - 1) {
 			btn.setDisable(true);
 		}
-		mapLabel.setText(Engine.currentMap.toString());
 		Button btn2 = (Button) list.get(2);
 		btn2.setDisable(false);
 		checkRoom();
 	}
 
+<<<<<<< HEAD
 	// depo screen
 	@FXML
 	public void changeParts() {
 
+=======
+	// combat screen
+	@FXML
+	public void attack() {
+
+	}
+
+	// depo screen
+	@FXML
+	public void changeParts() {
+		System.out.println("Change parts button smash");
+		
+		previousScene = sceneList.get(2);
+		theScene = sceneList.get(4);
+		setOutputLabel();
+>>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 	}
 
 	@FXML
 	public void saveGame() {
 		Engine.saveFile();
-		setTextOutput("Load complete");
+		setTextOutput("Save complete");
+		
+		previousScene = sceneList.get(2);
+		theScene = sceneList.get(4);
+		setOutputLabel();
 	}
 
 	// change parts screen
