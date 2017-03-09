@@ -9,11 +9,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import enums.*;
 import models.*;
 
-public class Engine {
+public class Engine implements Runnable {
 
 	public static HashMap<String, Robot> favorites = new HashMap<>();
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
@@ -21,64 +20,9 @@ public class Engine {
 	public static Map currentMap;
 	public static int score = 0;
 
-	public static void run(Robot r1, int difficulty) {
-		Robot robbie = new Robot(3);
-
-		String speed = Integer.toString(robbie.getSpeed());
-		ViewControl.setTextOutput(r1.toString() + "Speed: " + speed);
-
-		System.out.println(robbie);
-		System.out.println(robbie.getSpeed());
-
-		Robot rotten = new Robot(3);
-		System.out.println(rotten);
-		System.out.println(rotten.getSpeed());
-//		fight(r1, rotten);
+	public static void run(Robot enemy) {
+		
 	}
-
-//	public static void fight(Robot player, Robot enemy) {
-//		int playerSpeed = player.getSpeed();
-//		int enemySpeed = enemy.getSpeed();
-//		do {
-//			if (playerSpeed >= enemySpeed) {
-//				// player turn
-//				int damage = player.attack();
-//				enemy.takeDamage(damage);
-//				score += damage;
-//				System.out.println("Player took " + damage + " damage");
-//				enemySpeed += enemy.getSpeed();
-//			} else {
-//				// enemy turn
-//				int damage = enemy.attack();
-//				player.takeDamage(damage);
-//				System.out.println("Enemy took " + damage + " damage");
-//				playerSpeed += player.getSpeed();
-//			}
-//		} while (player.isAlive() && enemy.isAlive());
-//		if (player.isAlive()) {
-//			inventory.add(enemy.getDrop());
-//			System.out.println(inventory);
-//			System.out.println("Player Won");
-//			player.takeDamage(-(player.getCurrentHp()/2));
-//		} else {
-//			// do what happens when a player dies
-//			System.out.println("Player Lost");
-//		}
-//	}
-	
-	
-	public static void fight(Robot atk, Robot def, boolean user) {
-		int damage = atk.attack();
-		
-		def.takeDamage(damage);
-		
-		if (user) {
-			score += damage;
-		}
-		
-		ViewControl.setTextOutput(atk.getName() + " attacked and dealt " + damage + " damage to " + def.getName());		
-	}
-
 
 	public static void saveFile() {
 		File f = new File("NURobotSave.txt");
@@ -257,5 +201,11 @@ public class Engine {
 
 			}
 		}
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
 	}
 }

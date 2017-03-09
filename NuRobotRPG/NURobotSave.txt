@@ -1,22 +1,10 @@
-Galvatron
-Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
-Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
-Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
-2
-Iron Hide
-Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
-Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
-Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
-Galvatron
-Head :: Dealth-Gaze MK5 Guardmouth :: 3 :: EXPERIMENTAL :: Electricity :: Attack with Electricity
-Arm :: Variable-Cored Brawlfist :: 6 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-Arm :: Composite Tri-finger :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Segmented Fuselage Core :: 11 :: RARE :: Ballistic
-Leg :: Kick-Master MK4 Driver :: 10 :: EXPERIMENTAL :: Legs
-1
-Arm :: Durasteel Brawlfist :: 5 :: COMMON :: Beam :: Attack with Beam
+Player
+Head :: Dealth-Gaze MK2 Hawkeye :: 3 :: COMMON :: null :: No function
+Arm :: Hydraulic Palm Cannon :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
+Arm :: Variable-Cored Palm Cannon :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
+Torso :: Sentinel MK 1 Chest Piece :: 11 :: UNCOMMON :: Beam
+Leg :: Booster Striker :: 16 :: UNCOMMON :: Legs
 0
+1
+Leg :: Bionic Striker :: 10 :: RARE :: Legs
+253

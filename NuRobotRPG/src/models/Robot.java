@@ -18,6 +18,7 @@ public class Robot {
 	private int minDmg = 8;
 	private int maxDmg = 12;
 	private Part drop;
+	private int combatSpeed = 0;
 	private boolean isAlive = true;
 	private String[] names = { "Optimus Prime", "Galvatron", "Skynet", "RoboCop", "Iron Hide", "Wall-E", "Ultron",
 			"Slash", "Motoko Kusanagi", "E.D.I.", "Alpha", "Strike Freedom Gundam", "Jet Fire", "Star Scream" };
@@ -32,6 +33,7 @@ public class Robot {
 		Random rand = new Random();
 		int ren = rand.nextInt(names.length);
 		setName(names[ren]);
+		combatSpeed = getSpeed();
 	}
 
 	public Robot(String name, Torso torso, ArrayList<Arm> arms, Head head, Leg legs) {
@@ -41,6 +43,7 @@ public class Robot {
 		equipArms(arms);
 		equipLegs(legs);
 		setDrop(getDropPart());
+		combatSpeed = getSpeed();
 	}
 
 	public Robot(String input) {
@@ -52,6 +55,7 @@ public class Robot {
 			arms.add(new Arm(input.split("\n")[i]));
 		}
 		this.equipArms(arms);
+		combatSpeed = getSpeed();
 	}
 
 	public String getName() {
@@ -197,36 +201,33 @@ public class Robot {
 	}
 
 	public int getSpeed() {
-
-		// double check this
 		int maxSpeed = 80;
 		int minSpeed = 40;
-
 		int speed = 0;
-
 		int totalWeight = this.head.getWeight() + this.torso.getWeight() + this.legs.getWeight();
-
 		for (Arm a : this.arms) {
 			totalWeight += a.getWeight();
 		}
-
 		speed = (60 / totalWeight) * 40;
-
 		// if the legs are treads, speed is decreased by 25% (speed*0.75) --
-
 		if (this.legs.isTreads()) {
 			speed -= speed / 4;
 		}
-
 		speed = (int) ((float) speed * this.legs.getMultiplier());
-
 		if (speed > maxSpeed) {
 			speed = maxSpeed;
 		} else if (speed < minSpeed) {
 			speed = minSpeed;
 		}
-
 		return speed;
+	}
+	
+	public int getCombatSpeed(){
+		return this.combatSpeed;
+	}
+	
+	public void setCombatSpeed(int combatSpeed){
+		this.combatSpeed = combatSpeed;
 	}
 
 	public String getPartSpecs(Part part) {
@@ -301,8 +302,8 @@ public class Robot {
 		sb.append(currentHp);
 		sb.append("/");
 		sb.append(maxHp);
-		sb.append("\n");
-
+		sb.append("\nSpeed: ");
+		sb.append(getCombatSpeed());
 		return sb.toString();
 	}
 

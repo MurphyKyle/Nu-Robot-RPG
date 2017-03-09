@@ -11,7 +11,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
    <children>
-      <Label fx:id="outputLabel" alignment="TOP_LEFT" layoutX="26.0" layoutY="145.0" prefHeight="66.0" prefWidth="145.0" style="-fx-border-style: solid;">
+      <Label fx:id="outputLabel" alignment="TOP_LEFT" layoutX="26.0" layoutY="145.0" prefHeight="91.0" prefWidth="145.0" style="-fx-border-style: solid;">
          <font>
             <Font size="13.0" />
          </font>
