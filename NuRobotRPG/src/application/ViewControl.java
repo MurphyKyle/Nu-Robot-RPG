@@ -215,10 +215,13 @@ public class ViewControl {
 								Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
 								Engine.inventory.add(bot.getDrop());
 								Engine.currentMap.getRooms()[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].setOccupied(false);
+								theScene = previousScene;
 								theStage.setScene(previousScene);
+								mapRenew();
 							}else{
 								currentSceneIndex = 0;
 								theStage.setScene(sceneList.get(0));
+								Engine.currentRobot.setCurrentHp(-1*Engine.currentRobot.getMaxHp());
 							}
 						}
 					});
@@ -314,6 +317,48 @@ public class ViewControl {
 	}
 
 	private void updateMap() {
+		mapPane = (AnchorPane) theScene.lookup("#mapPane");
+
+		// This code should make a group of rectangles that are a room.
+		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+				Rectangle rect = new Rectangle(25, 25);
+				// If it is within range set seen to true
+				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				}
+				// if it has been seen at some point, fill it with the right color
+				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
+					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
+						rect.setFill(Color.BLUE);
+					} else if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
+						rect.setFill(Color.RED);
+					} else {
+						rect.setFill(Color.WHITE);
+					}
+				} else {
+					rect.setFill(Color.SLATEGRAY);
+				}
+				if (x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
+					rect.setFill(Color.GREEN);
+				}
+				rect.setStroke(Color.BLACK);
+				rect.setLayoutX(x * 25);
+				rect.setLayoutY(y * 25);
+				mapPane.getChildren().addAll(rect);
+			}
+		}
+	}
+	
+	@FXML
+	public static void mapRenew(){
+		mapLabel.setText(Engine.currentMap.toString());
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
 
 		// This code should make a group of rectangles that are a room.
