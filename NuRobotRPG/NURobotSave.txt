@@ -1,11 +1,9 @@
 Player
-Head :: Dealth-Gaze MK2 Dulleyes :: 3 :: COMMON :: null :: No function
-Arm :: Pheonix MK 1 Brawlfist :: 5 :: COMMON :: Ballistic :: Attack with Ballistic
-Arm :: Pheonix MK 1 Brawlfist :: 4 :: COMMON :: Beam :: Attack with Beam
-Torso :: Fission-Powered Sprocket Frame :: 10 :: UNCOMMON :: Ballistic
-Leg :: Booster Striker :: 13 :: COMMON :: Legs
+Head :: Moustache Dulleyes :: 3 :: COMMON :: null :: null
+Arm :: Plated Mechacarpus :: 7 :: COMMON :: Beam :: Attack with Beam
+Arm :: Hydraulic Digihand :: 4 :: COMMON :: Ballistic :: Attack with Ballistic
+Torso :: Segmented Thorax :: 10 :: COMMON :: Ballistic
+Leg :: Kick-Master MK2 Treads :: 16 :: UNCOMMON :: Legs
 0
-2
-Arm :: Durasteel Mechacarpus :: 5 :: COMMON :: Electricity :: Attack with Electricity
-Torso :: Sentinel MK 1 Fuselage Core :: 12 :: UNCOMMON :: Ballistic
-309
+0
+0

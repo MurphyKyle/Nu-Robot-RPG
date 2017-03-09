@@ -40,14 +40,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
-      <Label fx:id="mapLabel" alignment="TOP_LEFT" layoutX="16.0" layoutY="146.0" style="-fx-border-style: solid; -fx-border-radius: 10px;" textAlignment="CENTER" visible="false" wrapText="true">
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <Label layoutX="10.0" layoutY="129.0" text="Map">
          <padding>
             <Insets left="6.0" />
@@ -58,7 +50,6 @@
             <Insets left="6.0" />
          </padding>
       </Label>
-      <Button fx:id="newMapBtn" layoutX="242.0" layoutY="20.0" mnemonicParsing="false" onAction="#newMap" prefHeight="25.0" prefWidth="42.0" text="Map" />
       <AnchorPane fx:id="mapPane" layoutX="14.0" layoutY="147.0" prefHeight="492.0" prefWidth="501.0" />
    </children>
 </AnchorPane>
