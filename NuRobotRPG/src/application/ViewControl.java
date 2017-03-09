@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-=======
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,16 +30,12 @@ public class ViewControl {
 	private static Scene previousScene;
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
-<<<<<<< HEAD
 	private static Label mapLabel;
 
-	private int difficulty;
 	private Robot enemyBot;
-=======
 	private static AnchorPane mapPane;
 
 	private static int difficulty;
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 	private static ArrayList<Scene> sceneList = new ArrayList<>();
 	private static int currentSceneIndex = 0;
 	private static int prevSceneIndex = 0;
@@ -53,11 +46,8 @@ public class ViewControl {
 	private static String combatScreen = "/view/CombatScreen.fxml";
 	private static String depotScreen = "/view/DepotScreen.fxml";
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
-<<<<<<< HEAD
 	private CombatEngine combat;
 	private static int action = -1;
-=======
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 
 	// general methods
 	public void setScenes() throws IOException {
@@ -139,12 +129,7 @@ public class ViewControl {
 		boolean occupied = false;
 		Room[][] map = Engine.currentMap.getRooms();
 		// load appropriate screen if it is
-
-<<<<<<< HEAD
-=======
-		
 //		if theres an enemy
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
 			// index 3 is combat
 			occupied = true;
@@ -165,36 +150,29 @@ public class ViewControl {
 			} else {
 				act3.setText(Engine.currentRobot.getActionMenu().get(2));
 			}
-<<<<<<< HEAD
 			enemyBot = new Robot(difficulty);
-=======
 			// ChoiceBox<String> cb = (ChoiceBox<String>)
 			// theStage.getScene().lookup("#actionMenu");
 			// ObservableList<String> items =
 			// FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
 			// cb.setItems(items);
 //		if there isn't an enemy but there is a depot
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
-		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
+		}else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
 //			currentSceneIndex = 2;
 //			setPreviousScene();
 			previousScene = sceneList.get(2);
-<<<<<<< HEAD
 			Engine.currentRobot.setCurrentHp(-1*Engine.currentRobot.getMaxHp());
 			theStage.setScene(sceneList.get(4));
-=======
 			theScene = sceneList.get(4);
 			setOutputLabel();
 			setTextOutput("You made it to a checkpoint! Please pick an option:");
 			theStage.setScene(theScene);
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		} else {
 			// the room should be empty
 			updateMap();
 			return;
 		}
-<<<<<<< HEAD
 
 		setOutputLabel();
 		theStage.show();
@@ -334,17 +312,6 @@ public class ViewControl {
 		}
 		action = 2;
 	}
-=======
-		
-//		setTextOutput("");
-		setOutputLabel();
-		theStage.show();
-
-		if (occupied) {
-
-			updateMap();
-		}
-	}
 
 	private void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
@@ -386,12 +353,10 @@ public class ViewControl {
 		}
 	}
 
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 
 	@FXML
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
-<<<<<<< HEAD
 		mapLabel.setText(Engine.currentMap.toString());
 
 		// This code should make a group of nodes that are a room. IDK what the
@@ -411,10 +376,8 @@ public class ViewControl {
 		// root.getChildren().add(room);
 		// }
 		// }
-=======
 		updateMap();
 
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 	}
 
 	// startup screen - [0]
@@ -467,12 +430,7 @@ public class ViewControl {
 		setOutputLabel();
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay");
-<<<<<<< HEAD
-
 		mapLabel = (Label) theScene.lookup("#mapLabel");
-=======
-		
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 		Engine.currentMap = new Map(difficulty);
 		updateMap();
 		theStage.show();
@@ -535,12 +493,6 @@ public class ViewControl {
 		checkRoom();
 	}
 
-<<<<<<< HEAD
-	// depo screen
-	@FXML
-	public void changeParts() {
-
-=======
 	// combat screen
 	@FXML
 	public void attack() {
@@ -555,7 +507,6 @@ public class ViewControl {
 		previousScene = sceneList.get(2);
 		theScene = sceneList.get(4);
 		setOutputLabel();
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
 	}
 
 	@FXML
