@@ -1,20 +1,13 @@
-<<<<<<< HEAD
 Player
+
 Head :: Dealth-Gaze MK2 Hawkeye :: 3 :: COMMON :: null :: No function
+
 Arm :: Hydraulic Palm Cannon :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
+
 Arm :: Variable-Cored Palm Cannon :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
+
 Torso :: Sentinel MK 1 Chest Piece :: 11 :: UNCOMMON :: Beam
+
 Leg :: Booster Striker :: 16 :: UNCOMMON :: Legs
 0
-1
-Leg :: Bionic Striker :: 10 :: RARE :: Legs
-253
-=======
-Player
-Head :: Dealth-Gaze MK5 Sharkface :: 4 :: EXPERIMENTAL :: Fire :: Fire
-Torso :: Titanium Alloy Thorax :: 12 :: UNCOMMON :: Ballistic
-Leg :: Kick-Master MK2 Driver :: 16 :: UNCOMMON :: Legs
 0
-0
-0
->>>>>>> 398bec57f614dcd17b61b66b61027e0998e9426a
