@@ -128,6 +128,8 @@ public class ViewControl {
 		// need to check if a room is occupied
 		boolean occupied = false;
 		Room[][] map = Engine.currentMap.getRooms();
+		previousScene = sceneList.get(1);
+		theScene = sceneList.get(2);
 		// load appropriate screen if it is
 //		if theres an enemy
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
@@ -162,7 +164,7 @@ public class ViewControl {
 //			currentSceneIndex = 2;
 //			setPreviousScene();
 			previousScene = sceneList.get(2);
-			Engine.currentRobot.setCurrentHp(-1*Engine.currentRobot.getMaxHp());
+			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 			theStage.setScene(sceneList.get(4));
 			theScene = sceneList.get(4);
 			setOutputLabel();
@@ -221,7 +223,7 @@ public class ViewControl {
 							}else{
 								currentSceneIndex = 0;
 								theStage.setScene(sceneList.get(0));
-								Engine.currentRobot.setCurrentHp(-1*Engine.currentRobot.getMaxHp());
+								Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 							}
 						}
 					});

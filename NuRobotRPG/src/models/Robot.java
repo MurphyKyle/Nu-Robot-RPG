@@ -51,7 +51,7 @@ public class Robot {
 				new Head(input.split("\n")[1]),
 				new Leg(input.split("\n")[input.split("\n").length - 1]));
 		ArrayList<Arm> arms = new ArrayList<Arm>();
-		for (int i = 1; i < input.split("\n").length - 4; i++) {
+		for (int i = 2; i < input.split("\n").length - 2; i++) {
 			arms.add(new Arm(input.split("\n")[i]));
 		}
 		this.equipArms(arms);
