@@ -422,6 +422,7 @@ public class ViewControl {
 
 	private static void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
+		setTextOutput("");
 		setTextOutput(Engine.currentRobot.toString() + "\nScore: " + Integer.toString(Engine.score));
 		mapPane.getChildren().clear();
 		// This code should make a group of rectangles that are a room.
