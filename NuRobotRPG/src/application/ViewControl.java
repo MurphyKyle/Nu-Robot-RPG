@@ -98,6 +98,9 @@ public class ViewControl {
 				previousScene = sceneList.get(2);
 				currentSceneIndex = 4;
 			}else if(currentSceneIndex == 5){
+				Engine.currentRobot = Engine.favorites.get(building.getName());
+				Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
+				Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
 				previousScene = sceneList.get(4);
 				currentSceneIndex = 5;
 			}
