@@ -41,7 +41,6 @@ public class CombatEngine extends Thread {
 						try {
 							sleep(100);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -51,7 +50,6 @@ public class CombatEngine extends Thread {
 			try {
 				sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			fight();
@@ -81,9 +79,8 @@ public class CombatEngine extends Thread {
 			} else {
 				compTurn();
 				try {
-					sleep(700);
+					sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				running = false;
@@ -118,7 +115,6 @@ public class CombatEngine extends Thread {
 				try {
 					sleep(700);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

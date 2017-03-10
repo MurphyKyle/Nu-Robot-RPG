@@ -12,16 +12,21 @@ import java.util.HashMap;
 import enums.*;
 import models.*;
 
-public class Engine implements Runnable {
+public class Engine{
 
 	public static HashMap<String, Robot> favorites = new HashMap<>();
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
 	public static Robot currentRobot;
 	public static Map currentMap;
 	public static int score = 0;
+	public static Robot preset;
 
-	public static void run(Robot enemy) {
-		
+	public static void setPreset(Robot enemy) {
+		preset = enemy;
+	}
+	
+	public static Robot getPreset(){
+		return preset;
 	}
 
 	public static void saveFile() {
@@ -201,11 +206,5 @@ public class Engine implements Runnable {
 
 			}
 		}
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-
 	}
 }

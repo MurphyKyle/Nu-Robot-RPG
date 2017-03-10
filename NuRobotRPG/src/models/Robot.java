@@ -45,6 +45,16 @@ public class Robot {
 		setDrop(getDropPart());
 		combatSpeed = getSpeed();
 	}
+	
+	public Robot(Robot r){
+		setName(r.name);
+		equipHead(r.head);
+		equipTorso(r.torso);
+		equipArms(r.arms);
+		equipLegs(r.legs);
+		setDrop(r.getDropPart());
+		combatSpeed = getSpeed();
+	}
 
 	public Robot(String input) {
 		this(input.split("\n")[0], new Torso(input.split("\n")[input.split("\n").length - 2]), new ArrayList<Arm>(),
@@ -107,6 +117,11 @@ public class Robot {
 
 	public Arm getArm(int indexArm) {
 		return arms.get(indexArm);
+	}
+	
+	public void equipArm(int index, Arm a){
+		arms.remove(index);
+		arms.add(index, a);
 	}
 
 	public ArrayList<Arm> getArms() {
@@ -228,6 +243,20 @@ public class Robot {
 	
 	public void setCombatSpeed(int combatSpeed){
 		this.combatSpeed = combatSpeed;
+	}
+	
+	public String getRobotSpecs(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getPartSpecs(this.getHead()));
+		sb.append("\n");
+		for(Arm a : this.getArms()){
+			sb.append(this.getPartSpecs(a));
+			sb.append("\n");
+		}
+		sb.append(this.getPartSpecs(this.getTorso()));
+		sb.append("\n");
+		sb.append(this.getPartSpecs(this.getLegs()));
+		return sb.toString();
 	}
 
 	public String getPartSpecs(Part part) {

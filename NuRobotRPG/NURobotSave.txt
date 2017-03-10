@@ -4,7 +4,13 @@ Arm :: Composite Brawlfist :: 7 :: COMMON :: Electricity :: Attack with Electric
 Arm :: Plated Digihand :: 7 :: COMMON :: Beam :: Attack with Beam
 Torso :: Titanium Alloy Fuselage Core :: 10 :: COMMON :: Ballistic
 Leg :: Master Treads :: 17 :: UNCOMMON :: Legs
-0
+1
+Player
+Head :: V-Gazer Sharkface :: 2 :: COMMON :: null :: null
+Arm :: Composite Brawlfist :: 7 :: COMMON :: Electricity :: Attack with Electricity
+Arm :: Plated Digihand :: 7 :: COMMON :: Beam :: Attack with Beam
+Torso :: Titanium Alloy Fuselage Core :: 10 :: COMMON :: Ballistic
+Leg :: Master Treads :: 17 :: UNCOMMON :: Legs
 11
 Torso :: Hyperpneumatic Torso Unit :: 13 :: COMMON :: Beam
 Arm :: Durasteel Grip Chassis :: 6 :: COMMON :: Explosive :: Attack with Explosive

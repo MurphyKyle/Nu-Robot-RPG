@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-
+<AnchorPane prefHeight="364.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
+   <children>
+      <Button fx:id="goBack" layoutX="24.0" layoutY="301.0" mnemonicParsing="false" onAction="#goBack" text="Go Back" />
+      <ChoiceBox fx:id="favoriteRobots" layoutX="122.0" layoutY="301.0" prefWidth="150.0" />
+      <TextField fx:id="setName" layoutX="286.0" layoutY="276.0" prefHeight="25.0" prefWidth="150.0" promptText="Please enter a name (Case Sensitive)" />
+      <Button fx:id="getName" layoutX="314.0" layoutY="314.0" mnemonicParsing="false" onAction="#setName" text="Confirm Name" />
+      <Button fx:id="equip" layoutX="18.0" layoutY="264.0" mnemonicParsing="false" onAction="#equipPart" text="Equip Part" />
+      <Label fx:id="partInfo" layoutX="15.0" layoutY="98.0" prefHeight="84.0" prefWidth="149.0" text="Part Info" />
+      <Button fx:id="up" layoutX="54.0" layoutY="68.0" mnemonicParsing="false" onAction="#goUp" text="Up" />
+      <Button fx:id="down" layoutX="47.0" layoutY="200.0" mnemonicParsing="false" onAction="#goDown" text="Down" />
+      <Button fx:id="left" layoutX="104.0" layoutY="264.0" mnemonicParsing="false" onAction="#equipLeft" text="Left" />
+      <Button fx:id="right" layoutX="152.0" layoutY="264.0" mnemonicParsing="false" onAction="#equipRight" text="Right" />
+      <Label fx:id="robSpecs" layoutX="199.0" layoutY="43.0" prefHeight="130.0" prefWidth="230.0" text="Current Robot Part" />
+      <Button fx:id="accessHead" layoutX="184.0" layoutY="200.0" mnemonicParsing="false" onAction="#accessHead" text="Head" />
+      <Button fx:id="accessTorso" layoutX="246.0" layoutY="200.0" mnemonicParsing="false" onAction="#accessTorso" text="Torso" />
+      <Button fx:id="accessLegs" layoutX="314.0" layoutY="200.0" mnemonicParsing="false" onAction="#accessLegs" text="Legs" />
+      <Button fx:id="accessLeft" layoutX="206.0" layoutY="239.0" mnemonicParsing="false" onAction="#accessLeft" text="Left Arm" />
+      <Button fx:id="accessRight" layoutX="303.0" layoutY="239.0" mnemonicParsing="false" onAction="#accessRight" text="Right Arm" />
+   </children>
 </AnchorPane>
-

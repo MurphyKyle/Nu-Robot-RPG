@@ -5,13 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -19,9 +25,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import models.Arm;
+import models.Head;
+import models.Leg;
 import models.Map;
+import models.Part;
 import models.Robot;
 import models.Room;
+import models.Torso;
 
 public class ViewControl {
 
@@ -77,19 +88,31 @@ public class ViewControl {
 
 	public void goBack() {
 		if (currentSceneIndex >= 1) {
+			if(currentSceneIndex == 4){
+				previousScene = sceneList.get(2);
+				currentSceneIndex = 4;
+			}else if(currentSceneIndex == 5){
+				previousScene = sceneList.get(4);
+				currentSceneIndex = 5;
+			}
 			theScene = previousScene;
 			theStage.setScene(theScene);
 			if (previousScene.equals(sceneList.get(2))) {
 				updateMap();
-//				this should solve a problem where you cannot go back more than twice from a depot
+				// this should solve a problem where you cannot go back more
+				// than twice from a depot
 				prevSceneIndex = 1;
 				currentSceneIndex = 2;
 			}
-			
+
 			if (currentSceneIndex <= 1) {
 				prevSceneIndex = 0;
 			} else {
-				prevSceneIndex--;
+				if(prevSceneIndex == 0){
+					prevSceneIndex = 0;
+				}else{
+					prevSceneIndex--;
+				}
 			}
 			previousScene = sceneList.get(prevSceneIndex);
 			currentSceneIndex--;
@@ -131,7 +154,7 @@ public class ViewControl {
 		previousScene = sceneList.get(1);
 		theScene = sceneList.get(2);
 		// load appropriate screen if it is
-//		if theres an enemy
+		// if theres an enemy
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
 			// index 3 is combat
 			occupied = true;
@@ -158,11 +181,11 @@ public class ViewControl {
 			// ObservableList<String> items =
 			// FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
 			// cb.setItems(items);
-//		if there isn't an enemy but there is a depot
-		}else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
+			// if there isn't an enemy but there is a depot
+		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
-//			currentSceneIndex = 2;
-//			setPreviousScene();
+			// currentSceneIndex = 2;
+			// setPreviousScene();
 			previousScene = sceneList.get(2);
 			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 			theStage.setScene(sceneList.get(4));
@@ -182,13 +205,13 @@ public class ViewControl {
 			Task<Void> task = new Task<Void>() {
 				@Override
 				public Void call() throws Exception {
-						Platform.runLater(new Runnable() {
-							@Override
-							public void run() {
-								updateStats(Engine.currentRobot, enemyBot);
-							}
-						});
-						return null;
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							updateStats(Engine.currentRobot, enemyBot);
+						}
+					});
+					return null;
 				}
 			};
 			Thread th = new Thread(task);
@@ -204,29 +227,30 @@ public class ViewControl {
 		combat.start();
 		theStage.show();
 	}
-	
-	public static void aftermath(Robot bot){
+
+	public static void aftermath(Robot bot) {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
 				Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							if(Engine.currentRobot.isAlive()){
-								Engine.currentRobot.takeDamage(-1*(Engine.currentRobot.getMaxHp()/2));
-								Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
-								Engine.inventory.add(bot.getDrop());
-								Engine.currentMap.getRooms()[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].setOccupied(false);
-								theScene = previousScene;
-								theStage.setScene(previousScene);
-								mapRenew();
-							}else{
-								currentSceneIndex = 0;
-								theStage.setScene(sceneList.get(0));
-								Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
-							}
+					@Override
+					public void run() {
+						if (Engine.currentRobot.isAlive()) {
+							Engine.currentRobot.takeDamage(-1 * (Engine.currentRobot.getMaxHp() / 2));
+							Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
+							Engine.inventory.add(bot.getDrop());
+							Engine.currentMap.getRooms()[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()]
+									.setOccupied(false);
+							theScene = previousScene;
+							theStage.setScene(previousScene);
+							mapRenew();
+						} else {
+							currentSceneIndex = 0;
+							theStage.setScene(sceneList.get(0));
+							Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 						}
-					});
+					}
+				});
 				return null;
 			}
 		};
@@ -241,11 +265,11 @@ public class ViewControl {
 			@Override
 			public Void call() throws Exception {
 				Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							outputLabel.setText(l);
-						}
-					});
+					@Override
+					public void run() {
+						outputLabel.setText(l);
+					}
+				});
 				return null;
 			}
 		};
@@ -260,13 +284,13 @@ public class ViewControl {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							enemyLab.setText(enemy.toString());
-							playerLab.setText(current.toString());
-						}
-					});
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						enemyLab.setText(enemy.toString());
+						playerLab.setText(current.toString());
+					}
+				});
 				return null;
 			}
 		};
@@ -282,12 +306,12 @@ public class ViewControl {
 			act1.setDisable(false);
 		}
 	}
-	
-	public static int getAction(){
+
+	public static int getAction() {
 		return action;
 	}
-	
-	public static void setAction(int act){
+
+	public static void setAction(int act) {
 		action = act;
 	}
 
@@ -326,16 +350,17 @@ public class ViewControl {
 			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
 				Rectangle rect = new Rectangle(25, 25);
 				// If it is within range set seen to true
-				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+				if (Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+				} else if (Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
 				}
-				// if it has been seen at some point, fill it with the right color
+				// if it has been seen at some point, fill it with the right
+				// color
 				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
 					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
 						rect.setFill(Color.BLUE);
@@ -357,9 +382,9 @@ public class ViewControl {
 			}
 		}
 	}
-	
+
 	@FXML
-	public static void mapRenew(){
+	public static void mapRenew() {
 		mapLabel.setText(Engine.currentMap.toString());
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
 
@@ -368,16 +393,17 @@ public class ViewControl {
 			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
 				Rectangle rect = new Rectangle(25, 25);
 				// If it is within range set seen to true
-				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+				if (Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+				} else if (Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
 				}
-				// if it has been seen at some point, fill it with the right color
+				// if it has been seen at some point, fill it with the right
+				// color
 				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
 					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
 						rect.setFill(Color.BLUE);
@@ -399,7 +425,6 @@ public class ViewControl {
 			}
 		}
 	}
-
 
 	@FXML
 	public void newMap() {
@@ -467,6 +492,7 @@ public class ViewControl {
 		Engine.currentRobot.setName("Player");
 		setTextOutput(Engine.currentRobot.toString());
 		theStage.getScene().lookup("#contBtn").setDisable(false);
+		Engine.favorites.put(Engine.currentRobot.getName(), Engine.currentRobot);
 	}
 
 	@FXML
@@ -540,36 +566,223 @@ public class ViewControl {
 		checkRoom();
 	}
 
-	// combat screen
-	@FXML
-	public void attack() {
-
-	}
-
 	// depo screen
+	
+
+	// change parts screen
+
+	private static Part currentPart;
+	private static Robot building;
+	private int partIndex;
+	private static ArrayList<Part> parts = new ArrayList<>();
+
 	@FXML
 	public void changeParts() {
 		System.out.println("Change parts button smash");
-		
-		previousScene = sceneList.get(2);
-		theScene = sceneList.get(4);
+		currentSceneIndex = 5;
+		previousScene = sceneList.get(4);
+		theScene = sceneList.get(5);
 		setOutputLabel();
+		theStage.setScene(theScene);
+
+		parts.clear();
+		ArrayList<Part> l = new ArrayList<>();
+		for (Part p : Engine.inventory) {
+			l.add(p);
+		}
+		parts = l;
+		partIndex = 0;
+		currentPart = parts.get(partIndex);
+		setPart();
+
+		updateFavs();
+
+		Button right = (Button) theStage.getScene().lookup("#right");
+		right.setDisable(true);
+		Button left = (Button) theStage.getScene().lookup("#left");
+		left.setDisable(true);
+		Button head = (Button) theStage.getScene().lookup("#accessHead");
+		head.setDisable(true);
+		Button torso = (Button) theStage.getScene().lookup("#accessTorso");
+		torso.setDisable(true);
+		Button legs = (Button) theStage.getScene().lookup("#accessLegs");
+		legs.setDisable(true);
+		Button acRight = (Button) theStage.getScene().lookup("#accessRight");
+		acRight.setDisable(true);
+		Button acLeft = (Button) theStage.getScene().lookup("#accessLeft");
+		acLeft.setDisable(true);
+		theStage.show();
+	}
+
+	public void accessHead() {
+		Label rel = (Label) theStage.getScene().lookup("#robSpecs");
+		rel.setText(building.getPartSpecs(building.getHead()));
+	}
+
+	public void accessTorso() {
+		Label rel = (Label) theStage.getScene().lookup("#robSpecs");
+		rel.setText(building.getPartSpecs(building.getTorso()));
+	}
+
+	public void accessLegs() {
+		Label rel = (Label) theStage.getScene().lookup("#robSpecs");
+		rel.setText(building.getPartSpecs(building.getLegs()));
+	}
+
+	public void accessLeft() {
+		Label rel = (Label) theStage.getScene().lookup("#robSpecs");
+		rel.setText(building.getPartSpecs(building.getArm(0)));
+	}
+
+	public void accessRight() {
+		Label rel = (Label) theStage.getScene().lookup("#robSpecs");
+		rel.setText(building.getPartSpecs(building.getArm(1)));
+	}
+
+	public void setPart() {
+		Label part = (Label) theStage.getScene().lookup("#partInfo");
+		part.setText(Engine.currentRobot.getPartSpecs(currentPart));
+	}
+
+	public void goUp() {
+		if (partIndex == parts.size() - 1) {
+			partIndex = 0;
+		} else {
+			partIndex++;
+		}
+		currentPart = parts.get(partIndex);
+		setPart();
+	}
+
+	public void goDown() {
+		if (partIndex == 0) {
+			partIndex = parts.size() - 1;
+		} else {
+			partIndex--;
+		}
+		currentPart = parts.get(partIndex);
+		setPart();
+	}
+
+	public void setName() {
+		TextField field = (TextField) theStage.getScene().lookup("#setName");
+		String name = field.getText();
+		Engine.favorites.put(name, building);
+		building = Engine.favorites.get(name);
+		building.setName(name);
+		updateFavs();
+	}
+
+	public void updateFavs() {
+		@SuppressWarnings("unchecked")
+		ChoiceBox<String> robotsMenu = (ChoiceBox<String>) theStage.getScene().lookup("#favoriteRobots");
+		ArrayList<String> robots = new ArrayList<>();
+		robotsMenu.getItems().clear();
+		for (String s : Engine.favorites.keySet()) {
+			if(s.equals("temp")){
+				
+			}else{
+			robots.add(s);
+			}
+		}
+		ObservableList<String> robotList = FXCollections.observableArrayList(robots);
+		robotsMenu.setItems(robotList);
+		robotsMenu.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+				String val = robotsMenu.getItems().toString();
+				val = val.replace('[', ' ');
+				val = val.replace(']', ' ');
+				val = val.trim();
+				for(String s : Engine.favorites.keySet()){
+					if(s.equals(val)){
+						building= new Robot(Engine.favorites.get(val));
+					}
+				}
+				Button head = (Button) theStage.getScene().lookup("#accessHead");
+				head.setDisable(false);
+				Button torso = (Button) theStage.getScene().lookup("#accessTorso");
+				torso.setDisable(false);
+				Button legs = (Button) theStage.getScene().lookup("#accessLegs");
+				legs.setDisable(false);
+				Button acRight = (Button) theStage.getScene().lookup("#accessRight");
+				acRight.setDisable(false);
+				Button acLeft = (Button) theStage.getScene().lookup("#accessLeft");
+				acLeft.setDisable(false);
+			}
+		});
+	}
+
+	public void equipPart() {
+		if (currentPart.getPartType().equals("Arm")) {
+			Button right = (Button) theStage.getScene().lookup("#right");
+			right.setDisable(false);
+			Button left = (Button) theStage.getScene().lookup("#left");
+			left.setDisable(false);
+		} else if (currentPart.getPartType().equals("Head")) {
+			Head h = (Head) currentPart;
+			parts.add(building.getHead());
+			building.equipHead(h);
+			parts.remove(partIndex);
+			currentPart = parts.get(partIndex);
+			setPart();
+			accessHead();
+		} else if (currentPart.getPartType().equals("Torso")) {
+			Torso h = (Torso) currentPart;
+			parts.add(building.getTorso());
+			building.equipTorso(h);
+			parts.remove(partIndex);
+			currentPart = parts.get(partIndex);
+			setPart();
+			accessTorso();
+		} else if (currentPart.getPartType().equals("Legs")) {
+			Leg h = (Leg) currentPart;
+			parts.add(building.getLegs());
+			building.equipLegs(h);
+			parts.remove(partIndex);
+			currentPart = parts.get(partIndex);
+			setPart();
+			accessLegs();
+		}
+	}
+
+	public void equipRight() {
+		Arm h = (Arm) currentPart;
+		parts.add(building.getArm(1));
+		building.equipArm(1, h);
+		parts.remove(partIndex);
+		currentPart = parts.get(partIndex);
+		setPart();
+		Button right = (Button) theStage.getScene().lookup("#right");
+		right.setDisable(true);
+		Button left = (Button) theStage.getScene().lookup("#left");
+		left.setDisable(true);
+		accessRight();
+	}
+
+	public void equipLeft() {
+		Arm h = (Arm) currentPart;
+		parts.add(building.getArm(0));
+		building.equipArm(0, h);
+		parts.remove(partIndex);
+		currentPart = parts.get(partIndex);
+		setPart();
+		Button right = (Button) theStage.getScene().lookup("#right");
+		right.setDisable(true);
+		Button left = (Button) theStage.getScene().lookup("#left");
+		left.setDisable(true);
+		accessLeft();
 	}
 
 	@FXML
 	public void saveGame() {
 		Engine.saveFile();
 		setTextOutput("Save complete");
-		
+
 		previousScene = sceneList.get(2);
 		theScene = sceneList.get(4);
 		setOutputLabel();
 	}
 
-	// change parts screen
-	@FXML
-	public void swapParts() {
-
-	}
 
 }

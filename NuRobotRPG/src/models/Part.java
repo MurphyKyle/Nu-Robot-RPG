@@ -41,6 +41,15 @@ public abstract class Part {
 		this.partType = partType;
 	}
 	
+	public String displaySpec(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(getPartType());
+		sb.append(", ");
+		sb.append(getName());
+		sb.append(", ");
+		return sb.toString();
+	}
+	
 	public String getGeneralSpec(){
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.getName());
@@ -55,13 +64,14 @@ public abstract class Part {
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
-		System.out.println("Rarity : ");
+		sb.append(getPartType());
+		sb.append(", ");
+		sb.append(getName());
+		System.out.println(", ");
 		sb.append(getRarity().toString().charAt(0));
 		sb.append(getRarity().toString().substring(1, getRarity().toString().length()).toLowerCase());
-		sb.append("\n");
-		sb.append("Weight : ");
+		sb.append(", ");
 		sb.append(getWeight());
-		sb.append(" tons");
 		return sb.toString();
 	}
 }
