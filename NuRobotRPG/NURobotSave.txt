@@ -1,16 +1,18 @@
 Player
-Head :: Bite-Master Helm :: 2 :: UNCOMMON :: null :: No function
-Arm :: Plated Brawlfist :: 4 :: COMMON :: Electricity :: Attack with Electricity
-Arm :: Guerilla Palm Cannon :: 6 :: COMMON :: Beam :: Attack with Beam
-Torso :: Platinum Thorax :: 13 :: UNCOMMON :: Ballistic
-Leg :: Master Treads :: 14 :: COMMON :: Treads
+Head :: Dealth-Gaze MK2 Guardmouth :: 2 :: COMMON :: null :: No function
+Arm :: Guerilla Tri-finger :: 7 :: COMMON :: Ballistic :: Attack with Ballistic
+Arm :: Plated Mechacarpus :: 4 :: UNCOMMON :: Beam :: Attack with Beam
+Torso :: Cage Frame Sprocket Frame :: 12 :: COMMON :: Beam
+Leg :: Master Driver :: 10 :: COMMON :: Legs
 1
 Player
-Head :: Bite-Master Helm :: 2 :: UNCOMMON :: null :: No function
-Arm :: Plated Brawlfist :: 4 :: COMMON :: Electricity :: Attack with Electricity
-Arm :: Guerilla Palm Cannon :: 6 :: COMMON :: Beam :: Attack with Beam
-Torso :: Platinum Thorax :: 13 :: UNCOMMON :: Ballistic
-Leg :: Master Treads :: 14 :: COMMON :: Treads
-1
-Arm :: Plated Brawlfist :: 5 :: COMMON :: Electricity :: Attack with Electricity
-201
+Head :: Dealth-Gaze MK2 Guardmouth :: 2 :: COMMON :: null :: No function
+Arm :: Guerilla Tri-finger :: 7 :: COMMON :: Ballistic :: Attack with Ballistic
+Arm :: Plated Mechacarpus :: 4 :: UNCOMMON :: Beam :: Attack with Beam
+Torso :: Cage Frame Sprocket Frame :: 12 :: COMMON :: Beam
+Leg :: Master Driver :: 10 :: COMMON :: Legs
+3
+Torso :: Hyperpneumatic Chassis :: 11 :: UNCOMMON :: Ballistic
+Head :: Moustache Dulleyes :: 2 :: COMMON :: null :: No function
+Arm :: Composite Tri-finger :: 5 :: COMMON :: Ballistic :: Attack with Ballistic
+579
