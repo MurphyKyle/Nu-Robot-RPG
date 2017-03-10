@@ -3,7 +3,10 @@ package application;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import enums.Rarity;
+import enums.Type;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -20,9 +23,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import models.Arm;
+import models.Head;
+import models.Leg;
 import models.Map;
 import models.Robot;
 import models.Room;
+import models.Torso;
 
 public class ViewControl {
 
@@ -31,7 +38,7 @@ public class ViewControl {
 	private static Scene previousScene;
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
-	private static Stage resultStage;
+	private static Label mapLabel;
 
 	private Robot enemyBot;
 	private static AnchorPane mapPane;
@@ -47,7 +54,6 @@ public class ViewControl {
 	private static String combatScreen = "/view/CombatScreen.fxml";
 	private static String depotScreen = "/view/DepotScreen.fxml";
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
-	private static String battleResultScreen = "/view/BattleResult.fxml";
 	private CombatEngine combat;
 	private static int action = -1;
 
@@ -59,7 +65,6 @@ public class ViewControl {
 		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(combatScreen)))); // 3
 		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(depotScreen)))); // 4
 		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(changePartsScreen)))); // 5
-		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(battleResultScreen))));	//	6
 	}
 
 	public static void setStage(Stage primaryStage) {
@@ -84,11 +89,12 @@ public class ViewControl {
 			theStage.setScene(theScene);
 			if (previousScene.equals(sceneList.get(2))) {
 				updateMap();
-//				this should solve a problem where you cannot go back more than twice from a depot
+				// this should solve a problem where you cannot go back more
+				// than twice from a depot
 				prevSceneIndex = 1;
 				currentSceneIndex = 2;
 			}
-			
+
 			if (currentSceneIndex <= 1) {
 				prevSceneIndex = 0;
 			} else {
@@ -134,28 +140,45 @@ public class ViewControl {
 		previousScene = sceneList.get(1);
 		theScene = sceneList.get(2);
 		// load appropriate screen if it is
-//		if theres an enemy
+		// if theres an enemy
 		if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isOccupied()) {
 			// index 3 is combat
 			occupied = true;
 			previousScene = sceneList.get(2);
 			theScene = sceneList.get(3);
+			setOutputLabel();
 			theStage.setScene(theScene);
-			setActions();
+			Button act1 = (Button) theStage.getScene().lookup("#action1");
+			act1.setText(Engine.currentRobot.getActionMenu().get(0));
+			act1.setDisable(true);
+			Button act2 = (Button) theStage.getScene().lookup("#action2");
+			act2.setText(Engine.currentRobot.getActionMenu().get(1));
+			act2.setDisable(true);
+			Button act3 = (Button) theStage.getScene().lookup("#action3");
+			if (Engine.currentRobot.getActionMenu().size() == 2) {
+				act3.setText("No Function");
+				act3.setDisable(true);
+			} else {
+				act3.setText(Engine.currentRobot.getActionMenu().get(2));
+			}
 			enemyBot = new Robot(difficulty);
 			// ChoiceBox<String> cb = (ChoiceBox<String>)
 			// theStage.getScene().lookup("#actionMenu");
 			// ObservableList<String> items =
 			// FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
 			// cb.setItems(items);
-//		if there isn't an enemy but there is a depot
+			// if there isn't an enemy but there is a depot
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
+			// currentSceneIndex = 2;
+			// setPreviousScene();
 			previousScene = sceneList.get(2);
-			theScene = sceneList.get(4);
-			theStage.setScene(theScene);
 			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
+			theStage.setScene(sceneList.get(4));
+			theScene = sceneList.get(4);
+			setOutputLabel();
 			setTextOutput("You made it to a checkpoint! Please pick an option:");
+			theStage.setScene(theScene);
 		} else {
 			// the room should be empty
 			updateMap();
@@ -164,18 +187,17 @@ public class ViewControl {
 
 		setOutputLabel();
 		theStage.show();
-		
 		if (occupied) {
 			Task<Void> task = new Task<Void>() {
 				@Override
 				public Void call() throws Exception {
-						Platform.runLater(new Runnable() {
-							@Override
-							public void run() {
-								updateStats(Engine.currentRobot, enemyBot);
-							}
-						});
-						return null;
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							updateStats(Engine.currentRobot, enemyBot);
+						}
+					});
+					return null;
 				}
 			};
 			Thread th = new Thread(task);
@@ -184,82 +206,85 @@ public class ViewControl {
 			combatInitiate();
 		}
 	}
-	
-	private void setActions() {
-		Button act1 = (Button) theStage.getScene().lookup("#action1");
-		act1.setText(Engine.currentRobot.getActionMenu().get(0));
-		act1.setDisable(true);
-		Button act2 = (Button) theStage.getScene().lookup("#action2");
-		act2.setText(Engine.currentRobot.getActionMenu().get(1));
-		act2.setDisable(true);
-		Button act3 = (Button) theStage.getScene().lookup("#action3");
-		if (Engine.currentRobot.getActionMenu().size() == 2) {
-			act3.setText("No Function");
-			act3.setVisible(false);
-			act3.setDisable(true);
-		} else {
-			act3.setText(Engine.currentRobot.getActionMenu().get(2));
-		}
-	}
 
 	public void combatInitiate() {
+		boolean lastEnemy = true;
+		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+				if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
+					if (x != Engine.currentMap.getXCoord() || y != Engine.currentMap.getYCoord()) {
+						lastEnemy = false;
+					}
+				}
+			}
+		}
+		if (lastEnemy) {
+			// Boss Fight
+			enemyBot.setName("Ultra-" + enemyBot.getName());
+			Random randy = new Random();
+			int experimentalPart = randy.nextInt(5);
+			switch(experimentalPart) {
+			case 0:
+				enemyBot.equipHead(new Head("NU-Unit-1",2,Rarity.EXPERIMENTAL,enums.Type.ELECTRICITY,"Attack with a lot of Electricity"));
+				break;
+			case 1:
+				ArrayList<Arm> arms = new ArrayList<Arm>();
+				arms.add(enemyBot.getArm(0));
+				arms.add(new Arm("NU-Unit-2",4,Rarity.EXPERIMENTAL,Type.FIRE,"Attack with a lot of Fire"));
+				enemyBot.equipArms(arms);
+				break;
+			case 2:
+				ArrayList<Arm> arms2 = new ArrayList<Arm>();
+				arms2.add(enemyBot.getArm(1));
+				arms2.add(new Arm("NU-Unit-3",4,Rarity.EXPERIMENTAL,Type.BEAM,"Attack with a lot of Beam"));
+				enemyBot.equipArms(arms2);
+				break;
+			case 3:
+				enemyBot.equipTorso(new Torso("NU-Unit-4",16,Rarity.EXPERIMENTAL,Type.BEAM));
+				break;
+			case 4:
+				enemyBot.equipLegs(new Leg("NU-Unit-5",9,Rarity.EXPERIMENTAL,false));
+				break;
+			}
+		}
 		combat = new CombatEngine(Engine.currentRobot, enemyBot);
 		combat.setGui(Thread.currentThread());
 		combat.start();
 		theStage.show();
+		if(lastEnemy) {
+			newMap();
+		}
 	}
-	
-	public static void aftermath(Robot bot){
+
+	public static void aftermath(Robot bot) {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
 				Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							boolean alive = false;
-							
-							if(Engine.currentRobot.isAlive()){
-								alive = true;
-								Engine.currentRobot.takeDamage(-1*(Engine.currentRobot.getMaxHp()/2));
-								Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
-								Engine.inventory.add(bot.getDrop());
-								Engine.currentMap.getRooms()[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].setOccupied(false);
-								theScene = previousScene;
-								theStage.setScene(previousScene);
-								updateMap();
-							}else {
-								currentSceneIndex = 0;
-								theStage.setScene(sceneList.get(0));
-								Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
-							}
-							showResult(alive, sceneList.get(6));
+					@Override
+					public void run() {
+						if (Engine.currentRobot.isAlive()) {
+							Engine.currentRobot.takeDamage(-1 * (Engine.currentRobot.getMaxHp() / 2));
+							Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
+							Engine.inventory.add(bot.getDrop());
+							Engine.currentMap.getRooms()[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()]
+									.setOccupied(false);
+							theScene = previousScene;
+							theStage.setScene(previousScene);
+							mapRenew();
+						} else {
+							currentSceneIndex = 0;
+							theStage.setScene(sceneList.get(0));
+							Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 						}
-					});
+					}
+				});
 				return null;
 			}
 		};
 		Thread th = new Thread(task);
 		th.setDaemon(true);
 		th.start();
-	}
-	
-	private static  void showResult(boolean alive, Scene scene) {
-		Stage s = new Stage();
-		s.setScene(scene);
-		Label result = (Label) s.getScene().lookup("#lblResult");
-		
-		if (alive) {
-			result.setText("You won the fight.");
-		} else {
-			result.setText("You have died.");
-		}
-		s.show();
-		resultStage = s;
-	}
-	
-	@FXML
-	public void resultRead() {
-		resultStage.close();
 	}
 
 	public static void setCombatLabel(String l) {
@@ -268,11 +293,11 @@ public class ViewControl {
 			@Override
 			public Void call() throws Exception {
 				Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							outputLabel.setText(l);
-						}
-					});
+					@Override
+					public void run() {
+						outputLabel.setText(l);
+					}
+				});
 				return null;
 			}
 		};
@@ -287,13 +312,13 @@ public class ViewControl {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							enemyLab.setText(enemy.toString());
-							playerLab.setText(current.toString());
-						}
-					});
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						enemyLab.setText(enemy.toString());
+						playerLab.setText(current.toString());
+					}
+				});
 				return null;
 			}
 		};
@@ -309,12 +334,12 @@ public class ViewControl {
 			act1.setDisable(false);
 		}
 	}
-	
-	public static int getAction(){
+
+	public static int getAction() {
 		return action;
 	}
-	
-	public static void setAction(int act){
+
+	public static void setAction(int act) {
 		action = act;
 	}
 
@@ -345,25 +370,25 @@ public class ViewControl {
 		action = 2;
 	}
 
-	@FXML	
-	private static void updateMap() {
+	private void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
-
+		mapPane.getChildren().clear();
 		// This code should make a group of rectangles that are a room.
 		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
 			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
 				Rectangle rect = new Rectangle(25, 25);
 				// If it is within range set seen to true
-				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+				if (Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+				} else if (Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
-				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
 					Engine.currentMap.getRooms()[x][y].setSeen(true);
 				}
-				// if it has been seen at some point, fill it with the right color
+				// if it has been seen at some point, fill it with the right
+				// color
 				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
 					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
 						rect.setFill(Color.BLUE);
@@ -385,49 +410,75 @@ public class ViewControl {
 			}
 		}
 	}
-	
-//	@FXML
-//	public static void mapRenew(){
-//		mapLabel.setText(Engine.currentMap.toString());
-//		mapPane = (AnchorPane) theScene.lookup("#mapPane");
-//
-//		// This code should make a group of rectangles that are a room.
-//		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
-//			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
-//				Rectangle rect = new Rectangle(25, 25);
-//				// If it is within range set seen to true
-//				if(Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
-//					Engine.currentMap.getRooms()[x][y].setSeen(true);
-//				} else if(Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
-//					Engine.currentMap.getRooms()[x][y].setSeen(true);
-//				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
-//					Engine.currentMap.getRooms()[x][y].setSeen(true);
-//				} else if(Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
-//					Engine.currentMap.getRooms()[x][y].setSeen(true);
-//				}
-//				// if it has been seen at some point, fill it with the right color
-//				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
-//					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
-//						rect.setFill(Color.BLUE);
-//					} else if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
-//						rect.setFill(Color.RED);
-//					} else {
-//						rect.setFill(Color.WHITE);
-//					}
-//				} else {
-//					rect.setFill(Color.SLATEGRAY);
-//				}
-//				if (x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
-//					rect.setFill(Color.GREEN);
-//				}
-//				rect.setStroke(Color.BLACK);
-//				rect.setLayoutX(x * 25);
-//				rect.setLayoutY(y * 25);
-//				mapPane.getChildren().addAll(rect);
-//			}
-//		}
-//	}
 
+	@FXML
+	public static void mapRenew() {
+		mapLabel.setText(Engine.currentMap.toString());
+		mapPane = (AnchorPane) theScene.lookup("#mapPane");
+
+		// This code should make a group of rectangles that are a room.
+		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+				Rectangle rect = new Rectangle(25, 25);
+				// If it is within range set seen to true
+				if (Engine.currentMap.getXCoord() + 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if (Engine.currentMap.getXCoord() - 1 == x && Engine.currentMap.getYCoord() == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() + 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				} else if (Engine.currentMap.getXCoord() == x && Engine.currentMap.getYCoord() - 1 == y) {
+					Engine.currentMap.getRooms()[x][y].setSeen(true);
+				}
+				// if it has been seen at some point, fill it with the right
+				// color
+				if (Engine.currentMap.getRooms()[x][y].isSeen()) {
+					if (Engine.currentMap.getRooms()[x][y].isDepot()) {
+						rect.setFill(Color.BLUE);
+					} else if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
+						rect.setFill(Color.RED);
+					} else {
+						rect.setFill(Color.WHITE);
+					}
+				} else {
+					rect.setFill(Color.SLATEGRAY);
+				}
+				if (x == Engine.currentMap.getXCoord() && y == Engine.currentMap.getYCoord()) {
+					rect.setFill(Color.GREEN);
+				}
+				rect.setStroke(Color.BLACK);
+				rect.setLayoutX(x * 25);
+				rect.setLayoutY(y * 25);
+				mapPane.getChildren().addAll(rect);
+			}
+		}
+	}
+
+	@FXML
+	public void newMap() {
+		Engine.currentMap = new Map(difficulty);
+		mapLabel.setText(Engine.currentMap.toString());
+
+		// This code should make a group of nodes that are a room. IDK what the
+		// location
+		// on the screen for them should be. Once it's been created you can make
+		// a new
+		// scene with root as its root. I think I did it a little off tho.
+
+		// Here's the link I got it from :
+		// http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
+
+		// Group root = new Group();
+		// for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+		// for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+		// Node room = new Node(Engine.currentMap.getRooms()[x][y], horizontal
+		// location, vertical location);
+		// root.getChildren().add(room);
+		// }
+		// }
+		updateMap();
+
+	}
 
 	// startup screen - [0]
 	@FXML
@@ -439,7 +490,6 @@ public class ViewControl {
 		if (theScene.lookup("#createRobotBtn").isDisabled()) {
 			theScene.lookup("#contBtn").setDisable(true);
 			theScene.lookup("#createRobotBtn").setDisable(false);
-			theScene.lookup("#txtName").setDisable(false);
 			setTextOutput("");
 		}
 
@@ -455,7 +505,6 @@ public class ViewControl {
 		setOutputLabel();
 		theStage.setScene(theScene);
 		theStage.setTitle("Start Game");
-		theScene.lookup("#txtName").setDisable(true);
 		theScene.lookup("#createRobotBtn").setDisable(true);
 		theScene.lookup("#contBtn").setDisable(false);
 		Engine.loadGame();
@@ -470,11 +519,12 @@ public class ViewControl {
 		Engine.currentRobot = new Robot(difficulty);
 		TextField nameField = (TextField) theStage.getScene().lookup("#txtName");
 		String roboName = nameField.getText();
-		
-		if (roboName == null || roboName.isEmpty()) {;
-			roboName = "Player";	
+
+		if (roboName == null || roboName.isEmpty()) {
+			;
+			roboName = "Player";
 		}
-		
+
 		Engine.currentRobot.setName(roboName);
 		setTextOutput(Engine.currentRobot.toString());
 		theStage.getScene().lookup("#contBtn").setDisable(false);
@@ -488,6 +538,7 @@ public class ViewControl {
 		setOutputLabel();
 		theStage.setScene(theScene);
 		theStage.setTitle("Gameplay");
+		mapLabel = (Label) theScene.lookup("#mapLabel");
 		Engine.currentMap = new Map(difficulty);
 		updateMap();
 		theStage.show();
@@ -550,12 +601,17 @@ public class ViewControl {
 		checkRoom();
 	}
 
+	// combat screen
+	@FXML
+	public void attack() {
+
+	}
 
 	// depo screen
 	@FXML
 	public void changeParts() {
 		System.out.println("Change parts button smash");
-		
+
 		previousScene = sceneList.get(2);
 		theScene = sceneList.get(4);
 		setOutputLabel();
@@ -565,13 +621,16 @@ public class ViewControl {
 	public void saveGame() {
 		Engine.saveFile();
 		setTextOutput("Save complete");
-		
+
 		previousScene = sceneList.get(2);
 		theScene = sceneList.get(4);
 		setOutputLabel();
 	}
 
 	// change parts screen
+	@FXML
+	public void swapParts() {
 
+	}
 
 }
