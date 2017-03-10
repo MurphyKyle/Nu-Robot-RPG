@@ -173,6 +173,7 @@ public class ViewControl {
 			// index 3 is combat
 			occupied = true;
 			previousScene = sceneList.get(2);
+			currentSceneIndex = 3;
 			theScene = sceneList.get(3);
 			theStage.setTitle("Combat");
 			setOutputLabel();
@@ -197,6 +198,7 @@ public class ViewControl {
 			// index 4 is depot
 			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 			previousScene = sceneList.get(2);
+			currentSceneIndex = 4;
 			theScene = sceneList.get(4);
 			
 			if (Engine.inventory.isEmpty()) {
