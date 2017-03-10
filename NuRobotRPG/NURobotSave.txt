@@ -1,0 +1,16 @@
+Player
+Head :: Bite-Master Helm :: 2 :: UNCOMMON :: null :: No function
+Arm :: Plated Brawlfist :: 4 :: COMMON :: Electricity :: Attack with Electricity
+Arm :: Guerilla Palm Cannon :: 6 :: COMMON :: Beam :: Attack with Beam
+Torso :: Platinum Thorax :: 13 :: UNCOMMON :: Ballistic
+Leg :: Master Treads :: 14 :: COMMON :: Treads
+1
+Player
+Head :: Bite-Master Helm :: 2 :: UNCOMMON :: null :: No function
+Arm :: Plated Brawlfist :: 4 :: COMMON :: Electricity :: Attack with Electricity
+Arm :: Guerilla Palm Cannon :: 6 :: COMMON :: Beam :: Attack with Beam
+Torso :: Platinum Thorax :: 13 :: UNCOMMON :: Ballistic
+Leg :: Master Treads :: 14 :: COMMON :: Treads
+1
+Arm :: Plated Brawlfist :: 5 :: COMMON :: Electricity :: Attack with Electricity
+201
