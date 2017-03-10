@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 kellie
 Head :: Dealth-Gaze MK2 Sharkface :: 4 :: UNCOMMON :: null :: No function
 Arm :: Variable-Cored Palm Cannon :: 5 :: COMMON :: Fire :: Attack with Fire
@@ -14,3 +15,21 @@ Leg :: Booster Racer :: 19 :: EXPERIMENTAL :: Legs
 1
 Torso :: Platinum Thorax :: 11 :: COMMON :: Ballistic
 149
+=======
+Lexi
+Head :: Byte-Reader Helm :: 2 :: COMMON :: null :: null
+Arm :: Plated Grip Chassis :: 5 :: COMMON :: Beam :: Attack with Beam
+Arm :: Guerilla Claw :: 5 :: UNCOMMON :: Fire :: Attack with Fire
+Torso :: Titanium Alloy Fuselage Core :: 13 :: COMMON :: Ballistic
+Leg :: Booster Striker :: 12 :: COMMON :: Legs
+1
+Lexi
+Head :: Byte-Reader Helm :: 2 :: COMMON :: null :: null
+Arm :: Plated Grip Chassis :: 5 :: COMMON :: Beam :: Attack with Beam
+Arm :: Guerilla Claw :: 5 :: UNCOMMON :: Fire :: Attack with Fire
+Torso :: Titanium Alloy Fuselage Core :: 13 :: COMMON :: Ballistic
+Leg :: Booster Striker :: 12 :: COMMON :: Legs
+1
+Torso :: Hyperpneumatic Chest Piece :: 11 :: COMMON :: Ballistic
+184
+>>>>>>> 36de7acaace6f040f35ef168f2fdfe2f5764eab3

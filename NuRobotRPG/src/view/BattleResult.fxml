@@ -6,19 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="220.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="application.ViewControl">
+<AnchorPane prefHeight="260.0" prefWidth="225.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
    <children>
-      <Button fx:id="btnOkay" layoutX="69.0" layoutY="111.0" mnemonicParsing="false" onAction="#resultRead" prefHeight="25.0" prefWidth="88.0" text="Continue">
+      <Button fx:id="btnOkay" layoutX="69.0" layoutY="212.0" mnemonicParsing="false" onAction="#resultRead" prefHeight="25.0" prefWidth="88.0" text="Continue">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Label fx:id="lblResult" alignment="CENTER" prefHeight="63.0" prefWidth="225.0" text="You won the fight" textAlignment="CENTER" textFill="RED">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Label>
       <Separator layoutY="50.0" prefHeight="30.0" prefWidth="225.0" />
+      <Label layoutX="5.0" layoutY="65.0" prefHeight="17.0" prefWidth="128.0" text="You picked up a Part:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPart" layoutX="7.0" layoutY="82.0" prefHeight="117.0" prefWidth="214.0" />
    </children>
 </AnchorPane>
