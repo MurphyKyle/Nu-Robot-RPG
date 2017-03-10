@@ -4,15 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="275.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
+<AnchorPane prefHeight="308.0" prefWidth="493.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewControl">
 	<children>
-		<Separator layoutX="244.0" layoutY="113.0" orientation="VERTICAL" prefHeight="195.0" prefWidth="12.0" />
-		<Label fx:id="playerOutputLbl" alignment="TOP_LEFT" layoutX="14.0" layoutY="100.0" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: #EEE; -fx-background-radius: 20px; -fx-padding: 10px;" text="player robot info" />
-		<Label fx:id="enemyOutputLbl" alignment="TOP_LEFT" layoutX="279.0" layoutY="124.0" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: #EEE; -fx-background-radius: 20px; -fx-padding: 10px;" text="enemy robot info" />
-		<Label fx:id="outputLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="35.0" layoutY="12.0" prefHeight="85.0" prefWidth="433.0" style="-fx-border-style: solid; -fx-padding: 5px; -fx-border-radius: 5px;" text="Status updates go here" />
-      <Button fx:id="action1" layoutX="28.0" layoutY="184.0" mnemonicParsing="false" onAction="#action0" prefHeight="25.0" prefWidth="180.0" text="Action 1" />
-      <Button fx:id="action3" layoutX="28.0" layoutY="252.0" mnemonicParsing="false" onAction="#action2" prefHeight="25.0" prefWidth="180.0" text="Action 3" />
-      <Button fx:id="action2" layoutX="28.0" layoutY="218.0" mnemonicParsing="false" onAction="#action1" prefHeight="25.0" prefWidth="180.0" text="Action 2" />
+		<Separator layoutX="241.0" layoutY="100.0" orientation="VERTICAL" prefHeight="207.0" prefWidth="12.0" />
+		<Label fx:id="playerOutputLbl" alignment="TOP_LEFT" layoutX="18.0" layoutY="100.0" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: #EEE; -fx-background-radius: 20px; -fx-padding: 10px;" text="player robot info" />
+		<Label fx:id="enemyOutputLbl" alignment="TOP_LEFT" layoutX="279.0" layoutY="100.0" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: #EEE; -fx-background-radius: 20px; -fx-padding: 10px;" text="enemy robot info" />
+		<Label fx:id="outputLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="35.0" layoutY="12.0" prefHeight="73.0" prefWidth="433.0" style="-fx-border-style: solid; -fx-padding: 5px; -fx-border-radius: 5px;" text="Status updates go here" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Button fx:id="action1" layoutX="28.0" layoutY="188.0" mnemonicParsing="false" onAction="#action0" prefHeight="25.0" prefWidth="180.0" text="Action 1" />
+      <Button fx:id="action3" layoutX="28.0" layoutY="269.0" mnemonicParsing="false" onAction="#action2" prefHeight="25.0" prefWidth="180.0" text="Action 3" />
+      <Button fx:id="action2" layoutX="28.0" layoutY="229.0" mnemonicParsing="false" onAction="#action1" prefHeight="25.0" prefWidth="180.0" text="Action 2" />
 	</children>
 </AnchorPane>
