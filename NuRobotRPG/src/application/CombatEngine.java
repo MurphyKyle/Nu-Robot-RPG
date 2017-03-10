@@ -8,7 +8,7 @@ import models.Robot;
 public class CombatEngine extends Thread {
 
 	private Robot[] currentRobots = new Robot[2];
-	private int userAction = -1;
+	private int userAction = -5;
 	private boolean running = false;
 	public boolean actionSelected = false;
 	public Thread c;
@@ -168,6 +168,7 @@ public class CombatEngine extends Thread {
 		status.append(currentRobots[1].getName());
 		currentRobots[1].setCombatSpeed(currentRobots[1].getCombatSpeed() + currentRobots[1].getSpeed());
 		output = status.toString();
+		userAction = -1;
 	}
 
 	public void compTurn() {

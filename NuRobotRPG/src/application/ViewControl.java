@@ -283,6 +283,10 @@ public class ViewControl {
 				break;
 			}
 		}
+		enemyBot.getLegs().setIsTreads(true);
+		enemyBot.getLegs().setRarity(Rarity.COMMON);
+		Engine.currentRobot.getLegs().setIsTreads(false);
+		Engine.currentRobot.getLegs().setRarity(Rarity.EXPERIMENTAL);
 		combat = new CombatEngine(Engine.currentRobot, enemyBot);
 		combat.setGui(Thread.currentThread());
 		combat.start();
