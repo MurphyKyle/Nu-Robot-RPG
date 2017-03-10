@@ -201,6 +201,8 @@ public class Engine{
 						}
 					}
 				}
+				line = reader.readLine();
+				score = Integer.parseInt(line);
 				reader.close();
 			} catch (IOException e) {
 

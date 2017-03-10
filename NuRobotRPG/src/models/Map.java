@@ -28,7 +28,7 @@ public class Map {
 
 		switch (difficulty) {
 		case 1:
-			enemies = (int) Math.pow(size, 2) / 3;
+			enemies = (int) Math.pow(size, 2) / 4;
 			break;
 		case 2:
 			enemies = (int) Math.pow(size, 2) * 2 / 5;

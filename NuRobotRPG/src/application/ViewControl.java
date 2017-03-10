@@ -3,7 +3,10 @@ package application;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import enums.Rarity;
+import enums.Type;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -222,10 +225,52 @@ public class ViewControl {
 	}
 
 	public void combatInitiate() {
+		boolean lastEnemy = true;
+		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
+			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
+				if (Engine.currentMap.getRooms()[x][y].isOccupied()) {
+					if (x != Engine.currentMap.getXCoord() || y != Engine.currentMap.getYCoord()) {
+						lastEnemy = false;
+					}
+				}
+			}
+		}
+		if (lastEnemy) {
+			// Boss Fight
+			enemyBot.setName("Ultra-" + enemyBot.getName());
+			Random randy = new Random();
+			int experimentalPart = randy.nextInt(5);
+			switch(experimentalPart) {
+			case 0:
+				enemyBot.equipHead(new Head("NU-Unit-1",2,Rarity.EXPERIMENTAL,enums.Type.ELECTRICITY,"Attack with a lot of Electricity"));
+				break;
+			case 1:
+				ArrayList<Arm> arms = new ArrayList<Arm>();
+				arms.add(enemyBot.getArm(0));
+				arms.add(new Arm("NU-Unit-2",4,Rarity.EXPERIMENTAL,Type.FIRE,"Attack with a lot of Fire"));
+				enemyBot.equipArms(arms);
+				break;
+			case 2:
+				ArrayList<Arm> arms2 = new ArrayList<Arm>();
+				arms2.add(enemyBot.getArm(1));
+				arms2.add(new Arm("NU-Unit-3",4,Rarity.EXPERIMENTAL,Type.BEAM,"Attack with a lot of Beam"));
+				enemyBot.equipArms(arms2);
+				break;
+			case 3:
+				enemyBot.equipTorso(new Torso("NU-Unit-4",16,Rarity.EXPERIMENTAL,Type.BEAM));
+				break;
+			case 4:
+				enemyBot.equipLegs(new Leg("NU-Unit-5",9,Rarity.EXPERIMENTAL,false));
+				break;
+			}
+		}
 		combat = new CombatEngine(Engine.currentRobot, enemyBot);
 		combat.setGui(Thread.currentThread());
 		combat.start();
 		theStage.show();
+		if(lastEnemy) {
+			newMap();
+		}
 	}
 
 	public static void aftermath(Robot bot) {
@@ -243,7 +288,11 @@ public class ViewControl {
 									.setOccupied(false);
 							theScene = previousScene;
 							theStage.setScene(previousScene);
+<<<<<<< HEAD
 							mapRenew();
+=======
+							updateMap();
+>>>>>>> fd1cc14f08a51c0516e2ec708a36397bc39154dd
 						} else {
 							currentSceneIndex = 0;
 							theStage.setScene(sceneList.get(0));
@@ -342,9 +391,9 @@ public class ViewControl {
 		action = 2;
 	}
 
-	private void updateMap() {
+	private static void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
-
+		mapPane.getChildren().clear();
 		// This code should make a group of rectangles that are a room.
 		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
 			for (int y = 0; y < Engine.currentMap.getMapSize(); y++) {
@@ -489,7 +538,15 @@ public class ViewControl {
 	public void createRobot() {
 		getDifficulty();
 		Engine.currentRobot = new Robot(difficulty);
-		Engine.currentRobot.setName("Player");
+		TextField nameField = (TextField) theStage.getScene().lookup("#txtName");
+		String roboName = nameField.getText();
+
+		if (roboName == null || roboName.isEmpty()) {
+			;
+			roboName = "Player";
+		}
+
+		Engine.currentRobot.setName(roboName);
 		setTextOutput(Engine.currentRobot.toString());
 		theStage.getScene().lookup("#contBtn").setDisable(false);
 		Engine.favorites.put(Engine.currentRobot.getName(), Engine.currentRobot);
@@ -579,9 +636,15 @@ public class ViewControl {
 	@FXML
 	public void changeParts() {
 		System.out.println("Change parts button smash");
+<<<<<<< HEAD
 		currentSceneIndex = 5;
 		previousScene = sceneList.get(4);
 		theScene = sceneList.get(5);
+=======
+
+		previousScene = sceneList.get(2);
+		theScene = sceneList.get(4);
+>>>>>>> fd1cc14f08a51c0516e2ec708a36397bc39154dd
 		setOutputLabel();
 		theStage.setScene(theScene);
 
