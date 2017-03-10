@@ -294,6 +294,7 @@ public class ViewControl {
 							currentSceneIndex = 0;
 							theStage.setScene(sceneList.get(0));
 							Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
+							Engine.currentRobot = null;
 						}
 					}
 				});
@@ -543,18 +544,19 @@ public class ViewControl {
 		String roboName = nameField.getText();
 
 		if (roboName == null || roboName.isEmpty()) {
-			;
 			roboName = "Player";
 		}
 
 		Engine.currentRobot.setName(roboName);
 		setTextOutput(Engine.currentRobot.toString());
+		nameField.clear();
 		theStage.getScene().lookup("#contBtn").setDisable(false);
 		Engine.favorites.put(Engine.currentRobot.getName(), Engine.currentRobot);
 	}
 
 	@FXML
 	public void startGame() throws IOException {
+		setTextOutput("");
 		getDifficulty();
 		setPreviousScene();
 		theScene = sceneList.get(currentSceneIndex);
