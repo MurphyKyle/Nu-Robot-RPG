@@ -45,6 +45,7 @@ public class ViewControl {
 	public ToggleGroup diffChoice;
 	private static Label outputLabel;
 	private static Label mapLabel;
+	private static Stage resultStage;
 
 	private Robot enemyBot;
 	private static AnchorPane mapPane;
@@ -60,6 +61,7 @@ public class ViewControl {
 	private static String combatScreen = "/view/CombatScreen.fxml";
 	private static String depotScreen = "/view/DepotScreen.fxml";
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
+	private static String battleResultScreen = "/view/BattleResult.fxml";
 	private CombatEngine combat;
 	private static int action = -1;
 
@@ -71,6 +73,7 @@ public class ViewControl {
 		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(combatScreen)))); // 3
 		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(depotScreen)))); // 4
 		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(changePartsScreen)))); // 5
+		sceneList.add(new Scene(FXMLLoader.load(getClass().getResource(battleResultScreen)))); // 6
 	}
 
 	public static void setStage(Stage primaryStage) {
@@ -280,7 +283,9 @@ public class ViewControl {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
+						boolean alive = false;
 						if (Engine.currentRobot.isAlive()) {
+							alive = true;
 							Engine.currentRobot.takeDamage(-1 * (Engine.currentRobot.getMaxHp() / 2));
 							Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
 							Engine.inventory.add(bot.getDrop());
@@ -296,6 +301,7 @@ public class ViewControl {
 							Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 							Engine.currentRobot = null;
 						}
+						showResult(alive);
 					}
 				});
 				return null;
@@ -305,7 +311,29 @@ public class ViewControl {
 		th.setDaemon(true);
 		th.start();
 	}
+	
+	
+	private static void showResult(boolean alive) {
+		Stage s = new Stage();
+		s.setScene(sceneList.get(6));
+		Label lblResult = (Label) s.getScene().lookup("#lblResult");
+		
+		resultStage = s;
+		
+		if (alive) {
+			lblResult.setText("You won the battle.");
+		} else {
+			lblResult.setText("You have died.");
+		}
+		s.show();
+	}
+	
+	
+	public void resultRead() {
+		resultStage.close();
+	}
 
+	
 	public static void setCombatLabel(String l) {
 		Label outputLabel = (Label) theStage.getScene().lookup("#outputLabel");
 		Task<Void> task = new Task<Void>() {
