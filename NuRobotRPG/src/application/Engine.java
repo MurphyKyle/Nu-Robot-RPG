@@ -153,6 +153,9 @@ public class Engine{
 								builtRobot = true;
 							}
 						}
+					} else {
+						// there is no data to load from save file
+						return;
 					}
 				} while (!builtRobot);
 				currentRobot = new Robot(loadedParts);

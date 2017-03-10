@@ -431,7 +431,6 @@ public class ViewControl {
 
 	@FXML
 	public static void mapRenew() {
-		mapLabel.setText(Engine.currentMap.toString());
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
 
 		// This code should make a group of rectangles that are a room.
@@ -526,6 +525,11 @@ public class ViewControl {
 		theScene.lookup("#createRobotBtn").setDisable(true);
 		theScene.lookup("#contBtn").setDisable(false);
 		Engine.loadGame();
+		
+		
+		// check if robot is null then force new robot creation
+		
+		
 		setTextOutput("Load complete");
 		theStage.show();
 	}

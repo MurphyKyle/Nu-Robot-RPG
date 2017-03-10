@@ -1,51 +1,16 @@
 Player
-Head :: V-Gazer Sharkface :: 2 :: COMMON :: null :: null
-
-Arm :: Composite Brawlfist :: 7 :: COMMON :: Electricity :: Attack with Electricity
-
-Arm :: Plated Digihand :: 7 :: COMMON :: Beam :: Attack with Beam
-
-Torso :: Titanium Alloy Fuselage Core :: 10 :: COMMON :: Ballistic
-
-Leg :: Master Treads :: 17 :: UNCOMMON :: Legs
-
+Head :: Dealth-Gaze MK5 Dulleyes :: 4 :: EXPERIMENTAL :: Beam :: Attack with Beam
+Arm :: Pheonix MK 1 Mechacarpus :: 7 :: UNCOMMON :: Fire :: Attack with Fire
+Arm :: Plated Palm Cannon :: 5 :: RARE :: Beam :: Attack with Beam
+Torso :: Hyperpneumatic Chest Piece :: 11 :: UNCOMMON :: Beam
+Leg :: Kick-Master MK2 Hopper :: 15 :: RARE :: Legs
 1
-
 Player
-
-Head :: V-Gazer Sharkface :: 2 :: COMMON :: null :: null
-
-Arm :: Composite Brawlfist :: 7 :: COMMON :: Electricity :: Attack with Electricity
-
-Arm :: Plated Digihand :: 7 :: COMMON :: Beam :: Attack with Beam
-
-Torso :: Titanium Alloy Fuselage Core :: 10 :: COMMON :: Ballistic
-
-Leg :: Master Treads :: 17 :: UNCOMMON :: Legs
-
-11
-
-Torso :: Hyperpneumatic Torso Unit :: 13 :: COMMON :: Beam
-
-Arm :: Durasteel Grip Chassis :: 6 :: COMMON :: Explosive :: Attack with Explosive
-
-Leg :: Master Hopper :: 11 :: UNCOMMON :: Legs
-
-Arm :: Hydraulic Digihand :: 5 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-
-Arm :: Variable-Cored Digihand :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
-
-Torso :: Hyperpneumatic Torso Unit :: 13 :: COMMON :: Beam
-
-Arm :: Durasteel Grip Chassis :: 6 :: COMMON :: Explosive :: Attack with Explosive
-
-Leg :: Master Hopper :: 11 :: UNCOMMON :: Legs
-
-Arm :: Hydraulic Digihand :: 5 :: UNCOMMON :: Ballistic :: Attack with Ballistic
-
-Arm :: Variable-Cored Digihand :: 6 :: COMMON :: Ballistic :: Attack with Ballistic
-
-Arm :: Plated Brawlfist :: 5 :: UNCOMMON :: Beam :: Attack with Beam
-
-448
-
+Head :: Dealth-Gaze MK5 Dulleyes :: 4 :: EXPERIMENTAL :: Beam :: Attack with Beam
+Arm :: Pheonix MK 1 Mechacarpus :: 7 :: UNCOMMON :: Fire :: Attack with Fire
+Arm :: Plated Palm Cannon :: 5 :: RARE :: Beam :: Attack with Beam
+Torso :: Hyperpneumatic Chest Piece :: 11 :: UNCOMMON :: Beam
+Leg :: Kick-Master MK2 Hopper :: 15 :: RARE :: Legs
+1
+Arm :: Durasteel Digihand :: 5 :: UNCOMMON :: Ballistic :: Attack with Ballistic
+242
