@@ -507,26 +507,7 @@ public class ViewControl {
 	public void newMap() {
 		Engine.currentMap = new Map(difficulty);
 		mapLabel.setText(Engine.currentMap.toString());
-
-		// This code should make a group of nodes that are a room. IDK what the
-		// location
-		// on the screen for them should be. Once it's been created you can make
-		// a new
-		// scene with root as its root. I think I did it a little off tho.
-
-		// Here's the link I got it from :
-		// http://stackoverflow.com/questions/27870674/display-2d-array-as-grid-in-javafx
-
-		// Group root = new Group();
-		// for(int x = 0; x < Engine.currentMap.getMapSize(); x++) {
-		// for(int y = 0; y < Engine.currentMap.getMapSize(); y++) {
-		// Node room = new Node(Engine.currentMap.getRooms()[x][y], horizontal
-		// location, vertical location);
-		// root.getChildren().add(room);
-		// }
-		// }
 		updateMap();
-
 	}
 
 	// startup screen - [0]
@@ -537,9 +518,13 @@ public class ViewControl {
 		setOutputLabel();
 
 		if (theScene.lookup("#createRobotBtn").isDisabled()) {
+			if (Engine.currentRobot == null) {
+				setTextOutput("There was no robot to load. Please create a new one!");
+			} else {
+				setTextOutput("");
+			}
 			theScene.lookup("#contBtn").setDisable(true);
 			theScene.lookup("#createRobotBtn").setDisable(false);
-			setTextOutput("");
 		}
 
 		theStage.setScene(theScene);
@@ -558,12 +543,16 @@ public class ViewControl {
 		theScene.lookup("#contBtn").setDisable(false);
 		Engine.loadGame();
 		
-		
 		// check if robot is null then force new robot creation
+		if (Engine.currentRobot != null) {
+			setTextOutput("Load complete");
+			theStage.show();
+		} else {
+			currentSceneIndex--;
+			prevSceneIndex--;
+			createNewGame();
+		}
 		
-		
-		setTextOutput("Load complete");
-		theStage.show();
 	}
 
 	// start game screen - [1]
