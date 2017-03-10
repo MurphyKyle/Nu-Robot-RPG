@@ -96,8 +96,10 @@ public class ViewControl {
 		if (currentSceneIndex >= 1) {
 			if(currentSceneIndex == 4){
 				previousScene = sceneList.get(2);
+				theStage.setTitle("Gameplay");
 				currentSceneIndex = 4;
 			}else if(currentSceneIndex == 5){
+				theStage.setTitle("Depot");
 				Engine.currentRobot = Engine.favorites.get(building.getName());
 				Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 				Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
@@ -169,6 +171,7 @@ public class ViewControl {
 			occupied = true;
 			previousScene = sceneList.get(2);
 			theScene = sceneList.get(3);
+			theStage.setTitle("Combat");
 			setOutputLabel();
 			theStage.setScene(theScene);
 			Button act1 = (Button) theStage.getScene().lookup("#action1");
@@ -185,20 +188,14 @@ public class ViewControl {
 				act3.setText(Engine.currentRobot.getActionMenu().get(2));
 			}
 			enemyBot = new Robot(difficulty);
-			// ChoiceBox<String> cb = (ChoiceBox<String>)
-			// theStage.getScene().lookup("#actionMenu");
-			// ObservableList<String> items =
-			// FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
-			// cb.setItems(items);
+
 			// if there isn't an enemy but there is a depot
 		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
-			// currentSceneIndex = 2;
-			// setPreviousScene();
-			previousScene = sceneList.get(2);
 			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
-			theStage.setScene(sceneList.get(4));
+			previousScene = sceneList.get(2);
 			theScene = sceneList.get(4);
+			theStage.setTitle("Depot");
 			setOutputLabel();
 			setTextOutput("You made it to a checkpoint! Please pick an option:");
 			theStage.setScene(theScene);
@@ -208,7 +205,6 @@ public class ViewControl {
 			return;
 		}
 
-		setOutputLabel();
 		theStage.show();
 		if (occupied) {
 			Task<Void> task = new Task<Void>() {
@@ -296,13 +292,16 @@ public class ViewControl {
 									.setOccupied(false);
 							theScene = previousScene;
 							theStage.setScene(previousScene);
+							theStage.setTitle("Gameplay");
 							mapRenew();
 							updateMap();
 						} else {
 							currentSceneIndex = 0;
 							theStage.setScene(sceneList.get(0));
+							theStage.setTitle("Robot RPG");
 							Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 							Engine.currentRobot = null;
+							Engine.score = 0;
 						}
 						showResult(alive);
 					}
@@ -328,6 +327,7 @@ public class ViewControl {
 		} else {
 			lblResult.setText("You have died.");
 		}
+		s.setTitle("Battle Results");
 		s.show();
 	}
 	
@@ -422,6 +422,7 @@ public class ViewControl {
 
 	private static void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
+		setTextOutput(Engine.currentRobot.toString() + "\nScore: " + Integer.toString(Engine.score));
 		mapPane.getChildren().clear();
 		// This code should make a group of rectangles that are a room.
 		for (int x = 0; x < Engine.currentMap.getMapSize(); x++) {
