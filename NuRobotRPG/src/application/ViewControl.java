@@ -660,11 +660,11 @@ public class ViewControl {
 
 	@FXML
 	public void changeParts() {
-		System.out.println("Change parts button smash");
 		currentSceneIndex = 5;
 		previousScene = sceneList.get(4);
 		theScene = sceneList.get(5);
 		setOutputLabel();
+		theStage.setTitle("Change Parts");
 		theStage.setScene(theScene);
 		parts.clear();
 		ArrayList<Part> l = new ArrayList<>();
