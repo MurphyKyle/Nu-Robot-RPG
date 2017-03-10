@@ -94,15 +94,19 @@ public class ViewControl {
 
 	public void goBack() {
 		if (currentSceneIndex >= 1) {
-			if(currentSceneIndex == 4){
+			if (currentSceneIndex == 4) {
 				previousScene = sceneList.get(2);
 				theStage.setTitle("Gameplay");
 				currentSceneIndex = 4;
-			}else if(currentSceneIndex == 5){
+			} else if (currentSceneIndex == 5) {
 				theStage.setTitle("Depot");
-				if(building != null){
+				if (building != null) {
 					Engine.currentRobot = Engine.favorites.get(building.getName());
 				}
+				Label rel = (Label) theStage.getScene().lookup("#robSpecs");
+				rel.setText("");
+				Label part = (Label) theStage.getScene().lookup("#partInfo");
+				part.setText("");
 				Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 				Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
 				previousScene = sceneList.get(4);
@@ -122,9 +126,9 @@ public class ViewControl {
 			if (currentSceneIndex <= 1) {
 				prevSceneIndex = 0;
 			} else {
-				if(prevSceneIndex == 0){
+				if (prevSceneIndex == 0) {
 					prevSceneIndex = 0;
-				}else{
+				} else {
 					prevSceneIndex--;
 				}
 			}
@@ -200,13 +204,13 @@ public class ViewControl {
 			previousScene = sceneList.get(2);
 			currentSceneIndex = 4;
 			theScene = sceneList.get(4);
-			
+
 			if (Engine.inventory.isEmpty()) {
 				theScene.lookup("#changePartsBtn").setDisable(true);
 			} else {
 				theScene.lookup("#changePartsBtn").setDisable(false);
 			}
-			
+
 			theStage.setTitle("Depot");
 			setOutputLabel();
 			setTextOutput("You made it to a checkpoint! Please pick an option:");
@@ -254,27 +258,28 @@ public class ViewControl {
 			enemyBot.setName("Ultra-" + enemyBot.getName());
 			Random randy = new Random();
 			int experimentalPart = randy.nextInt(5);
-			switch(experimentalPart) {
+			switch (experimentalPart) {
 			case 0:
-				enemyBot.equipHead(new Head("NU-Unit-1",2,Rarity.EXPERIMENTAL,enums.Type.ELECTRICITY,"Attack with a lot of Electricity"));
+				enemyBot.equipHead(new Head("NU-Unit-1", 2, Rarity.EXPERIMENTAL, enums.Type.ELECTRICITY,
+						"Attack with a lot of Electricity"));
 				break;
 			case 1:
 				ArrayList<Arm> arms = new ArrayList<Arm>();
 				arms.add(enemyBot.getArm(0));
-				arms.add(new Arm("NU-Unit-2",4,Rarity.EXPERIMENTAL,Type.FIRE,"Attack with a lot of Fire"));
+				arms.add(new Arm("NU-Unit-2", 4, Rarity.EXPERIMENTAL, Type.FIRE, "Attack with a lot of Fire"));
 				enemyBot.equipArms(arms);
 				break;
 			case 2:
 				ArrayList<Arm> arms2 = new ArrayList<Arm>();
 				arms2.add(enemyBot.getArm(1));
-				arms2.add(new Arm("NU-Unit-3",4,Rarity.EXPERIMENTAL,Type.BEAM,"Attack with a lot of Beam"));
+				arms2.add(new Arm("NU-Unit-3", 4, Rarity.EXPERIMENTAL, Type.BEAM, "Attack with a lot of Beam"));
 				enemyBot.equipArms(arms2);
 				break;
 			case 3:
-				enemyBot.equipTorso(new Torso("NU-Unit-4",16,Rarity.EXPERIMENTAL,Type.BEAM));
+				enemyBot.equipTorso(new Torso("NU-Unit-4", 16, Rarity.EXPERIMENTAL, Type.BEAM));
 				break;
 			case 4:
-				enemyBot.equipLegs(new Leg("NU-Unit-5",9,Rarity.EXPERIMENTAL,false));
+				enemyBot.equipLegs(new Leg("NU-Unit-5", 9, Rarity.EXPERIMENTAL, false));
 				break;
 			}
 		}
@@ -282,7 +287,7 @@ public class ViewControl {
 		combat.setGui(Thread.currentThread());
 		combat.start();
 		theStage.show();
-		if(lastEnemy) {
+		if (lastEnemy) {
 			newMap();
 		}
 	}
@@ -326,15 +331,14 @@ public class ViewControl {
 		th.setDaemon(true);
 		th.start();
 	}
-	
-	
+
 	private static void showResult(boolean alive) {
 		Stage s = new Stage();
 		s.setScene(sceneList.get(6));
 		Label lblResult = (Label) s.getScene().lookup("#lblResult");
-		
+
 		resultStage = s;
-		
+
 		if (alive) {
 			lblResult.setText("You won the battle.");
 		} else {
@@ -343,13 +347,11 @@ public class ViewControl {
 		s.setTitle("Results");
 		s.show();
 	}
-	
-	
+
 	public void resultRead() {
 		resultStage.close();
 	}
 
-	
 	public static void setCombatLabel(String l) {
 		Label outputLabel = (Label) theStage.getScene().lookup("#outputLabel");
 		Task<Void> task = new Task<Void>() {
@@ -515,7 +517,7 @@ public class ViewControl {
 		theScene.lookup("#createRobotBtn").setDisable(true);
 		theScene.lookup("#contBtn").setDisable(false);
 		Engine.loadGame();
-		
+
 		// check if robot is null then force new robot creation
 		if (Engine.currentRobot != null) {
 			setTextOutput("Load complete");
@@ -525,7 +527,7 @@ public class ViewControl {
 			prevSceneIndex--;
 			createNewGame();
 		}
-		
+
 	}
 
 	// start game screen - [1]
@@ -623,7 +625,6 @@ public class ViewControl {
 	}
 
 	// depo screen
-	
 
 	// change parts screen
 
@@ -649,7 +650,7 @@ public class ViewControl {
 		partIndex = 0;
 		currentPart = parts.get(partIndex);
 		setPart();
-		
+
 		updateFavs();
 
 		Button right = (Button) theStage.getScene().lookup("#right");
@@ -734,10 +735,10 @@ public class ViewControl {
 		ArrayList<String> robots = new ArrayList<>();
 		robotsMenu.getItems().clear();
 		for (String s : Engine.favorites.keySet()) {
-			if(s.equals("temp")){
-				
-			}else{
-			robots.add(s);
+			if (s.equals("temp")) {
+
+			} else {
+				robots.add(s);
 			}
 		}
 		ObservableList<String> robotList = FXCollections.observableArrayList(robots);
@@ -749,9 +750,9 @@ public class ViewControl {
 				val = val.replace('[', ' ');
 				val = val.replace(']', ' ');
 				val = val.trim();
-				for(String s : Engine.favorites.keySet()){
-					if(s.equals(val)){
-						building= new Robot(Engine.favorites.get(val));
+				for (String s : Engine.favorites.keySet()) {
+					if (s.equals(val)) {
+						building = new Robot(Engine.favorites.get(val));
 					}
 				}
 				Button head = (Button) theStage.getScene().lookup("#accessHead");
@@ -838,6 +839,5 @@ public class ViewControl {
 		theScene = sceneList.get(4);
 		setOutputLabel();
 	}
-
 
 }
