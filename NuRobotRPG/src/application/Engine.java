@@ -16,10 +16,11 @@ public class Engine{
 
 	public static HashMap<String, Robot> favorites = new HashMap<>();
 	public static ArrayList<Part> inventory = new ArrayList<Part>();
-	public static Robot currentRobot;
+	public static Robot currentRobot = null;
 	public static Map currentMap;
 	public static int score = 0;
 	public static Robot preset;
+	public boolean isLoadable;
 
 	public static void setPreset(Robot enemy) {
 		preset = enemy;
@@ -127,6 +128,8 @@ public class Engine{
 		}
 		return sb.toString();
 	}
+	
+	
 
 	public static void loadGame() {
 		favorites.clear();
@@ -155,6 +158,7 @@ public class Engine{
 						}
 					} else {
 						// there is no data to load from save file
+						System.out.println("No data to read from save file.");
 						return;
 					}
 				} while (!builtRobot);
