@@ -569,13 +569,14 @@ public class ViewControl {
 
 		Engine.currentRobot.setName(roboName);
 		setTextOutput(Engine.currentRobot.toString());
-		nameField.clear();
 		theStage.getScene().lookup("#contBtn").setDisable(false);
 		Engine.favorites.put(Engine.currentRobot.getName(), Engine.currentRobot);
 	}
 
 	@FXML
 	public void startGame() throws IOException {
+		TextField nameField = (TextField) theStage.getScene().lookup("#txtName");
+		nameField.clear();
 		setTextOutput("");
 		getDifficulty();
 		setPreviousScene();
