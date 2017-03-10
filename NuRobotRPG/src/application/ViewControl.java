@@ -100,13 +100,16 @@ public class ViewControl {
 				currentSceneIndex = 4;
 			}else if(currentSceneIndex == 5){
 				theStage.setTitle("Depot");
-				Engine.currentRobot = Engine.favorites.get(building.getName());
+				if(building != null){
+					Engine.currentRobot = Engine.favorites.get(building.getName());
+				}
 				Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 				Engine.currentRobot.setCombatSpeed(Engine.currentRobot.getSpeed());
 				previousScene = sceneList.get(4);
 				currentSceneIndex = 5;
 			}
 			theScene = previousScene;
+			setOutputLabel();
 			theStage.setScene(theScene);
 			if (previousScene.equals(sceneList.get(2))) {
 				updateMap();
@@ -195,6 +198,13 @@ public class ViewControl {
 			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 			previousScene = sceneList.get(2);
 			theScene = sceneList.get(4);
+			
+			if (Engine.inventory.isEmpty()) {
+				theScene.lookup("#changePartsBtn").setDisable(true);
+			} else {
+				theScene.lookup("#changePartsBtn").setDisable(false);
+			}
+			
 			theStage.setTitle("Depot");
 			setOutputLabel();
 			setTextOutput("You made it to a checkpoint! Please pick an option:");
@@ -301,6 +311,7 @@ public class ViewControl {
 							theStage.setTitle("Robot RPG");
 							Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
 							Engine.currentRobot = null;
+							Engine.inventory.clear();
 							Engine.score = 0;
 						}
 						showResult(alive);
@@ -327,7 +338,7 @@ public class ViewControl {
 		} else {
 			lblResult.setText("You have died.");
 		}
-		s.setTitle("Battle Results");
+		s.setTitle("Results");
 		s.show();
 	}
 	
@@ -653,7 +664,7 @@ public class ViewControl {
 
 	// change parts screen
 
-	private static Part currentPart;
+	private static Part currentPart = null;
 	private static Robot building;
 	private int partIndex;
 	private static ArrayList<Part> parts = new ArrayList<>();
