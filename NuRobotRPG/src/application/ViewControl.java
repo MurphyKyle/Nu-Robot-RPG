@@ -271,7 +271,7 @@ public class ViewControl {
 									.setOccupied(false);
 							theScene = previousScene;
 							theStage.setScene(previousScene);
-							mapRenew();
+							updateMap();
 						} else {
 							currentSceneIndex = 0;
 							theStage.setScene(sceneList.get(0));
@@ -370,7 +370,7 @@ public class ViewControl {
 		action = 2;
 	}
 
-	private void updateMap() {
+	private static void updateMap() {
 		mapPane = (AnchorPane) theScene.lookup("#mapPane");
 		mapPane.getChildren().clear();
 		// This code should make a group of rectangles that are a room.
