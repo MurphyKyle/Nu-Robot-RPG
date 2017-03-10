@@ -49,7 +49,6 @@ public class ViewControl {
 	private static String changePartsScreen = "/view/ChangePartsScreen.fxml";
 	private static String battleResultScreen = "/view/BattleResult.fxml";
 	private CombatEngine combat;
-	private static Object main = Thread.currentThread();
 	private static int action = -1;
 
 	// general methods
@@ -74,8 +73,6 @@ public class ViewControl {
 	public void exit() {
 		Runtime.getRuntime().exit(0);
 	}
-	
-
 
 	private static void setOutputLabel() {
 		outputLabel = (Label) theScene.lookup("#outputLabel");
@@ -143,21 +140,8 @@ public class ViewControl {
 			occupied = true;
 			previousScene = sceneList.get(2);
 			theScene = sceneList.get(3);
-			setOutputLabel();
 			theStage.setScene(theScene);
-			Button act1 = (Button) theStage.getScene().lookup("#action1");
-			act1.setText(Engine.currentRobot.getActionMenu().get(0));
-			act1.setDisable(true);
-			Button act2 = (Button) theStage.getScene().lookup("#action2");
-			act2.setText(Engine.currentRobot.getActionMenu().get(1));
-			act2.setDisable(true);
-			Button act3 = (Button) theStage.getScene().lookup("#action3");
-			if (Engine.currentRobot.getActionMenu().size() == 2) {
-				act3.setText("No Function");
-				act3.setDisable(true);
-			} else {
-				act3.setText(Engine.currentRobot.getActionMenu().get(2));
-			}
+			setActions();
 			enemyBot = new Robot(difficulty);
 			// ChoiceBox<String> cb = (ChoiceBox<String>)
 			// theStage.getScene().lookup("#actionMenu");
@@ -165,17 +149,13 @@ public class ViewControl {
 			// FXCollections.observableArrayList(Engine.currentRobot.getActionMenu());
 			// cb.setItems(items);
 //		if there isn't an enemy but there is a depot
-		}else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
+		} else if (map[Engine.currentMap.getXCoord()][Engine.currentMap.getYCoord()].isDepot()) {
 			// index 4 is depot
-//			currentSceneIndex = 2;
-//			setPreviousScene();
 			previousScene = sceneList.get(2);
-			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
-			theStage.setScene(sceneList.get(4));
 			theScene = sceneList.get(4);
-			setOutputLabel();
-			setTextOutput("You made it to a checkpoint! Please pick an option:");
 			theStage.setScene(theScene);
+			Engine.currentRobot.setCurrentHp(Engine.currentRobot.getMaxHp());
+			setTextOutput("You made it to a checkpoint! Please pick an option:");
 		} else {
 			// the room should be empty
 			updateMap();
@@ -184,6 +164,7 @@ public class ViewControl {
 
 		setOutputLabel();
 		theStage.show();
+		
 		if (occupied) {
 			Task<Void> task = new Task<Void>() {
 				@Override
@@ -203,6 +184,23 @@ public class ViewControl {
 			combatInitiate();
 		}
 	}
+	
+	private void setActions() {
+		Button act1 = (Button) theStage.getScene().lookup("#action1");
+		act1.setText(Engine.currentRobot.getActionMenu().get(0));
+		act1.setDisable(true);
+		Button act2 = (Button) theStage.getScene().lookup("#action2");
+		act2.setText(Engine.currentRobot.getActionMenu().get(1));
+		act2.setDisable(true);
+		Button act3 = (Button) theStage.getScene().lookup("#action3");
+		if (Engine.currentRobot.getActionMenu().size() == 2) {
+			act3.setText("No Function");
+			act3.setVisible(false);
+			act3.setDisable(true);
+		} else {
+			act3.setText(Engine.currentRobot.getActionMenu().get(2));
+		}
+	}
 
 	public void combatInitiate() {
 		combat = new CombatEngine(Engine.currentRobot, enemyBot);
@@ -215,7 +213,6 @@ public class ViewControl {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			public Void call() throws Exception {
-				
 				Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
@@ -553,11 +550,6 @@ public class ViewControl {
 		checkRoom();
 	}
 
-	// combat screen
-	@FXML
-	public void attack() {
-
-	}
 
 	// depo screen
 	@FXML
@@ -580,9 +572,6 @@ public class ViewControl {
 	}
 
 	// change parts screen
-	@FXML
-	public void swapParts() {
 
-	}
 
 }

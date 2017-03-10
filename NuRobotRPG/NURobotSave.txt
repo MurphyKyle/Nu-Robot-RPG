@@ -5,5 +5,14 @@ Arm :: Hydraulic Digihand :: 4 :: COMMON :: Ballistic :: Attack with Ballistic
 Torso :: Segmented Thorax :: 10 :: COMMON :: Ballistic
 Leg :: Kick-Master MK2 Treads :: 16 :: UNCOMMON :: Legs
 0
-0
-0
+9
+Head :: Byte-Reader Guardmouth :: 2 :: COMMON :: null :: No function
+Torso :: Fission-Powered Chassis :: 10 :: COMMON :: Ballistic
+Head :: Byte-Reader Guardmouth :: 2 :: COMMON :: null :: null
+Torso :: Fission-Powered Chassis :: 10 :: COMMON :: Ballistic
+Leg :: Kick-Master MK2 Treads :: 17 :: COMMON :: Treads
+Head :: Bite-Master Helm :: 2 :: COMMON :: null :: No function
+Arm :: Plated Tri-finger :: 4 :: COMMON :: Electricity :: Attack with Electricity
+Head :: Moustache Helm :: 3 :: COMMON :: null :: No function
+Leg :: Kick-Master MK2 Treads :: 12 :: COMMON :: Treads
+1342

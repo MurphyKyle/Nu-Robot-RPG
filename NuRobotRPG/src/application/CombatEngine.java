@@ -92,10 +92,6 @@ public class CombatEngine extends Thread {
 		}
 	}
 
-	public Robot[] getCurrentRobots() {
-		return currentRobots;
-	}
-
 	public void update() {
 		synchronized (gui) {
 			while (running) {
@@ -138,16 +134,7 @@ public class CombatEngine extends Thread {
 	public void setActionSelected(boolean actionSelected) {
 		this.actionSelected = actionSelected;
 	}
-
-	public void pauseThread() throws InterruptedException {
-		running = false;
-	}
-
-	public void resumeThread() {
-		running = true;
-		notifyAll();
-	}
-
+	
 	public void userTurn() {
 		Type attackType = currentRobots[0].getActionType().get(userAction);
 		int damage = currentRobots[0].attack();
