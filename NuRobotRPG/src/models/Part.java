@@ -52,10 +52,11 @@ public abstract class Part {
 	
 	public String getGeneralSpec(){
 		StringBuilder sb = new StringBuilder();
+		sb.append("Name: ");
 		sb.append(this.getName());
-		sb.append("\n");
+		sb.append("\nWeight: ");
 		sb.append(this.getWeight());
-		sb.append("\n");
+		sb.append(" tons\nRarity: ");
 		sb.append(this.getRarity().toString());
 		sb.append("\n");
 		return sb.toString();

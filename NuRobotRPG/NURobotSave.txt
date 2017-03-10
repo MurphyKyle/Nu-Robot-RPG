@@ -1,18 +1,16 @@
-Player
-Head :: Dealth-Gaze MK2 Guardmouth :: 2 :: COMMON :: null :: No function
-Arm :: Guerilla Tri-finger :: 7 :: COMMON :: Ballistic :: Attack with Ballistic
-Arm :: Plated Mechacarpus :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Cage Frame Sprocket Frame :: 12 :: COMMON :: Beam
-Leg :: Master Driver :: 10 :: COMMON :: Legs
+Lexi
+Head :: Byte-Reader Helm :: 2 :: COMMON :: null :: null
+Arm :: Plated Grip Chassis :: 5 :: COMMON :: Beam :: Attack with Beam
+Arm :: Guerilla Claw :: 5 :: UNCOMMON :: Fire :: Attack with Fire
+Torso :: Titanium Alloy Fuselage Core :: 13 :: COMMON :: Ballistic
+Leg :: Booster Striker :: 12 :: COMMON :: Legs
 1
-Player
-Head :: Dealth-Gaze MK2 Guardmouth :: 2 :: COMMON :: null :: No function
-Arm :: Guerilla Tri-finger :: 7 :: COMMON :: Ballistic :: Attack with Ballistic
-Arm :: Plated Mechacarpus :: 4 :: UNCOMMON :: Beam :: Attack with Beam
-Torso :: Cage Frame Sprocket Frame :: 12 :: COMMON :: Beam
-Leg :: Master Driver :: 10 :: COMMON :: Legs
-3
-Torso :: Hyperpneumatic Chassis :: 11 :: UNCOMMON :: Ballistic
-Head :: Moustache Dulleyes :: 2 :: COMMON :: null :: No function
-Arm :: Composite Tri-finger :: 5 :: COMMON :: Ballistic :: Attack with Ballistic
-579
+Lexi
+Head :: Byte-Reader Helm :: 2 :: COMMON :: null :: null
+Arm :: Plated Grip Chassis :: 5 :: COMMON :: Beam :: Attack with Beam
+Arm :: Guerilla Claw :: 5 :: UNCOMMON :: Fire :: Attack with Fire
+Torso :: Titanium Alloy Fuselage Core :: 13 :: COMMON :: Ballistic
+Leg :: Booster Striker :: 12 :: COMMON :: Legs
+1
+Torso :: Hyperpneumatic Chest Piece :: 11 :: COMMON :: Ballistic
+184

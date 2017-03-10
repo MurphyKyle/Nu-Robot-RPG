@@ -325,7 +325,7 @@ public class ViewControl {
 							Engine.inventory.clear();
 							Engine.score = 0;
 						}
-						showResult(alive);
+						showResult(alive, bot.getDrop());
 					}
 				});
 				return null;
@@ -336,15 +336,16 @@ public class ViewControl {
 		th.start();
 	}
 
-	private static void showResult(boolean alive) {
+	private static void showResult(boolean alive, Part droppedPart) {
 		Stage s = new Stage();
 		s.setScene(sceneList.get(6));
 		Label lblResult = (Label) s.getScene().lookup("#lblResult");
-
+		Label lblPart = (Label) s.getScene().lookup("#lblPart");
 		resultStage = s;
 
 		if (alive) {
 			lblResult.setText("You won the battle.");
+			lblPart.setText(droppedPart.getGeneralSpec());
 		} else {
 			lblResult.setText("You have died.");
 		}
