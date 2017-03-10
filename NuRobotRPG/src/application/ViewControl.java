@@ -288,11 +288,8 @@ public class ViewControl {
 									.setOccupied(false);
 							theScene = previousScene;
 							theStage.setScene(previousScene);
-<<<<<<< HEAD
 							mapRenew();
-=======
 							updateMap();
->>>>>>> fd1cc14f08a51c0516e2ec708a36397bc39154dd
 						} else {
 							currentSceneIndex = 0;
 							theStage.setScene(sceneList.get(0));
@@ -636,18 +633,11 @@ public class ViewControl {
 	@FXML
 	public void changeParts() {
 		System.out.println("Change parts button smash");
-<<<<<<< HEAD
 		currentSceneIndex = 5;
 		previousScene = sceneList.get(4);
 		theScene = sceneList.get(5);
-=======
-
-		previousScene = sceneList.get(2);
-		theScene = sceneList.get(4);
->>>>>>> fd1cc14f08a51c0516e2ec708a36397bc39154dd
 		setOutputLabel();
 		theStage.setScene(theScene);
-
 		parts.clear();
 		ArrayList<Part> l = new ArrayList<>();
 		for (Part p : Engine.inventory) {
@@ -657,7 +647,7 @@ public class ViewControl {
 		partIndex = 0;
 		currentPart = parts.get(partIndex);
 		setPart();
-
+		
 		updateFavs();
 
 		Button right = (Button) theStage.getScene().lookup("#right");
