@@ -347,6 +347,8 @@ public class ViewControl {
 			lblResult.setText("You won the battle.");
 			lblPart.setText(droppedPart.getGeneralSpec());
 		} else {
+			Label l = (Label) s.getScene().lookup("#lblTxt");
+			l.setVisible(false);
 			lblResult.setText("You have died.");
 		}
 		s.setTitle("Results");
