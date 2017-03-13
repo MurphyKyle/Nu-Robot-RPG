@@ -1,35 +1,37 @@
-<<<<<<< HEAD
-kellie
-Head :: Dealth-Gaze MK2 Sharkface :: 4 :: UNCOMMON :: null :: No function
-Arm :: Variable-Cored Palm Cannon :: 5 :: COMMON :: Fire :: Attack with Fire
-Arm :: Plated Grip Chassis :: 4 :: COMMON :: Ballistic :: Attack with Ballistic
-Torso :: Titanium Alloy Sprocket Frame :: 10 :: COMMON :: Beam
-Leg :: Booster Racer :: 19 :: EXPERIMENTAL :: Legs
+lk
+Head :: Moustache Dulleyes :: 4 :: EXPERIMENTAL :: Fire :: Attack with Fire
+Arm :: Pheonix MK 2 Brawlfist :: 5 :: EXPERIMENTAL :: Ballistic :: Attack with Ballistic
+Arm :: Plated Digihand :: 6 :: RARE :: Beam :: Attack with Beam
+Torso :: Platinum Chassis :: 10 :: UNCOMMON :: Ballistic
+Leg :: Kick-Master MK2 Treads :: 16 :: EXPERIMENTAL :: Legs
 1
-kellie
-Head :: Dealth-Gaze MK2 Sharkface :: 4 :: UNCOMMON :: null :: No function
-Arm :: Variable-Cored Palm Cannon :: 5 :: COMMON :: Fire :: Attack with Fire
-Arm :: Plated Grip Chassis :: 4 :: COMMON :: Ballistic :: Attack with Ballistic
-Torso :: Titanium Alloy Sprocket Frame :: 10 :: COMMON :: Beam
-Leg :: Booster Racer :: 19 :: EXPERIMENTAL :: Legs
-1
-Torso :: Platinum Thorax :: 11 :: COMMON :: Ballistic
-149
-=======
-Lexi
-Head :: Byte-Reader Helm :: 2 :: COMMON :: null :: null
-Arm :: Plated Grip Chassis :: 5 :: COMMON :: Beam :: Attack with Beam
-Arm :: Guerilla Claw :: 5 :: UNCOMMON :: Fire :: Attack with Fire
-Torso :: Titanium Alloy Fuselage Core :: 13 :: COMMON :: Ballistic
-Leg :: Booster Striker :: 12 :: COMMON :: Legs
-1
-Lexi
-Head :: Byte-Reader Helm :: 2 :: COMMON :: null :: null
-Arm :: Plated Grip Chassis :: 5 :: COMMON :: Beam :: Attack with Beam
-Arm :: Guerilla Claw :: 5 :: UNCOMMON :: Fire :: Attack with Fire
-Torso :: Titanium Alloy Fuselage Core :: 13 :: COMMON :: Ballistic
-Leg :: Booster Striker :: 12 :: COMMON :: Legs
-1
-Torso :: Hyperpneumatic Chest Piece :: 11 :: COMMON :: Ballistic
-184
->>>>>>> 36de7acaace6f040f35ef168f2fdfe2f5764eab3
+lk
+Head :: Moustache Dulleyes :: 4 :: RARE :: null :: null
+Arm :: Pheonix MK 2 Brawlfist :: 5 :: EXPERIMENTAL :: Ballistic :: Attack with Ballistic
+Arm :: Plated Digihand :: 6 :: RARE :: Beam :: Attack with Beam
+Torso :: Platinum Chassis :: 10 :: UNCOMMON :: Ballistic
+Leg :: Kick-Master MK2 Treads :: 16 :: EXPERIMENTAL :: Legs
+22
+Leg :: Bionic Treads :: 15 :: COMMON :: Legs
+Leg :: Kick-Master MK2 Racer :: 18 :: COMMON :: Legs
+Arm :: Pheonix MK 2 Brawlfist :: 5 :: EXPERIMENTAL :: Ballistic :: Attack with Ballistic
+Leg :: Cheetah Hopper :: 15 :: COMMON :: Legs
+Arm :: Composite Digihand :: 5 :: RARE :: Explosive :: Attack with Explosive
+Arm :: Hydraulic Claw :: 4 :: RARE :: Fire :: Attack with Fire
+Arm :: Plated Digihand :: 6 :: RARE :: Beam :: Attack with Beam
+Arm :: Composite Digihand :: 5 :: UNCOMMON :: Ballistic :: Attack with Ballistic
+Torso :: Cage Frame Sprocket Frame :: 14 :: UNCOMMON :: Ballistic
+Leg :: Cheetah Hopper :: 19 :: COMMON :: Legs
+Head :: V-Gazer Helm :: 2 :: RARE :: null :: null
+Arm :: Variable-Cored Palm Cannon :: 5 :: UNCOMMON :: Electricity :: Attack with Electricity
+Arm :: Composite Claw :: 7 :: RARE :: Electricity :: Attack with Electricity
+Torso :: Fission-Powered Sprocket Frame :: 10 :: UNCOMMON :: Beam
+Head :: Dealth-Gaze MK2 Guardmouth :: 2 :: UNCOMMON :: null :: null
+Arm :: Durasteel Mechacarpus :: 6 :: RARE :: Fire :: Attack with Fire
+Head :: Byte-Reader Guardmouth :: 3 :: UNCOMMON :: null :: null
+Head :: Dealth-Gaze MK2 Guardmouth :: 4 :: UNCOMMON :: null :: null
+Head :: Moustache Helm :: 4 :: UNCOMMON :: null :: null
+Head :: Byte-Reader Guardmouth :: 3 :: RARE :: null :: null
+Head :: V-Gazer Sharkface :: 2 :: RARE :: null :: null
+Head :: Dealth-Gaze MK5 Hawkeye :: 4 :: EXPERIMENTAL :: Ballistic :: Attack with Ballistic
+4353

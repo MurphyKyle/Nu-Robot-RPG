@@ -88,7 +88,7 @@ public class Head extends Part {
 										: Type.EXPLOSIVE.toString().equals(input.split(" :: ")[4]) ? Type.EXPLOSIVE
 												: Type.FIRE,
 				// Sorry again
-				input.split(" :: ")[4]);
+				input.split(" :: ")[5]);
 	}
 	
 	public String getFunction() {
